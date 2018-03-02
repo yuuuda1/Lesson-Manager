@@ -8,19 +8,30 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 const styles = {
   root: {
+    width: '100%',
+    height: '64px',
+    backgroundColor: '#03A9F4',
   },
   flex: {
     flex: 1,
     fontFamily: 'Roboto',
-    fontSize: '24px'
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginLeft: '16px',
+    lineHeight: '64px',
   },
+  menuButton: {
+      marginLeft: '-12px',
+      marginRight: '16px',
+      
+  }
 };
 
 class Header extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-        <AppBar className={classes.root}>
+        <AppBar color='secondary' className={classes.root}>
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
