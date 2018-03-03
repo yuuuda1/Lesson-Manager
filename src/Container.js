@@ -19,6 +19,11 @@ const drawerWidth = 240
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    fontFamily: 'Roboto',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginLeft: '16px',
+    lineHeight: '64px',
   },
   appFrame: {
     zIndex: 1,
