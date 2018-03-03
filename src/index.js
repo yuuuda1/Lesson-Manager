@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header';
+import Lesson from './Lesson';
 
-ReactDOM.render(<Header />, document.getElementById('root'));
+ReactDOM.render(<Lesson />, document.getElementById('root'));
