@@ -79,7 +79,7 @@ const styles = theme => ({
   },
   sideBar: {
     width: '56px',
-    height: '100vh',
+    height: '100%',
     position: 'absolute',
     left: '0px',
     top: '64px',
@@ -91,7 +91,7 @@ const styles = theme => ({
   appBarColorDefault: {
     backgroundColor: '#00BCD4'
   }
-});
+})
 
 
 class PersistentDrawer extends React.Component {
@@ -110,6 +110,7 @@ class PersistentDrawer extends React.Component {
   render() {
     const {
       classes,
+      children,
       theme,
       ...other
     } = this.props
@@ -175,6 +176,7 @@ class PersistentDrawer extends React.Component {
             )}
           >
           </div>
+          {children}
         </div>
       </div>
     )
