@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Lesson from './Lesson';
+import Home from './Home';
 
-ReactDOM.render(<Lesson />, document.getElementById('root'));
+ReactDOM.render(<Home />,
+document.getElementById('root'));
