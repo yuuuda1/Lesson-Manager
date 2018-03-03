@@ -11,7 +11,6 @@ const styles = () => ({
     zIndex: '1000'
   },
   mainTitle: {
-   // marginLeft: '459px',
     textAlign: 'center',
     marginTop: '176px',
     fontSize: '56px',
@@ -19,7 +18,6 @@ const styles = () => ({
     opacity: '0.87'
   },
   topSubTitle: {
-    //marginLeft: '337px',
     textAlign: 'center',
     fontSize: '34px',
     marginTop: '14px',
@@ -27,7 +25,6 @@ const styles = () => ({
     opacity: '0.54'
   },
   bottomSubTitle: {
-   // marginLeft: '483px',
     textAlign: 'center',
     fontSize: '45px',
     marginTop: '261px',
@@ -48,13 +45,13 @@ class Home extends Component {
            <Container />
          </div>
          <div className={classes.mainTitle}>
-           Lesson-Manager
+           <Typography>Lesson-Manager</Typography>
          </div>
          <div className={classes.topSubTitle}>
-           This application can manage your timetable
+           <Typography>This application can manage your timetable</Typography>
          </div>
          <div className={classes.bottomSubTitle}>
-           Let's start manage
+           <Typography>Let's start manage</Typography>
          </div>
        </div>
     )
