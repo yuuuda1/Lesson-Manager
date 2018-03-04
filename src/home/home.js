@@ -15,7 +15,6 @@ const styles = () => ({
     marginTop: '176px',
     fontSize: '56px',
     color: '#000000',
-    opacity: '0.87'
   },
   topSubTitle: {
     textAlign: 'center',
