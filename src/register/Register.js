@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
-import Container from './Container'
+import Container from '../Container'
 import LessonList from './LessonList'
 
 const styles = () => {
