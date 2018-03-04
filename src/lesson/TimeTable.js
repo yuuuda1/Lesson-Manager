@@ -9,8 +9,6 @@ const HeaderHeight = 80
 
 const styles = theme => ({
   root: {
-    marginLeft: 88 - drawerWidth,
-    marginTop: HeaderHeight,
     zIndex: 100,
   },
   listHeader: {
