@@ -90,6 +90,10 @@ const styles = theme => ({
   },
   appBarColorDefault: {
     backgroundColor: '#00BCD4'
+  },
+  childrenStyle: {
+    marginLeft: 56 - drawerWidth,
+    marginTop: '64px'
   }
 })
 
@@ -175,8 +179,10 @@ class PersistentDrawer extends React.Component {
               this.state.open && classes.sideBarShift,
             )}
           >
+          </div>]
+          <div className={classes.childrenStyle}> 
+            {children}
           </div>
-          {children}
         </div>
       </div>
     )
