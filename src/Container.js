@@ -4,13 +4,14 @@ import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
-import List from 'material-ui/List'
 import Typography from 'material-ui/Typography'
-import { ListItem, ListItemText } from 'material-ui/List'
+import List, { ListItem, ListItemText } from 'material-ui/List'
 import IconButton from 'material-ui/IconButton'
-import InboxIcon from 'material-ui-icons/Inbox'
-import DraftsIcon from 'material-ui-icons/Drafts'
 import MenuIcon from 'material-ui-icons/Menu'
+import HomeIcon from 'material-ui-icons/Home'
+import DateRangeIcon from 'material-ui-icons/DateRange'
+import InputIcon from 'material-ui-icons/Input'
+import StarIcon from 'material-ui-icons/Star'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ChevronRightIcon from 'material-ui-icons/ChevronRight'
 
@@ -19,11 +20,6 @@ const drawerWidth = 240
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    fontFamily: 'Roboto',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    marginLeft: '16px',
-    lineHeight: '64px',
   },
   appFrame: {
     zIndex: 1,
@@ -74,8 +70,11 @@ const styles = theme => ({
     borderBottom: '1px solid #000',
   },
   listStyles: {
-    width: '100%',
-    maxWidth: 360,
+  },
+  listItem: {
+    paddingTop: '16px',
+    paddingBottom: '16px',
+    width: '100%'
   },
   sideBar: {
     width: '56px',
@@ -93,7 +92,9 @@ const styles = theme => ({
   },
   childrenStyle: {
     marginLeft: 56 - drawerWidth,
-    marginTop: '64px'
+    marginTop: '64px',
+    width: '100%' - 56,
+    height: '100%' - 64
   }
 })
 
@@ -162,12 +163,20 @@ class PersistentDrawer extends React.Component {
             </div>
             <div className={classes.listStyles}>
               <List>
-                <ListItem button>
-                  <InboxIcon />
+                <ListItem button className={classes.listItem}>
+                  <HomeIcon />
+                  <ListItemText primary="ホーム" />
+                </ListItem>
+                <ListItem button className={classes.listItem}>
+                  <DateRangeIcon />
                   <ListItemText primary="MY時間割" />
                 </ListItem>
-                <ListItem button>
-                  <DraftsIcon />
+                <ListItem button className={classes.listItem}>
+                  <InputIcon />
+                  <ListItemText primary="時間割登録" />
+                </ListItem>
+                <ListItem button className={classes.listItem}>
+                  <StarIcon />
                   <ListItemText primary="おすすめ" />
                 </ListItem>
               </List>
@@ -179,8 +188,8 @@ class PersistentDrawer extends React.Component {
               this.state.open && classes.sideBarShift,
             )}
           >
-          </div>]
-          <div className={classes.childrenStyle}> 
+          </div>
+          <div className={classes.childrenStyle}>
             {children}
           </div>
         </div>
