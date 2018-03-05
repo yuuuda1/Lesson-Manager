@@ -3,32 +3,30 @@ import {withStyles} from 'material-ui/styles'
 import PropTypes from 'prop-types'
 import MenuItem from 'material-ui/Menu/MenuItem'
 import TextField from 'material-ui/TextField'
-import Card, {CardContent} from 'material-ui/Card'
+import Card, {CardContent, CardActions} from 'material-ui/Card'
 import SearchIcon from 'material-ui-icons/Search'
+import IconButton from 'material-ui/IconButton'
 
 const styles = () => ({
   card: {
+    width: '400px',
     height: '32px',
-    width: '400px'
-  },
-  cardContentPadding: {
-    paddingTop: 0
   },
   Content:{
-    padding: 0,
-    position: 'relative',
-    top: '-18px',
-    height: '32px',
     width: '400px',
-    fontWeight: 'normal',
+    height: '32px',
   },
-  icon: {
-    float: 'right',
+  searchButton: {
+    width: '400px',
     position: 'relative',
-    top:'-40px',
-    color:'#000000',
-    opacity:'0.54'
+    top: '-8px',
+    maxWidth: 'true',
   },
+  search: {
+    marginLeft: '-24px',
+    position: 'relative',
+    left: '16px',
+  }
   
 })
 
@@ -39,25 +37,26 @@ class SearchButton extends Component {
       ...other
     } = this.props
     return(
-      <div {...other}>
+      <div className={classes.root} {...other}>
         <div className={classes.button}>
           <Card className={classes.card}>
-            <CardContent
+            <CardActions className={classes.Content}
               classes={{
                 paddingTop: classes.cardContentPadding
               }}
-              className={classes.Content}
             >
-              <TextField
+              <TextField className={classes.searchButton}
                 id="search"
                 label="Search"
                 type="input"
                 fullWidth={true}
                 SelectProps
-                className={classes.textField}
+                
               />
-              <SearchIcon className={classes.icon} />
-            </CardContent>
+              <IconButton className={classes.search}>
+                <SearchIcon />
+              </IconButton>
+            </CardActions>
           </Card>
         </div>
       </div>
