@@ -10,7 +10,7 @@ const styles = () => ({
   title: {
     marginLeft: '110px',
     textAlign: 'center',
-    fontSize: '16px',
+    fontSize: '34px',
     color: '#000000',
     opacity: '0.87',
     fontFamily: 'Roboto',
@@ -42,7 +42,7 @@ class Register extends Component {
         <Container>
           <div className={classes.registerContent}>
             <div className={classes.title}>
-              My時間割の新規登録
+              MY時間割の新規登録
             </div>
             <SearchButton className={classes.searchButton}
             />
