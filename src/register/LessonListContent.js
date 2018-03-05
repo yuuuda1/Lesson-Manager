@@ -90,7 +90,7 @@ class LessonListContent extends Component {
           <ListItem divider>
             <div className={classes.term}>
               <Typography className={classes.lineMain}>開講日</Typography>
-              <Typography className={classes.lineSub}>秋学期</Typography>
+              <Typography className={classes.lineSub}>{lesson.term}</Typography>
             </div>
             <div className={classes.days}>
               <Typography className={classes.lineMain}>曜日</Typography>
@@ -108,13 +108,13 @@ class LessonListContent extends Component {
             </div>
             <div className={classes.grade}>
               <Typography className={classes.lineMain}>年次</Typography>
-              <Typography className={classes.lineSub}>２年次</Typography>
+              <Typography className={classes.lineSub}>{lesson.grade}</Typography>
             </div>
           </ListItem>
           <ListItem divider>
             <div className={classes.teacherName}>
               <Typography className={classes.lineMain}>教員名</Typography>
-              <Typography className={classes.lineSub}>吉村正義</Typography>
+              <Typography className={classes.lineSub}>{lesson.teacher_name}</Typography>
             </div>
             <div className={classes.credit}>
               <Typography className={classes.lineMain}>単位数</Typography>
@@ -130,7 +130,7 @@ class LessonListContent extends Component {
           <ListItem divider>
             <div className={classes.outline}>
               <Typography className={classes.lineMainLogo}>概要</Typography>
-              <Typography className={classes.lineSubLogo}>ほげほげ</Typography>
+              <Typography className={classes.lineSubLogo}>{lesson.outline}</Typography>
             </div>
           </ListItem>
           <ListItem>

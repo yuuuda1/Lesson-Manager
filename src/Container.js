@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
@@ -15,6 +15,7 @@ import StarIcon from 'material-ui-icons/Star'
 import StoreIcon from 'material-ui-icons/Store'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ChevronRightIcon from 'material-ui-icons/ChevronRight'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -106,7 +107,7 @@ const styles = theme => ({
 })
 
 
-class PersistentDrawer extends React.Component {
+class PersistentDrawer extends Component {
   state = {
     open: false,
   }
@@ -183,7 +184,8 @@ class PersistentDrawer extends React.Component {
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <InputIcon />
-                  <ListItemText primary="時間割登録" />
+                  {/* <ListItemText primary="時間割登録" /> */}
+                  <Link to='/register'><Typography>時間割登録</Typography></Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <StarIcon />
