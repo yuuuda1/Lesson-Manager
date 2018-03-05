@@ -15,6 +15,11 @@ const styles = () => ({
     marginRight: '40%',
     marginLeft: '10%',
     display: 'block'
+  },
+  title: {
+    fontSize: '24px',
+    fontColor: '#000000',
+    opacity: '0.87',
   }
 })
 
@@ -28,7 +33,7 @@ class LessonList extends Component {
       <div className={classes.root} {...other}>
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>コンピュータ理工学実験</Typography>
+            <Typography className={classes.title}>コンピュータ理工学実験</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <LessonListContent />
@@ -36,7 +41,7 @@ class LessonList extends Component {
         </ExpansionPanel>
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>コンピュータ理工学実験</Typography>
+            <Typography className={classes.title}>コンピュータ理工学実験</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <LessonListContent />
@@ -44,7 +49,7 @@ class LessonList extends Component {
         </ExpansionPanel>
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>コンピュータ理工学実験</Typography>
+            <Typography className={classes.title}>コンピュータ理工学実験</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <LessonListContent />
