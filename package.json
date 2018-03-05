@@ -1,6 +1,6 @@
 {
   "name": "lesson-manager",
-  "version": "0.1.0",
+  "version": "v1.5.1",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
