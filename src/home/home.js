@@ -21,7 +21,8 @@ const styles = () => ({
   subTitleBox: {
     width: '100%',
     height: '240px',
-    paddingTop: '80px'
+    paddingTop: '80px',
+    backgroundColor: '#FAFAFA'
   },
   projectName: {
     textAlign: 'center',
@@ -82,7 +83,7 @@ class Home extends Component {
         <div className={classes.subTitleBox}>
          <Typography className={classes.guessTitle}>Let&rsquo;s start manage!!</Typography>
           <div className={classes.buttons}>
-            <Button className={classes.registerButton}>REGISTER</Button>
+            <Button className={classes.registerButton}>SIGN UP</Button>
             <Button className={classes.loginButton}>LOIGN</Button>
           </div>
         </div>
