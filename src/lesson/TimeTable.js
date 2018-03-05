@@ -19,6 +19,16 @@ const styles = theme => ({
     paddingBottom: '4px',
     paddingLeft: '30px'
   },
+  listElememt: {
+    width: '1150x',
+    height: '600px'
+  },
+  listSideBar: {
+    width: '30px',
+    height: '548px',
+    display: 'inline-block',
+    paddingTop: '48px',
+  },
   listItemStyle: {
     width: '160px',
     height: '120px',
@@ -27,26 +37,19 @@ const styles = theme => ({
     textAlign: 'center',
     paddingTop: '50px'
   },
-  listStyles: {
-    paddingTop: '0px',
-    paddingBottom: '0px',
-  },
-  listSideBar: {
-    width: '30px',
-    height: '548px',
-    display: 'inline-block',
-    paddingTop: '48px',
-  },
-  listElememt: {
-    width: '1150x',
-    height: '5px'
-  },
   listBlock: {
     display: 'inline-block',
     width: '1120px',
     height: '600px',
+    fontSize: '16px',
     position: 'relative',
     top: 0
+  },
+  listStyles: {
+    paddingTop: '0px',
+    paddingBottom: '0px',
+    color: '#000000',
+    opacity: '0.87'
   },
   weekText: {
     width: '32px',
@@ -65,6 +68,13 @@ const styles = theme => ({
     fontWeight: '700',
     textAlign: 'center',
     marginBottom: '90px'
+  },
+  primary: {
+    fontSize: '16px',
+    fontFamily: 'Roboto',
+    color: '#000000',
+    opacity: '0.87',
+    textAlign: 'center'
   }
 })
 
@@ -114,25 +124,25 @@ class TimeTable extends Component {
               }}
             >
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}} />
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="ソフトウェア工学Ⅰ" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
             </List>
             <List
@@ -142,25 +152,25 @@ class TimeTable extends Component {
               }}
             >
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="論理回路Ⅱ" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true}className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
             </List>
             <List
@@ -170,25 +180,25 @@ class TimeTable extends Component {
               }}
             >
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
             </List>
             <List
@@ -202,25 +212,25 @@ class TimeTable extends Component {
                 divider={true}
                 className={classes.listItemStyle}
               >
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true}className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
             </List>
             <List
@@ -230,25 +240,25 @@ class TimeTable extends Component {
               }}
             >
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
               <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
+                <ListItemText primary="講義名" classes={{primary: classes.primary}}/>
               </ListItem>
             </List>
             <ModalWindow onClose={this.handleClose} open={this.state.open}>
