@@ -1,34 +1,69 @@
 import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
-import Container from './Container'
-
-const drawerWidth = 56
+import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 
 const styles = () => ({
   root: {
-    marginLeft: drawerWidth,
-    marginTop: '64px',
-    zIndex: '1000'
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: '0px',
+    left: '0px',
+    fontFamily: 'Roboto'
   },
-  mainTitle: {
+  titleBox: {
+    width: '100%',
+    height: '240px',
+    backgroundColor: '#00BCD4',
+    paddingTop: '200px'
+  },
+  subTitleBox: {
+    width: '100%',
+    height: '240px',
+    paddingTop: '80px'
+  },
+  projectName: {
     textAlign: 'center',
-    marginTop: '176px',
     fontSize: '56px',
-    color: '#000000',
+    fontWeight: 'bold',
+    color: '#FFF',
   },
-  topSubTitle: {
+  projectContent: {
     textAlign: 'center',
     fontSize: '34px',
-    marginTop: '14px',
+    fontWeight: 'Regular',
+    marginTop: '0px',
     color: '#000000',
-    opacity: '0.54'
+    opacity: '0.38'
   },
-  bottomSubTitle: {
+  guessTitle: {
     textAlign: 'center',
     fontSize: '45px',
-    marginTop: '261px',
     color: '#000000',
-    opacity: '0.54'
+    opacity: '0.54',
+  },
+  buttons: {
+    width: '360px',
+    position: 'relative',
+    margin: 'auto',
+    marginTop: '40px',
+    color: '#FFF'
+  },
+  registerButton: {
+    width: '160px',
+    height: '45px',
+    textAlign: 'center',
+    marginRight: '40px',
+    color: '#FFF',
+    backgroundColor: '#00BCD4'
+  },
+  loginButton: {
+    width: '160px',
+    height: '45px',
+    textAlign: 'center',
+    color: '#FFF',
+    backgroundColor: '#00BCD4'
   }
 })
 
@@ -39,20 +74,19 @@ class Home extends Component {
       ...other
     } = this.props
     return(
-       <div className={classes.root}>
-         <div {...other}>
-           <Container />
-         </div>
-         <div className={classes.mainTitle}>
-           <Typography>Lesson-Manager</Typography>
-         </div>
-         <div className={classes.topSubTitle}>
-           <Typography>This application can manage your timetable</Typography>
-         </div>
-         <div className={classes.bottomSubTitle}>
-           <Typography>"Let's start manage"</Typography>
-         </div>
-       </div>
+      <div className={classes.root} {...other}>
+        <div className={classes.titleBox}>
+          <Typography className={classes.projectName}>Lesson-Manager</Typography>
+          <Typography className={classes.projectContent}>This application can manage your timetable</Typography>
+        </div>
+        <div className={classes.subTitleBox}>
+         <Typography className={classes.guessTitle}>Let&rsquo;s start manage!!</Typography>
+          <div className={classes.buttons}>
+            <Button className={classes.registerButton}>REGISTER</Button>
+            <Button className={classes.loginButton}>LOIGN</Button>
+          </div>
+        </div>
+     </div>
     )
   }
 }
