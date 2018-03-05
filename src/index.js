@@ -7,6 +7,8 @@ import { Router, Route } from 'react-router'
 import ConnectedLessons from './lesson/containers/ConnectedLessons'
 import store from './store'
 import createHistory from 'history/createBrowserHistory'
+import Switch from 'react-router/Switch';
+import ConnectedRegister from './register/containers/ConnectedRegister';
 
 const history = createHistory()
 
@@ -16,7 +18,10 @@ if (rootElement) {
   render(
     <Provider store={store}>
       <Router history={history}>
-        <Route path="/" component={ConnectedLessons}/>
+        <Switch>
+          <Route path="/home" component={ConnectedLessons}/>
+          <Route path="/register" component={ConnectedRegister}/>
+        </Switch>
       </Router>
     </Provider>,
     rootElement

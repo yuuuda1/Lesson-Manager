@@ -36,9 +36,8 @@ class Lesson extends Component {
     super(props)
   }
   
-  componentDidMount() {
-    console.log('chk')
-    //this.props.requestAllLessons()
+  componentWillMount() {
+    this.props.requestGetTimetable(4)
   }
   
   getL = () => {
@@ -62,12 +61,14 @@ class Lesson extends Component {
   }
 
   delete = () => {
-    this.props.requestDeleteTimetables(11)
+    //this.props.requestDeleteTimetables(11)
+    console.log(this.props.timetables)
   }
   render() {
     const {
       classes,
       lessons,
+      timetables,
       requestAllLessons,
       requestAllTimetables,
       requestGetTimetable,
@@ -76,11 +77,12 @@ class Lesson extends Component {
       requestDeleteTimetables,
       ...other
     } = this.props
+    console.log('render:', timetables)
     return(
       <div className={classes.root} {...other}>
         <Container>
           <div>
-            <TimeTable />
+            <TimeTable timetable={timetables}/>
             <Button onClick={this.getL}>getL</Button>
             <Button onClick={this.getT}>getT</Button>
             <Button onClick={this.show}>show</Button>
@@ -92,7 +94,7 @@ class Lesson extends Component {
             <Typography variant="title" className={classes.universal}>京都産業大学 コンピュータ理工学部 インテリジェントシステム学科</Typography>
             <Typography variant="title">平成28年度 秋学期 時間割 </Typography>
           </div>
-          <TimeTable />
+          <TimeTable timetable={timetables} />
         </Container>
       </div>
     )

@@ -97,7 +97,7 @@ class ModalContent extends Component {
           <ListItem className={classes.listLessonContent}>
             <ListItemText
               primary="開講日"
-              secondary={lesson.semester}
+              secondary={lesson.term}
               classes={{
                 primary: classes.primary,
                 secondary: classes.secondary
@@ -105,7 +105,7 @@ class ModalContent extends Component {
             />
             <ListItemText
               primary="年次"
-              secondary={lesson.year}
+              secondary={lesson.grade+'年次'}
               classes={{
                 primary: classes.primary,
                 secondary: classes.secondary
@@ -123,7 +123,7 @@ class ModalContent extends Component {
           <ListItem className={classes.listLessonStudent}>
             <ListItemText
               primary="単位数"
-              secondary={lesson.unit}
+              secondary={lesson.unit+'単位'}
               classes={{
                 primary: classes.primary,
                 secondary: classes.secondary
@@ -131,7 +131,7 @@ class ModalContent extends Component {
             />
             <ListItemText
               primary="教員名"
-              secondary={lesson.teacher}
+              secondary={lesson.teacher_name}
               classes={{
                 primary: classes.primary,
                 secondary: classes.secondary
@@ -157,7 +157,7 @@ class ModalContent extends Component {
           <ListItem className={classes.listLessonName}>
             <ListItemText
               primary="授業概要"
-              secondary={lesson.overview}
+              secondary={lesson.outline}
               classes={{
                 primary: classes.primary,
                 secondary: classes.contentSecondary

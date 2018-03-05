@@ -32,9 +32,24 @@ const styles = () => ({
 })
 
 class Register extends Component {
+  state = {
+    word: ''
+  }
+
+  handleChange = data => {
+    this.setState({
+      word: data
+    })
+  }
+
+  search = () => {
+    this.props.requestAllLessons(this.state.word)
+  }
   render() {
     const {
       classes,
+      lessons,
+      requestAllLessons,
       ...other
     } = this.props
     return(
@@ -44,9 +59,9 @@ class Register extends Component {
             <div className={classes.title}>
               MY時間割の新規登録
             </div>
-            <SearchButton className={classes.searchButton}
+            <SearchButton onChangeValue={this.handleChange} onClick={this.search} className={classes.searchButton}
             />
-            <LessonList />
+            <LessonList lessons={lessons}/>
           </div>
         </Container>
       </div>

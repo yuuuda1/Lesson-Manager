@@ -31,9 +31,14 @@ const styles = () => ({
 })
 
 class SearchButton extends Component {
+  handleChange = () => event => {
+    this.props.onChangeValue(event.target.value)
+  }
   render() {
     const {
       classes,
+      onChangeValue,
+      onClick,
       ...other
     } = this.props
     return(
@@ -46,6 +51,7 @@ class SearchButton extends Component {
               }}
             >
               <TextField className={classes.searchButton}
+                onChange={this.handleChange()}
                 id="search"
                 label="Search"
                 type="input"
@@ -53,7 +59,7 @@ class SearchButton extends Component {
                 SelectProps
                 
               />
-              <IconButton className={classes.search}>
+              <IconButton onClick={onClick} className={classes.search}>
                 <SearchIcon />
               </IconButton>
             </CardActions>

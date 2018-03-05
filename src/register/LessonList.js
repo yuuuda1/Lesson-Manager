@@ -50,10 +50,11 @@ class LessonList extends Component {
   render() {
     const {
       classes,
+      lessons,
       ...other
     } = this.props
 
-    const lessonListComponent = object.map(lesson => (
+    const lessonListComponent = lessons.length === 0 ? <div/> : lessons.data.map(lesson => (
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.title}>{lesson.name}</Typography>
