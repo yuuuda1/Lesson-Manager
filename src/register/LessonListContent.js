@@ -68,7 +68,8 @@ const styles = () => ({
   },
   getButton: {
     color: '#00BCD4',
-    fontSize: '18px'
+    fontSize: '18px',
+    marginTop: '32px',
   },
   colorInherit: {
     color: '#00BCD4',
@@ -93,17 +94,17 @@ class LessonListContent extends Component {
             </div>
             <div className={classes.days}>
               <Typography className={classes.lineMain}>曜日</Typography>
-              <Typography className={classes.lineSub}>{lesson.daily}</Typography>
+              <Typography className={classes.lineSub}>火曜日</Typography>
             </div>
             <div className={classes.time}>
              <Typography className={classes.lineMain}>時限</Typography>
-              <Typography className={classes.lineSub}>{lesson.time}</Typography>
+              <Typography className={classes.lineSub}>2限</Typography>
             </div>
           </ListItem>
           <ListItem divider>
             <div className={classes.department}>
               <Typography className={classes.lineMain}>対象学部</Typography>
-              <Typography className={classes.lineSub}>{lesson.department}</Typography>
+              <Typography className={classes.lineSub}>コンピュータ理工学実験</Typography>
             </div>
             <div className={classes.grade}>
               <Typography className={classes.lineMain}>年次</Typography>
@@ -117,13 +118,13 @@ class LessonListContent extends Component {
             </div>
             <div className={classes.credit}>
               <Typography className={classes.lineMain}>単位数</Typography>
-              <Typography className={classes.lineSub}>{lesson.unit}</Typography>
+              <Typography className={classes.lineSub}>２単位</Typography>
             </div>
           </ListItem>
           <ListItem divider>
             <div className={classes.estimation}>
               <Typography className={classes.lineMainLogo}>評価方法</Typography>
-              <Typography className={classes.lineSubLogo}>{lesson.evaluation}</Typography>
+              <Typography className={classes.lineSubLogo}>阿多</Typography>
             </div>
           </ListItem>
           <ListItem divider>
@@ -137,7 +138,7 @@ class LessonListContent extends Component {
               <Button
                 className={classes.getButton}
                 classes={{colorInherit:classes.colorInherit}}
-              >
+              > 
                 Register
                 <Input className={classes.icon} />
               </Button>

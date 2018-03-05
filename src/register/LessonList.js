@@ -7,6 +7,10 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import LessonListContent from './LessonListContent'
+import RegistedList from './RegistedList'
+import Input from 'material-ui-icons/Input'
+import Button from 'material-ui/Button'
+
 
 const styles = () => ({
   root: {
@@ -14,13 +18,31 @@ const styles = () => ({
     height: '100%',
     marginRight: '40%',
     marginLeft: '10%',
-    display: 'block'
+    display: 'block',
+    marginBottom: '120px'
   },
   title: {
     fontSize: '24px',
     fontColor: '#000000',
     opacity: '0.87',
-  }
+  },
+  getButton: {
+    color: '#00BCD4',
+    fontSize: '18px',
+    marginTop: '32px',
+    position: 'absolute',
+    buttom: '64px',
+  },
+  colorInherit: {
+    color: '#00BCD4'
+  },
+  icon: {
+    marginLeft: '5px'
+  },
+  button: {
+
+    
+  },
 })
 
 const object = [
@@ -68,6 +90,16 @@ class LessonList extends Component {
     return(
       <div className={classes.root} {...other}>
         {lessonListComponent}
+        <div className={classes.registed}>
+          <RegistedList/>
+        </div>
+        <div className={classes.button}>
+          <Button
+            className={classes.getButton}
+            classes={{colorInherit:classes.colorInherit}}
+           >All Register<Input className={classes.icon} />
+          </Button>
+        </div>
       </div>
     )
   }
