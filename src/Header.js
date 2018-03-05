@@ -8,9 +8,11 @@ import Typography from 'material-ui/Typography'
 const styles = () => ({
   root: {
     fontFamily: 'Roboto',
+    width: '100vh',
+    height: '64px'
   },
   appbar: {
-    width: '100vw',
+    width: '100%',
     zIndex: 1,
     position: 'absolute',
     top: '0px',
