@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
@@ -94,7 +94,7 @@ const styles = theme => ({
 })
 
 
-class PersistentDrawer extends React.Component {
+class PersistentDrawer extends Component {
   state = {
     open: false,
   }

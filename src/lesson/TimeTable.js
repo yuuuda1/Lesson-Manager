@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
+//import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import List, { ListItem, ListItemText } from 'material-ui/List'
 
 const drawerWidth = 240
 const HeaderHeight = 80
@@ -74,8 +74,7 @@ const styles = theme => ({
 class TimeTable extends Component {
   render() {
     const {
-      classes,
-      ...other
+      classes
     } = this.props
     return (
       <div className={classes.root}>

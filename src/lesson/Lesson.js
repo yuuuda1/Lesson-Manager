@@ -15,6 +15,9 @@ const styles = () => ({
 })
 
 class Lesson extends Component {
+  ComponentDidMount() {
+    this.props.requestAllLessons()
+  }
   render() {
     const {
       classes,
