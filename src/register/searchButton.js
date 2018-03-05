@@ -17,16 +17,19 @@ const styles = () => ({
   Content:{
     padding: 0,
     position: 'relative',
-    top: '-16px',
-    height: '32px'
+    top: '-18px',
+    height: '32px',
+    width: '400px',
+    fontWeight: 'normal',
   },
   icon: {
     float: 'right',
     position: 'relative',
-    top:'-28px',
+    top:'-40px',
     color:'#000000',
     opacity:'0.54'
-  }
+  },
+  
 })
 
 class SearchButton extends Component {
