@@ -1,4 +1,4 @@
-const faker = require('./../lib/faker-extends/js')
+const faker = require('./../lib/faker-extends/ja')
 
 class Factory {
 

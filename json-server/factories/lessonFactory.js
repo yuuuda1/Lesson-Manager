@@ -60,7 +60,7 @@ const time_priods = [
 
 factory.define(faker => {
   const firstName = faker.name.firstName()
-  const firstName = faker.name.lastName()
+  const lastName = faker.name.lastName()
   return {
     id : faker.random.uuid(),
     name : faker.random.word(),
