@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
@@ -12,6 +12,7 @@ import HomeIcon from 'material-ui-icons/Home'
 import DateRangeIcon from 'material-ui-icons/DateRange'
 import InputIcon from 'material-ui-icons/Input'
 import StarIcon from 'material-ui-icons/Star'
+import StoreIcon from 'material-ui-icons/Store'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ChevronRightIcon from 'material-ui-icons/ChevronRight'
 
@@ -95,11 +96,17 @@ const styles = theme => ({
     marginTop: '64px',
     width: '100%' - 56,
     height: '100%' - 64
-  }
+  },
+  icon: {
+    position: 'absolute',
+    right:'32px',
+    color: '#FFF'
+    
+  },
 })
 
 
-class PersistentDrawer extends React.Component {
+class PersistentDrawer extends Component {
   state = {
     open: false,
   }
@@ -147,6 +154,9 @@ class PersistentDrawer extends React.Component {
               <Typography variant="title" color="inherit" noWrap>
                 MY時間割
               </Typography>
+              <IconButton className={classes.icon}>
+                <StoreIcon />
+              </IconButton>
             </Toolbar>
           </AppBar>
           <Drawer
