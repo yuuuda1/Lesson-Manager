@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
-
-const drawerWidth = 240
-const HeaderHeight = 80
+import List, { ListItem, ListItemText } from 'material-ui/List'
+import ModalWindow from './ModalWindow'
+import ModalContent from './ModalContent'
 
 const styles = theme => ({
   root: {
     zIndex: 100,
+    marginTop: '32px',
+    marginLeft: '32px'
   },
   listHeader: {
-    width: '1274px',
-    height: '40px',
+    width: '1120px',
+    height: '18px',
     backgroundColor: '#FAFAFA',
     borderBottom: '4px solid #FFAB40',
     paddingBottom: '4px',
     paddingLeft: '30px'
   },
   listItemStyle: {
-    width: '182px',
-    height: '134px',
+    width: '160px',
+    height: '120px',
     backgroundColor: '#FAFAFA',
     display: 'inline-block',
     textAlign: 'center',
@@ -33,31 +33,30 @@ const styles = theme => ({
   },
   listSideBar: {
     width: '30px',
-    height: '618px',
+    height: '548px',
     display: 'inline-block',
-    paddingTop: '52px',
-    //borderRight: '1px solid',
+    paddingTop: '48px',
   },
   listElememt: {
-    width: '1310px',
-    height: '670px'
+    width: '1150x',
+    height: '5px'
   },
   listBlock: {
     display: 'inline-block',
-    width: '1274px',
-    height: '670px',
-    position: 'absolute',
-    top: HeaderHeight + 50
+    width: '1120px',
+    height: '600px',
+    position: 'relative',
+    top: 0
   },
   weekText: {
     width: '32px',
     height: '21px',
     display: 'inline-block',
-    fontSize: '16px',
+    fontSize: '14px',
     fontFamily: 'Roboto',
     fontWeight: '700',
     textAlign: 'center',
-    marginRight: '150px'
+    marginRight: '127px'
   },
   numberText: {
     height: '30px',
@@ -65,18 +64,31 @@ const styles = theme => ({
     fontFamily: 'Roboto',
     fontWeight: '700',
     textAlign: 'center',
-    marginBottom: '104px'
+    marginBottom: '90px'
   }
 })
 
 class TimeTable extends Component {
+  state = {
+    open: false
+  }
+
+  handleOpen = () => {
+    this.setState({ open: true })
+    console.log('open')
+  }
+
+  handleClose = () => {
+    this.setState({ open: false })
+  }
+
   render() {
     const {
       classes,
       ...other
     } = this.props
     return (
-      <div className={classes.root}>
+      <div className={classes.root} {...other}>
         <div className={classes.listHeader}>
           <Typography className={classes.weekText}>Mon</Typography>
           <Typography className={classes.weekText}>Tue</Typography>
@@ -101,25 +113,81 @@ class TimeTable extends Component {
                 padding: classes.listStyles
               }}
             >
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+            </List>
+            <List
+              disablePadding={true}
+              classes={{
+                padding: classes.listStyles
+              }}
+            >
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true}className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+            </List>
+            <List
+              disablePadding={true}
+              classes={{
+                padding: classes.listStyles
+              }}
+            >
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
+                <ListItemText primary="講義名" />
+              </ListItem>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
             </List>
@@ -130,56 +198,28 @@ class TimeTable extends Component {
               }}
             >
               <ListItem
-                button
+                button onClick={this.handleOpen}
                 divider={true}
                 className={classes.listItemStyle}
               >
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true}className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true}className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-            </List>
-            <List
-              disablePadding={true}
-              classes={{
-                padding: classes.listStyles
-              }}
-            >
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
             </List>
@@ -189,60 +229,31 @@ class TimeTable extends Component {
                 padding: classes.listStyles
               }}
             >
-              <ListItem
-                button
-                divider={true}
-                className={classes.listItemStyle}
-              >
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true}className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
+              <ListItem button onClick={this.handleOpen} divider={true} className={classes.listItemStyle}>
                 <ListItemText primary="講義名" />
               </ListItem>
             </List>
-            <List
-              disablePadding={true}
-              classes={{
-                padding: classes.listStyles
-              }}
-            >
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-              <ListItem button divider={true} className={classes.listItemStyle}>
-                <ListItemText primary="講義名" />
-              </ListItem>
-            </List>
+            <ModalWindow onClose={this.handleClose} open={this.state.open}>
+              <ModalContent />
+            </ModalWindow>
           </div>
         </div>
       </div>
