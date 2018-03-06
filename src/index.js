@@ -9,6 +9,8 @@ import store from './store'
 import createHistory from 'history/createBrowserHistory'
 import Switch from 'react-router/Switch';
 import ConnectedRegister from './register/containers/ConnectedRegister';
+import SignUp from './signup/SignUp';
+import Login from './login/Login';
 
 const history = createHistory()
 
@@ -21,6 +23,8 @@ if (rootElement) {
         <Switch>
           <Route path="/home" component={ConnectedLessons}/>
           <Route path="/register" component={ConnectedRegister}/>
+          <Route path="/user/register" component={SignUp}/>
+          <Route path="/user/login" component={Login}/>
         </Switch>
       </Router>
     </Provider>,
