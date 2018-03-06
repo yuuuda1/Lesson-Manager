@@ -102,7 +102,7 @@ const styles = theme => ({
     position: 'absolute',
     right:'32px',
     color: '#FFF'
-    
+
   },
 })
 
@@ -176,11 +176,13 @@ class PersistentDrawer extends Component {
               <List>
                 <ListItem button className={classes.listItem}>
                   <HomeIcon />
-                  <ListItemText primary="ホーム" />
+                  {/* <ListItemText primary="ホーム" />*/}
+                  <Link to='/home'><Typography>ホーム</Typography></Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <DateRangeIcon />
-                  <ListItemText primary="MY時間割" />
+                  {/* <ListItemText primary="MY時間割" />*/}
+                  <Link to='/lesson'><Typography>MY時間割</Typography></Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <InputIcon />

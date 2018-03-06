@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
+import { Link } from 'react-router-dom'
 
 const styles = () => ({
   root: {
@@ -83,8 +84,8 @@ class Home extends Component {
         <div className={classes.subTitleBox}>
          <Typography className={classes.guessTitle}>Let&rsquo;s start manage!!</Typography>
           <div className={classes.buttons}>
-            <Button className={classes.registerButton}>SIGN UP</Button>
-            <Button className={classes.loginButton}>LOIGN</Button>
+            <Button className={classes.registerButton}><Link to='/signup'>SIGN UP</Link></Button>
+            <Button className={classes.loginButton}><Link to='/login'>LOIGN</Link></Button>
           </div>
         </div>
      </div>
