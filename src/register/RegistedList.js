@@ -33,20 +33,23 @@ class RegistedList extends Component {
   render() {
     const {
       classes,
+      lessons,
       ...other
     } = this.props
 
     return(
       <div className={classes.root} {...other}>
-        <ExpansionPanel>
-        　<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          　<Typography className={classes.registed}>登録済み</Typography>
-          　<Typography className={classes.title}>コンピュータ理工学実験</Typography>
-        　</ExpansionPanelSummary>
-        　<ExpansionPanelDetails>
-          　<LessonListContent />
-        　</ExpansionPanelDetails>
-　　　　　</ExpansionPanel>
+        {lessons.length === 0 ? lessons.map(lesson => (
+          <ExpansionPanel>
+          　<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            　<Typography className={classes.registed}>登録済み</Typography>
+            　<Typography className={classes.title}>{lesson.name}</Typography>
+          　</ExpansionPanelSummary>
+          　<ExpansionPanelDetails>
+            　<LessonListContent lesson={lesson}/>
+          　</ExpansionPanelDetails>
+  　　　　　</ExpansionPanel>
+        )) : <div/>}
       </div>
     )
   }

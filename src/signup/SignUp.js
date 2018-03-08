@@ -1,3 +1,4 @@
+/* eslint no-undef: off */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
@@ -75,6 +76,22 @@ const styles = () => ({
 })
 
 class SignUp extends Component {
+  state = {
+    name: '',
+    email: '',
+    password: ''
+  }
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    })
+  }
+
+  createUser = () => {
+    console.log(axios.post('api/create', {'name':this.state.name, 'email':this.state.email, 'password':this.state.password}))
+  }
+
   render() {
     const {
       classes,
@@ -90,22 +107,25 @@ class SignUp extends Component {
             </div>
             <CardActions className={classes.cardContent}>
               <TextField className={classes.name}
+                onChange={this.handleChange('name')}
                 id="name"
                 label="Name"
                 type="input"
               />
               <TextField className={classes.email}
+                onChange={this.handleChange('email')}
                 id="email"
                 label="Email"
                 type="input"
               />
               <TextField className={classes.password}
+                onChange={this.handleChange('password')}
                 id="password"
                 label="Password"
                 type="password"
                 autoComplete="current-password"
               />
-              <Button variant="flat" className={classes.button}>SIGN UP</Button>
+              <Button onClick={this.createUser} variant="flat" className={classes.button}>SIGN UP</Button>
             </CardActions>
           </Card>
         </div>

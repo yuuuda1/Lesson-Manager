@@ -10,6 +10,7 @@ import LessonListContent from './LessonListContent'
 import RegistedList from './RegistedList'
 import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
+import { Link } from 'react-router-dom';
 
 
 const styles = () => ({
@@ -69,10 +70,28 @@ const object = [
 ]
 
 class LessonList extends Component {
+  state= {
+    lessonIds: [],
+    registedLessons: []
+  }
+  handleChange = lesson => () => {
+    console.log(this.state.registedLessons)
+    console.log(this.state.lessonIds)
+    const ids = this.state.lessonIds
+    ids.push(lesson.id)
+    const array = this.state.registedLessons
+    array.push(lesson)
+    this.props.onChangeValue(ids)
+    this.setState({
+      registedLessons: array
+    })
+  }
+
   render() {
     const {
       classes,
       lessons,
+      onClick,
       ...other
     } = this.props
 
@@ -82,7 +101,7 @@ class LessonList extends Component {
           <Typography className={classes.title}>{lesson.name}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <LessonListContent lesson={lesson}/>
+          <LessonListContent onClick={this.handleChange(lesson)} lesson={lesson}/>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     ))
@@ -91,14 +110,17 @@ class LessonList extends Component {
       <div className={classes.root} {...other}>
         {lessonListComponent}
         <div className={classes.registed}>
-          <RegistedList/>
+          <RegistedList lessons={this.state.registedLessons}/>
         </div>
         <div className={classes.button}>
-          <Button
-            className={classes.getButton}
-            classes={{colorInherit:classes.colorInherit}}
-           >All Register<Input className={classes.icon} />
-          </Button>
+          <Link to='lesson'>
+            <Button
+              onClick={onClick}
+              className={classes.getButton}
+              classes={{colorInherit:classes.colorInherit}}
+            >All Register<Input className={classes.icon} />
+            </Button>
+          </Link>
         </div>
       </div>
     )

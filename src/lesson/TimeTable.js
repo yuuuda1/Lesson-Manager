@@ -106,7 +106,6 @@ class TimeTable extends Component {
 
   handleOpen = () => {
     this.setState({ open: true })
-    console.log(this.props.timetable.data.lessons[0].time_period == "月曜日 ２限")
   }
 
   handleClose = () => {
@@ -137,7 +136,7 @@ class TimeTable extends Component {
             return (
             <ListItem label={daily[0]} button divider={true} className={classes.listItemStyle}>
               {timetable.data.lessons.map(lesson => (
-                lesson.time_period.indexOf(daily[1]) != -1 && lesson.time_period.indexOf(number[1]) != -1 ?
+                (lesson.time_period.indexOf(daily[1]) != -1 && lesson.time_period.indexOf(number[1]) != -1) ?
                 <div>
                   <ListItemText onClick={this.handleOpen} primary={lesson.name} classes={{primary: classes.primary}} />
                   <ModalWindow onClose={this.handleClose} open={this.state.open}>

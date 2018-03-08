@@ -10,7 +10,8 @@ import createHistory from 'history/createBrowserHistory'
 import Switch from 'react-router/Switch';
 import ConnectedRegister from './register/containers/ConnectedRegister';
 import SignUp from './signup/SignUp';
-import Login from './login/Login';
+import Home from './home/home'
+import ConnectedLogin from './login/containers/ConnectedLogin';
 
 const history = createHistory()
 
@@ -21,10 +22,11 @@ if (rootElement) {
     <Provider store={store}>
       <Router history={history}>
         <Switch>
-          <Route path="/home" component={ConnectedLessons}/>
+          <Route path="/home" component={Home}/>
+          <Route path="/lesson" component={ConnectedLessons}/>
           <Route path="/register" component={ConnectedRegister}/>
           <Route path="/user/register" component={SignUp}/>
-          <Route path="/user/login" component={Login}/>
+          <Route path="/user/login" component={ConnectedLogin}/>
         </Switch>
       </Router>
     </Provider>,

@@ -74,9 +74,9 @@ function* requestPostTimetables(action) {
 export function* watchRequestPostTimetables() {
   yield takeLatest(LessonsActionTypes.REQUEST_POST_TIMETABLES, requestPostTimetables)
 }
-function* requestPutTimetables(action) {
+function* requestPutTimetables() {
   try{
-    const response = yield call(api.putTimetables, action)
+    const response = yield call(api.putTimetables)
     yield put(successPutTimetables(response.data))
   } catch(error) {
     yield put(failuerPutTimetables(error))

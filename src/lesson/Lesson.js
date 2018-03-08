@@ -1,3 +1,4 @@
+/* eslint no-undef: off*/
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
@@ -37,7 +38,7 @@ class Lesson extends Component {
   }
   
   componentWillMount() {
-    this.props.requestGetTimetable(4)
+    //this.props.requestGetTimetable()
   }
   
   getL = () => {
@@ -49,7 +50,7 @@ class Lesson extends Component {
   }
 
   show = () => {
-    this.props.requestGetTimetable(4)
+    this.props.requestGetTimetable()
   }
 
   post = () => {
@@ -83,12 +84,12 @@ class Lesson extends Component {
         <Container>
           <div>
             <TimeTable timetable={timetables}/>
-            <Button onClick={this.getL}>getL</Button>
-            <Button onClick={this.getT}>getT</Button>
+            {/* <Button onClick={this.getL}>getL</Button> */}
+            {/* <Button onClick={this.getT}>getT</Button> */}
             <Button onClick={this.show}>show</Button>
-            <Button onClick={this.post}>post</Button>
-            <Button onClick={this.put}>put</Button>
-            <Button onClick={this.delete}>delete</Button>
+            {/* <Button onClick={this.post}>post</Button> */}
+            {/* <Button onClick={this.put}>put</Button> */}
+            {/* <Button onClick={this.delete}>delete</Button> */}
           </div>
           <div className={classes.title}>
             <Typography variant="title" className={classes.universal}>京都産業大学 コンピュータ理工学部 インテリジェントシステム学科</Typography>

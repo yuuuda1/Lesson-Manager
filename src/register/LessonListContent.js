@@ -5,6 +5,7 @@ import Divider from 'material-ui/Divider'
 import Typography from 'material-ui/Typography'
 import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
+import zIndex from 'material-ui/styles/zIndex';
 
 const styles = () => ({
   root: {
@@ -67,9 +68,12 @@ const styles = () => ({
     marginLeft: '5px',
   },
   getButton: {
+    marginLeft: '450px',
     color: '#00BCD4',
     fontSize: '18px',
     marginTop: '32px',
+    width: '200px',
+    zIndex: '1000'
   },
   colorInherit: {
     color: '#00BCD4',
@@ -81,6 +85,7 @@ class LessonListContent extends Component {
     const {
       classes,
       lesson,
+      onClick,
       ...other
     } = this.props
 
@@ -104,11 +109,11 @@ class LessonListContent extends Component {
           <ListItem divider>
             <div className={classes.department}>
               <Typography className={classes.lineMain}>対象学部</Typography>
-              <Typography className={classes.lineSub}>コンピュータ理工学実験</Typography>
+              <Typography className={classes.lineSub}>{lesson.department}</Typography>
             </div>
             <div className={classes.grade}>
               <Typography className={classes.lineMain}>年次</Typography>
-              <Typography className={classes.lineSub}>{lesson.grade}</Typography>
+              <Typography className={classes.lineSub}>{lesson.grade}年次</Typography>
             </div>
           </ListItem>
           <ListItem divider>
@@ -118,13 +123,13 @@ class LessonListContent extends Component {
             </div>
             <div className={classes.credit}>
               <Typography className={classes.lineMain}>単位数</Typography>
-              <Typography className={classes.lineSub}>２単位</Typography>
+              <Typography className={classes.lineSub}>{lesson.unit}単位</Typography>
             </div>
           </ListItem>
           <ListItem divider>
             <div className={classes.estimation}>
               <Typography className={classes.lineMainLogo}>評価方法</Typography>
-              <Typography className={classes.lineSubLogo}>阿多</Typography>
+              <Typography className={classes.lineSubLogo}>{lesson.evaluation}</Typography>
             </div>
           </ListItem>
           <ListItem divider>
@@ -134,15 +139,16 @@ class LessonListContent extends Component {
             </div>
           </ListItem>
           <ListItem>
-            <div className={classes.button}>
+            {/* <div className={classes.button}> */}
               <Button
                 className={classes.getButton}
                 classes={{colorInherit:classes.colorInherit}}
+                onClick={onClick}
               > 
                 Register
                 <Input className={classes.icon} />
               </Button>
-            </div>
+            {/* </div> */}
           </ListItem>
         </List>
       </div>

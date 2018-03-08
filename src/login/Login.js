@@ -1,3 +1,4 @@
+/* eslint no-undef: off */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
@@ -6,6 +7,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Header from '../Header'
 import TextField from 'material-ui/TextField'
+import { Link } from 'react-router-dom';
 
 const styles = () => ({
   root: {
@@ -73,6 +75,22 @@ const styles = () => ({
 })
 
 class Login extends Component {
+  state = {
+    email: '',
+    password: ''
+  }
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    })
+  }
+
+  loginUser = () => {
+    sessionStorage.removeItem('_lesson_manager_token')
+    this.props.requestLogin(this.state.email, this.state.password)
+  }
+
   render() {
     const {
       classes,
@@ -92,19 +110,23 @@ class Login extends Component {
             </div>
               <CardActions className={classes.cardContent}>
                 <TextField className={classes.email}
+                  onChange={this.handleChange('email')}
                   id="email"
                   label="Email"
                   type="input"
                 />
                 <TextField className={classes.password}
+                  onChange={this.handleChange('password')}
                   id="password"
                   label="Password"
                   type="password"
                   autoComplete="current-password"
                 />
-                <Button variant="flat" className={classes.button}>
-                  LOGIN
-                </Button>
+                <Link to='../register'>
+                  <Button onClick={this.loginUser} variant="flat" className={classes.button}>
+                    LOGIN
+                  </Button>
+                </Link>
               </CardActions>
           </Card>
         </div>

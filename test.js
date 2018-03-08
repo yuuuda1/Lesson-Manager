@@ -1,9 +1,17 @@
 const axios = require('axios')
 
-const uri = 'http://lesson-manager.dev/api/lessons/search?search_word=理工学実験'
+const uri = 'http://lesson-manager.dev/oauth/token'
 
-axios.get(uri).then(res => {
-  console.log(res.data)
+axios.post(uri, {
+
+    client_id: 2,
+    client_secret: 'dMpISxPH9Dho9OTmoZm59cgrlSaiwHwIPlkhywNK',
+    username: 'shoMMKS@gmail.com',
+    password: 'ampmampm',
+    grant_type: 'password',
+    scope: '*'
+}).then(res => {
+  console.log(res)
 }).catch(err => {
-  console.log(err)
+  console.log(err.message)
 })

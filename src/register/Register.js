@@ -13,6 +13,7 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import LessonListContent from './LessonListContent'
 import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
+import store from '../store';
 
 
 
@@ -25,8 +26,8 @@ const styles = () => ({
     backgroundColor: '#FAFAFA'
   },
   maintitle: {
-    position: 'relative',
-    left: '60px',
+    position: 'absolute',
+    left: '500px',
     textAlign: 'center',
     fontSize: '34px',
     color: '#000000',
@@ -45,6 +46,9 @@ const styles = () => ({
     marginTop: '60px'
   },
   title: {
+    position: 'relative',
+    left: '180px',
+    textAlign: 'center',
     fontSize: '24px',
     fontColor: '#000000',
     opacity: '0.87'
@@ -55,7 +59,13 @@ const styles = () => ({
 
 class Register extends Component {
   state = {
+    lessonIds: [],
     word: ''
+  }
+
+  componentDidMount() {
+    const tokens = store.getState().authReducer
+    console.log(tokens.accessToken)
   }
 
   handleChange = data => {
@@ -64,8 +74,18 @@ class Register extends Component {
     })
   }
 
+  handleChange2 = ids => {
+    this.setState({
+      lessonIds: ids
+    })
+  }
+
   search = () => {
     this.props.requestAllLessons(this.state.word)
+  }
+
+  register = () => {
+    this.props.requestPostTimetables(this.state.lessonIds)
   }
   render() {
     const {
@@ -83,7 +103,7 @@ class Register extends Component {
             </div>
             <SearchButton onChangeValue={this.handleChange} onClick={this.search} className={classes.searchButton}
             />
-            <LessonList lessons={lessons}/>
+            <LessonList onChangeValue={this.handleChange2} onClick={this.register} lessons={lessons}/>
           </div>
         </Container>
       </div>

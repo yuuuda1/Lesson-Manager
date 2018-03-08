@@ -27,9 +27,8 @@ export const failuerAllTimetables = error => ({
   error
 })
 
-export const requestGetTimetable = id => ({
-  type : LessonsActionTypes.REQUEST_GET_TIMETABLES,
-  id
+export const requestGetTimetable = () => ({
+  type : LessonsActionTypes.REQUEST_GET_TIMETABLES
 })
 
 export const successGetTimetable = timetable => ({
