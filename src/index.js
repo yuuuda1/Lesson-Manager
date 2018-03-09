@@ -12,6 +12,8 @@ import ConnectedRegister from './register/containers/ConnectedRegister';
 import SignUp from './signup/SignUp';
 import Home from './home/home'
 import ConnectedLogin from './login/containers/ConnectedLogin';
+import ConnectedSearch from './user/containers/ConnectedSearch';
+import ConnectedProfile from './user/containers/ConnectedProfile';
 
 const history = createHistory()
 
@@ -27,6 +29,8 @@ if (rootElement) {
           <Route path="/register" component={ConnectedRegister}/>
           <Route path="/user/register" component={SignUp}/>
           <Route path="/user/login" component={ConnectedLogin}/>
+          <Route path="/users/search" component={ConnectedSearch}/>
+          <Route path="/users/profile/:id" component={ConnectedProfile}/>
         </Switch>
       </Router>
     </Provider>,

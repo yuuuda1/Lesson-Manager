@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import Container from '../Container'
-import LessonList from './LessonList'
-import RegistedList from './RegistedList.js'
-import SearchButton from './searchButton'
-import ExpansionPanel, {
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-} from 'material-ui/ExpansionPanel'
+import SearchButton from './../register/searchButton'
 import Typography from 'material-ui/Typography'
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import LessonListContent from './LessonListContent'
 import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
 import store from '../store';
-
-
+import Link from 'react-router-dom/Link';
 
 const styles = () => ({
   root: {
@@ -57,10 +48,8 @@ const styles = () => ({
 })
 
 
-class Register extends Component {
+class Search extends Component {
   state = {
-    resetFlag: false,
-    lessonIds: [],
     word: ''
   }
 
@@ -70,40 +59,33 @@ class Register extends Component {
     })
   }
 
-  handleChange2 = ids => {
-    this.setState({
-      lessonIds: ids
-    })
-  }
-
   search = () => {
-    this.props.requestAllLessons(this.state.word)
-    this.setState({
-      resetFlag: true
-    })
+    this.props.requestAllUsers(this.state.word)
   }
 
-  register = () => {
-    this.props.requestPostTimetables(this.state.lessonIds)
-  }
   render() {
     const {
       classes,
       lessons,
       requestAllLessons,
+      users,
       ...other
     } = this.props
+
+    const userLinks = users.length === 0 ? <div/> : users.data.map(user => (
+      <Link to={'profile/'+user.id}>{user.name}</Link>
+    ))
 
     return(
       <div className={classes.root} {...other}>
         <Container>
           <div className={classes.registerContent}>
             <div className={classes.title}>
-              MY時間割の新規登録
+              ユーザ検索
             </div>
             <SearchButton onChangeValue={this.handleChange} onClick={this.search} className={classes.searchButton}
             />
-            <LessonList onChangeValue={this.handleChange2} onClick={this.register} lessons={lessons}/>
+            {userLinks}
           </div>
         </Container>
       </div>
@@ -111,4 +93,4 @@ class Register extends Component {
   }
 }
 
-export default withStyles(styles)(Register)
+export default withStyles(styles)(Search)

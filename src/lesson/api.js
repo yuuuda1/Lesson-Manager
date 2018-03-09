@@ -4,13 +4,18 @@ export const allLessons = word => {
  return axios.get(uri)
 }
 
-export const allTimetables = () => {
+export const myTimetable = () => {
   const uri = 'api/timetables'
-  return axios.get(uri)
+  const token = sessionStorage.getItem('_lesson_manager_token')
+  return axios.get(uri, {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  })
 }
 
-export const getTimetable = () => {
-  const uri = 'api/timetables'
+export const getTimetable = id => {
+  const uri = 'api/timetables/' + id
   const token = sessionStorage.getItem('_lesson_manager_token')
   return axios.get(uri, {
     headers: {

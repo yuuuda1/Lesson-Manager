@@ -14,21 +14,22 @@ export const failuerAllLessons = error => ({
   error
 })
 
-export const requestAllTimetables = () => ({
-  type : LessonsActionTypes.REQUEST_ALL_TIMETABLES,
+export const requestMyTimetable = () => ({
+  type : LessonsActionTypes.REQUEST_MY_TIMETABLES,
 })
 
-export const successAllTimetables = timetables => ({
-  type : LessonsActionTypes.SUCCESS_ALL_TIMETABLES,
-  timetables
+export const successMyTimetable = timetable => ({
+  type : LessonsActionTypes.SUCCESS_MY_TIMETABLES,
+  timetable
 })
-export const failuerAllTimetables = error => ({
-  type : LessonsActionTypes.FAILUER_ALL_TIMETABLES,
+export const failuerMyTimetable = error => ({
+  type : LessonsActionTypes.FAILUER_MY_TIMETABLES,
   error
 })
 
-export const requestGetTimetable = () => ({
-  type : LessonsActionTypes.REQUEST_GET_TIMETABLES
+export const requestGetTimetable = id => ({
+  type : LessonsActionTypes.REQUEST_GET_TIMETABLES,
+  id
 })
 
 export const successGetTimetable = timetable => ({

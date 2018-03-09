@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import {
   requestAllLessons,
-  requestAllTimetables,
+  requestMyTimetable,
   requestGetTimetable,
   requestPostTimetables,
   requestPutTimetables,
@@ -13,12 +13,12 @@ import Lesson from './../Lesson'
 
 const mapStateToProps = state => ({
   lessons : state.lessonsReducer.lessons,
-  timetables : state.lessonsReducer.timetables
+  timetable : state.lessonsReducer.timetable
 })
 const mapDispatchToProps = dispatch => ({
   requestAllLessons : word => dispatch(requestAllLessons(word)),
-  requestAllTimetables : () => dispatch(requestAllTimetables()),
-  requestGetTimetable : () => dispatch(requestGetTimetable()),
+  requestMyTimetable : () => dispatch(requestMyTimetable()),
+  requestGetTimetable : id => dispatch(requestGetTimetable(id)),
   requestPostTimetables : timetable => dispatch(requestPostTimetables(timetable)),
   requestPutTimetables : (id, timetable) => dispatch(requestPutTimetables(id, timetable)),
   requestDeleteTimetables : id => dispatch(requestDeleteTimetables(id))

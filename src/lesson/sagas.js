@@ -11,8 +11,8 @@ import LessonsActionTypes from './constants'
 import {
   successAllLessons,
   failuerAllLessons,
-  successAllTimetables,
-  failuerAllTimetables,
+  successMyTimetable,
+  failuerMyTimetable,
   successGetTimetable,
   failuerGetTimetable,
   successPostTimetables,
@@ -36,17 +36,17 @@ export function* watchRequestAllLessons() {
   yield takeLatest(LessonsActionTypes.REQUEST_ALL_LESSONS, requestAllLessons)
 }
 
-function* requestAllTimetables() {
+function* requestMyTimetable() {
   try{
-    const response = yield call(api.allTimetables)
-    yield put(successAllTimetables(response.data))
+    const response = yield call(api.myTimetable)
+    yield put(successMyTimetable(response.data))
   } catch(error) {
-    yield put(failuerAllTimetables(error))
+    yield put(failuerMyTimetable(error))
   }
 }
 
-export function* watchRequestAllTimetables() {
-  yield takeLatest(LessonsActionTypes.REQUEST_ALL_TIMETABLES, requestAllTimetables)
+export function* watchRequestMyTimetable() {
+  yield takeLatest(LessonsActionTypes.REQUEST_MY_TIMETABLES, requestMyTimetable)
 }
 
 function* requestGetTimetable(action) {
@@ -101,7 +101,7 @@ export function* watchRequestDeleteTimetables() {
 
 export default [
   fork(watchRequestAllLessons),
-  fork(watchRequestAllTimetables),
+  fork(watchRequestMyTimetable),
   fork(watchRequestGetTimetable),
   fork(watchRequestPostTimetables),
   fork(watchRequestPutTimetables),

@@ -69,7 +69,7 @@ class Lesson extends Component {
     const {
       classes,
       lessons,
-      timetables,
+      timetable,
       requestAllLessons,
       requestAllTimetables,
       requestGetTimetable,
@@ -78,12 +78,12 @@ class Lesson extends Component {
       requestDeleteTimetables,
       ...other
     } = this.props
-    console.log('render:', timetables)
+    console.log('render:', timetable)
     return(
       <div className={classes.root} {...other}>
         <Container>
           <div>
-            <TimeTable timetable={timetables}/>
+            <TimeTable timetable={timetable}/>
             {/* <Button onClick={this.getL}>getL</Button> */}
             {/* <Button onClick={this.getT}>getT</Button> */}
             <Button onClick={this.show}>show</Button>
@@ -95,7 +95,7 @@ class Lesson extends Component {
             <Typography variant="title" className={classes.universal}>京都産業大学 コンピュータ理工学部 インテリジェントシステム学科</Typography>
             <Typography variant="title">平成28年度 秋学期 時間割 </Typography>
           </div>
-          <TimeTable timetable={timetables} />
+          <TimeTable timetable={timetable} />
         </Container>
       </div>
     )
