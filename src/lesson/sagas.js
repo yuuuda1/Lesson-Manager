@@ -20,14 +20,14 @@ import {
   successPutTimetables,
   failuerPutTimetables,
   successDeleteTimetables,
-  failuerDeleteTimetables,
+  failuerDeleteTimetables
 } from './actions'
 
 function* requestAllLessons(action) {
-  try{
+  try {
     const response = yield call(api.allLessons, action.word)
     yield put(successAllLessons(response.data))
-  } catch(error) {
+  } catch (error) {
     yield put(failuerAllLessons(error))
   }
 }
@@ -37,10 +37,10 @@ export function* watchRequestAllLessons() {
 }
 
 function* requestMyTimetable() {
-  try{
+  try {
     const response = yield call(api.myTimetable)
     yield put(successMyTimetable(response.data))
-  } catch(error) {
+  } catch (error) {
     yield put(failuerMyTimetable(error))
   }
 }
@@ -50,10 +50,10 @@ export function* watchRequestMyTimetable() {
 }
 
 function* requestGetTimetable(action) {
-  try{
+  try {
     const response = yield call(api.getTimetable, action.id)
     yield put(successGetTimetable(response.data))
-  } catch(error) {
+  } catch (error) {
     yield put(failuerGetTimetable(error))
   }
 }
@@ -63,10 +63,10 @@ export function* watchRequestGetTimetable() {
 }
 
 function* requestPostTimetables(action) {
-  try{
+  try {
     const response = yield call(api.postTimetables, action.timetable)
     yield put(successPostTimetables(response.data))
-  } catch(error) {
+  } catch (error) {
     yield put(failuerPostTimetables(error))
   }
 }
@@ -75,10 +75,10 @@ export function* watchRequestPostTimetables() {
   yield takeLatest(LessonsActionTypes.REQUEST_POST_TIMETABLES, requestPostTimetables)
 }
 function* requestPutTimetables() {
-  try{
+  try {
     const response = yield call(api.putTimetables)
     yield put(successPutTimetables(response.data))
-  } catch(error) {
+  } catch (error) {
     yield put(failuerPutTimetables(error))
   }
 }
@@ -87,10 +87,10 @@ export function* watchRequestPutTimetables() {
   yield takeLatest(LessonsActionTypes.REQUEST_PUT_TIMETABLES, requestPutTimetables)
 }
 function* requestDeleteTimetables(action) {
-  try{
+  try {
     const response = yield call(api.deleteTimetables, action.id)
     yield put(successDeleteTimetables(response.data))
-  } catch(error) {
+  } catch (error) {
     yield put(failuerDeleteTimetables(error))
   }
 }

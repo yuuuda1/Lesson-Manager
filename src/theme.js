@@ -8,10 +8,10 @@ const theme = createMuiTheme({
     primary: cyan,
     secondary: {
       ...orange,
-      A200: '#FFAB40',
+      A200: '#FFAB40'
     },
     error: red
-  },
+  }
 })
 
 export default theme

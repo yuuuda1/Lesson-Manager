@@ -2,42 +2,34 @@ import createReducer from './../utils/createReducer'
 import LessonsActionTypes from './constants'
 
 const initialState = {
-  timetable: [],
+  myTimetable: {},
+  timetable: {},
   lessons : []
 }
 
-const getLessons = (state, action) => {
-  return Object.assign({}, state, { 
-    timetable : state.timetable,
-    lessons : action.lessons 
-  })
-}
+const getLessons = (state, action) => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : action.lessons.data
+})
 
-const getMyTimetable = (state, action) => {
-  return Object.assign({}, state, {
-    timetable : action.timetable,
-    lessons : state.lessons
-  })
-}
+const getMyTimetable = (state, action) => Object.assign({}, state, {
+  myTimetable : action.timetable.data,
+  timetable : state.timetable,
+  lessons : state.lessons
+})
 
-const getTimetable = (state, action) => {
-  return Object.assign({}, state, {
-    timetable : action.timetable,
-    lessons : state.lessons
-  })
-}
+const getTimetable = (state, action) => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : action.timetable.data,
+  lessons : state.lessons
+})
 
-const postTimetables = (state, action) => {
-  return state
-}
+const postTimetables = state => state
 
-const putTimetables = (state, action) => {
-  return state
-}
+const putTimetables = state => state
 
-const deleteTimetables = (state, action) => {
-  return state
-}
+const deleteTimetables = state => state
 
 export default createReducer(initialState, {
   [LessonsActionTypes.SUCCESS_ALL_LESSONS] : getLessons,

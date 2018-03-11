@@ -1,8 +1,6 @@
 import { connect } from 'react-redux'
 
-import {
-  requestLogin
-} from './../../auth/actions'
+import { requestLogin } from './../../auth/actions'
 
 import Login from './../Login'
 

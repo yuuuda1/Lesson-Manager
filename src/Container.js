@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
@@ -21,7 +22,7 @@ const drawerWidth = 240
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   appFrame: {
     zIndex: 1,
@@ -30,38 +31,38 @@ const styles = theme => ({
     top: '0px',
     left: '0px',
     display: 'flex',
-    width: '100vw',
+    width: '100vw'
   },
   appBar: {
     position: 'absolute',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   'appBarShift-left': {
-    marginLeft: drawerWidth,
+    marginLeft: drawerWidth
   },
   'appBarShift-right': {
-    marginRight: drawerWidth,
+    marginRight: drawerWidth
   },
   menuButton: {
     marginLeft: 2,
-    marginRight: 20,
+    marginRight: 20
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth,
+    width: drawerWidth
   },
   drawerHeader: {
     display: 'flex',
@@ -69,7 +70,7 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
-    borderBottom: '1px solid #000',
+    borderBottom: '1px solid #000'
   },
   listStyles: {
   },
@@ -103,13 +104,13 @@ const styles = theme => ({
     right:'32px',
     color: '#FFF'
 
-  },
+  }
 })
 
 
 class PersistentDrawer extends Component {
   state = {
-    open: false,
+    open: false
   }
 
   handleDrawerOpen = () => {
@@ -132,27 +133,27 @@ class PersistentDrawer extends Component {
       <div className={classes.root} {...other}>
         <div className={classes.appFrame}>
           <AppBar
+            classes={{
+              colorPrimary: classes.appBarColorDefault
+            }}
             className={classNames(
               classes.appBar,
               this.state.open && classes.appBarShift,
             )}
-            classes={{
-              colorPrimary: classes.appBarColorDefault
-            }}
           >
             <Toolbar disableGutters={!this.state.open}>
               <IconButton
-                color="inherit"
-                aria-label="MY時間割"
-                onClick={this.handleDrawerOpen}
+                aria-label='MY時間割'
                 className={classNames(
                   classes.menuButton,
                   this.state.open && classes.hide
                 )}
+                color='inherit'
+                onClick={this.handleDrawerOpen}
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
+              <Typography noWrap color='inherit' variant='title'>
                 MY時間割
               </Typography>
               <IconButton className={classes.icon}>
@@ -161,11 +162,11 @@ class PersistentDrawer extends Component {
             </Toolbar>
           </AppBar>
           <Drawer
-            variant="persistent"
-            open={this.state.open}
             classes={{
               paper: classes.drawerPaper
             }}
+            open={this.state.open}
+            variant='persistent'
           >
             <div className={classes.drawerHeader}>
               <IconButton onClick={this.handleDrawerClose}>
@@ -176,22 +177,31 @@ class PersistentDrawer extends Component {
               <List>
                 <ListItem button className={classes.listItem}>
                   <HomeIcon />
-                  {/* <ListItemText primary="ホーム" />*/}
-                  <Link to='/home'><Typography>ホーム</Typography></Link>
+                  <Link to='/home'>
+                    <ListItemText primary='ホーム' />
+                  </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <DateRangeIcon />
-                  {/* <ListItemText primary="MY時間割" />*/}
-                  <Link to='/lesson'><Typography>MY時間割</Typography></Link>
+                  <Link to='/lesson'>
+                    <ListItemText primary='MY時間割' />
+                  </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <InputIcon />
-                  {/* <ListItemText primary="時間割登録" /> */}
-                  <Link to='/register'><Typography>時間割登録</Typography></Link>
+                  <Link to='/register'>
+                    <ListItemText primary='時間割登録' />
+                  </Link>
+                </ListItem>
+                <ListItem button className={classes.listItem}>
+                  <InputIcon />
+                  <Link to='/users/search'>
+                    <ListItemText primary='ユーザ検索' />
+                  </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
                   <StarIcon />
-                  <ListItemText primary="おすすめ" />
+                  <ListItemText primary='おすすめ' />
                 </ListItem>
               </List>
             </div>
@@ -201,8 +211,7 @@ class PersistentDrawer extends Component {
               classes.sideBar,
               this.state.open && classes.sideBarShift,
             )}
-          >
-          </div>
+          />
           <div className={classes.childrenStyle}>
             {children}
           </div>
@@ -210,6 +219,12 @@ class PersistentDrawer extends Component {
       </div>
     )
   }
+}
+
+PersistentDrawer.propTypes = {
+  children : PropTypes.node,
+  classes : PropTypes.object.isRequired,
+  theme : PropTypes.any
 }
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawer)

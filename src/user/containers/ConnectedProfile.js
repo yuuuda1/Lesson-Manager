@@ -1,14 +1,10 @@
 import { connect } from 'react-redux'
 
-import {
-  requestGetUser
-} from './../actions'
+import { requestGetUser } from 'app/user/actions'
 
-import {
-    requestGetTimetable
-} from './../../lesson/actions'
+import { requestGetTimetable } from 'app/lesson/actions'
 
-import Profile from '../Profile';
+import ProfilePage from 'app/user/pages/ProfilePage'
 
 const mapStateToProps = state => ({
   user : state.userReducer.user,
@@ -19,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
   requestGetTimetable : id => dispatch(requestGetTimetable(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)

@@ -3,22 +3,18 @@ import UsersActionTypes from './constants'
 
 const initialState = {
   users: [],
-  user: []
+  user: {}
 }
 
-const getUsers = (state, action) => {
-  return Object.assign({}, state, { 
-    users : action.users,
-    user : state.user
-  })
-}
+const getUsers = (state, action) => Object.assign({}, state, {
+  users : action.users.data,
+  user : state.user
+})
 
-const getUser = (state, action) => {
-    return Object.assign({}, state, {
-      users : state.users,
-      user : action.user
-    })
-}
+const getUser = (state, action) => Object.assign({}, state, {
+  users : state.users,
+  user : action.user.data
+})
 
 export default createReducer(initialState, {
   [UsersActionTypes.SUCCESS_ALL_USERS] : getUsers,

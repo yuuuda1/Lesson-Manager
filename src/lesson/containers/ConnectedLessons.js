@@ -7,13 +7,13 @@ import {
   requestPostTimetables,
   requestPutTimetables,
   requestDeleteTimetables
-} from './../actions'
+} from 'app/lesson/actions'
 
-import Lesson from './../Lesson'
+import LessonPage from 'app/lesson/pages/LessonPage'
 
 const mapStateToProps = state => ({
   lessons : state.lessonsReducer.lessons,
-  timetable : state.lessonsReducer.timetable
+  timetable : state.lessonsReducer.myTimetable
 })
 const mapDispatchToProps = dispatch => ({
   requestAllLessons : word => dispatch(requestAllLessons(word)),
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   requestDeleteTimetables : id => dispatch(requestDeleteTimetables(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Lesson)
+export default connect(mapStateToProps, mapDispatchToProps)(LessonPage)
