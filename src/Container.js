@@ -153,9 +153,11 @@ class PersistentDrawer extends Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography noWrap color='inherit' variant='title'>
-                MY時間割
-              </Typography>
+              <Link to='/lesson'>
+                <Typography noWrap color='inherit' variant='title'>
+                  Lesson-Manager
+                </Typography>
+              </Link>
               <IconButton className={classes.icon}>
                 <StoreIcon />
               </IconButton>
@@ -177,8 +179,8 @@ class PersistentDrawer extends Component {
               <List>
                 <ListItem button className={classes.listItem}>
                   <HomeIcon />
-                  <Link to='/home'>
-                    <ListItemText primary='ホーム' />
+                  <Link to='/users/me'>
+                    <ListItemText primary='マイページ' />
                   </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>

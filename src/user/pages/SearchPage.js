@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Container from 'app/Container'
 import SearchButton from 'app/lesson/pages/components/searchButton'
-import Link from 'react-router-dom/Link'
+import { Link } from 'react-router-dom'
 
 const styles = () => ({
   root: {

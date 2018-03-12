@@ -12,7 +12,11 @@ import {
   successAllUsers,
   failuerAllUsers,
   successGetUser,
-  failuerGetUser
+  failuerGetUser,
+  successMe,
+  failuerMe,
+  successPutMe,
+  failuerPutMe
 } from './actions'
 
 function* requestAllUsers(action) {
@@ -41,7 +45,35 @@ export function* watchRequestGetUser() {
   yield takeLatest(UsersActionTypes.REQUEST_GET_USERS, requestGetUser)
 }
 
+function* requestMe() {
+  try {
+    const response = yield call(api.getMe)
+    yield put(successMe(response.data))
+  } catch (error) {
+    yield put(failuerMe(error))
+  }
+}
+
+export function* watchRequestMe() {
+  yield takeLatest(UsersActionTypes.REQUEST_MY_USERS, requestMe)
+}
+
+function* requestPutMe(action) {
+  try {
+    const response = yield call(api.putMe, action.name, action.email, action.password)
+    yield put(successPutMe(response.data))
+  } catch (error) {
+    yield put(failuerPutMe(error))
+  }
+}
+
+export function* watchRequestPutMe() {
+  yield takeLatest(UsersActionTypes.REQUEST_PUT_USERS, requestPutMe)
+}
+
 export default [
   fork(watchRequestAllUsers),
-  fork(watchRequestGetUser)
+  fork(watchRequestGetUser),
+  fork(watchRequestMe),
+  fork(watchRequestPutMe)
 ]

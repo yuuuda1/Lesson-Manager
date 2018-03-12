@@ -14,6 +14,8 @@ import Home from 'app/home/home'
 import ConnectedLogin from 'app/login/containers/ConnectedLogin'
 import ConnectedSearch from 'app/user/containers/ConnectedSearch'
 import ConnectedProfile from 'app/user/containers/ConnectedProfile'
+import ConnectedMyPage from 'app/user/containers/ConnectedMyPage'
+import ConnectedEditPage from 'app/user/containers/ConnectedEditPage'
 
 const history = createHistory()
 
@@ -31,6 +33,8 @@ if (rootElement) {
           <Route component={ConnectedLogin} path='/user/login' />
           <Route component={ConnectedSearch} path='/users/search' />
           <Route component={ConnectedProfile} path='/users/profile/:id' />
+          <Route component={ConnectedMyPage} path='/users/me' />
+          <Route component={ConnectedEditPage} path='/users/edit' />
         </Switch>
       </Router>
     </Provider>,

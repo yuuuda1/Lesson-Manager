@@ -38,7 +38,7 @@ const Header = ({ classes, ...other }) => (
       >
         <Toolbar>
           <Typography className={classes.title} variant='title'>
-                Lesson-Manager
+            Lesson-Manager
           </Typography>
         </Toolbar>
       </AppBar>

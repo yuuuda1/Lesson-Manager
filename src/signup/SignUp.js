@@ -1,4 +1,3 @@
-/* eslint no-undef: off */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'

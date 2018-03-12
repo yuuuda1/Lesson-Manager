@@ -121,7 +121,7 @@ class LoginPage extends Component {
                   onChange={this.handleChange('password')}
                   type='password'
                 />
-                <Link to='../register'>
+                <Link to='/lesson'>
                   <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
                     LOGIN
                   </Button>
