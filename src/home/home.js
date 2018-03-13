@@ -85,12 +85,12 @@ const Home = ({ classes, ...other }) => (
           Let&rsquo;s start manage!!
       </Typography>
       <div className={classes.buttons}>
-        <Link to='/user/register'>
+        <Link to='/signup'>
           <Button className={classes.registerButton}>
               SIGN UP
           </Button>
         </Link>
-        <Link to='/user/login'>
+        <Link to='/login'>
           <Button className={classes.loginButton}>
               LOGIN
           </Button>

@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import Container from 'app/Container'
+import { Link } from 'react-router-dom'
 import TimeTable from './components/TimeTable'
 
 const styles = () => ({
@@ -57,6 +58,16 @@ class LessonPage extends Component {
     return (
       <div className={classes.root} {...other}>
         <Container>
+          <div className={classes.title}>
+            <Typography variant='title'>
+              MY時間割
+            </Typography>
+            <Link to='/timetables/edit'>
+              <Typography>
+                編集する
+              </Typography>
+            </Link>
+          </div>
           <div>
             {myTimetable}
             <Button onClick={this.handleShow}>

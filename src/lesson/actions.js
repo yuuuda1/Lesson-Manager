@@ -55,9 +55,8 @@ export const failuerPostTimetables = error => ({
   error: error
 })
 
-export const requestPutTimetables = (id, timetable) => ({
+export const requestPutTimetables = timetable => ({
   type : LessonsActionTypes.REQUEST_PUT_TIMETABLES,
-  id: id,
   timetable: timetable
 })
 

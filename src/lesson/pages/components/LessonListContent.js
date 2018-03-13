@@ -61,13 +61,13 @@ const styles = () => ({
     width: '660px'
   },
   button: {
-    marginLeft: '450px'
+    marginLeft: '250px'
   },
   icon: {
     marginLeft: '5px'
   },
   getButton: {
-    marginLeft: '450px',
+    marginLeft: '250px',
     color: '#00BCD4',
     fontSize: '18px',
     marginTop: '32px',
@@ -80,14 +80,14 @@ const styles = () => ({
 })
 
 const LessonListContent = ({
-  classes, lesson, onClick, ...other
+  classes, label, lesson, onClick, ...other
 }) => (
   <div className={classes.root} {...other}>
     <List>
       <ListItem divider>
         <div className={classes.term}>
           <Typography className={classes.lineMain}>
-                開講日
+            開講日
           </Typography>
           <Typography className={classes.lineSub}>
             {lesson.term}
@@ -95,25 +95,25 @@ const LessonListContent = ({
         </div>
         <div className={classes.days}>
           <Typography className={classes.lineMain}>
-                曜日
+            曜日
           </Typography>
           <Typography className={classes.lineSub}>
-                火曜日
+            火曜日
           </Typography>
         </div>
         <div className={classes.time}>
           <Typography className={classes.lineMain}>
-                時限
+            時限
           </Typography>
           <Typography className={classes.lineSub}>
-                2限
+            2限
           </Typography>
         </div>
       </ListItem>
       <ListItem divider>
         <div className={classes.department}>
           <Typography className={classes.lineMain}>
-                対象学部
+            対象学部
           </Typography>
           <Typography className={classes.lineSub}>
             {lesson.department}
@@ -121,7 +121,7 @@ const LessonListContent = ({
         </div>
         <div className={classes.grade}>
           <Typography className={classes.lineMain}>
-                年次
+            年次
           </Typography>
           <Typography className={classes.lineSub}>
             {`${lesson.grade}年次`}
@@ -131,7 +131,7 @@ const LessonListContent = ({
       <ListItem divider>
         <div className={classes.teacherName}>
           <Typography className={classes.lineMain}>
-                教員名
+            教員名
           </Typography>
           <Typography className={classes.lineSub}>
             {lesson.teacher_name}
@@ -139,7 +139,7 @@ const LessonListContent = ({
         </div>
         <div className={classes.credit}>
           <Typography className={classes.lineMain}>
-                単位数
+            単位数
           </Typography>
           <Typography className={classes.lineSub}>
             {`${lesson.unit}単位`}
@@ -149,7 +149,7 @@ const LessonListContent = ({
       <ListItem divider>
         <div className={classes.estimation}>
           <Typography className={classes.lineMainLogo}>
-                評価方法
+            評価方法
           </Typography>
           <Typography className={classes.lineSubLogo}>
             {lesson.evaluation}
@@ -159,7 +159,7 @@ const LessonListContent = ({
       <ListItem divider>
         <div className={classes.outline}>
           <Typography className={classes.lineMainLogo}>
-                概要
+            概要
           </Typography>
           <Typography className={classes.lineSubLogo}>
             {lesson.outline}
@@ -167,16 +167,16 @@ const LessonListContent = ({
         </div>
       </ListItem>
       <ListItem>
-        {/* <div className={classes.button}> */}
-        <Button
-          classes={{ colorInherit:classes.colorInherit }}
-          className={classes.getButton}
-          onClick={onClick}
-        >
-                Register
-          <Input className={classes.icon} />
-        </Button>
-        {/* </div> */}
+        <div className={classes.button}>
+          <Button
+            classes={{ colorInherit:classes.colorInherit }}
+            className={classes.getButton}
+            onClick={onClick}
+          >
+            {label}
+            <Input className={classes.icon} />
+          </Button>
+        </div>
       </ListItem>
     </List>
   </div>
@@ -184,6 +184,7 @@ const LessonListContent = ({
 
 LessonListContent.propTypes = {
   classes: PropTypes.object.isRequired,
+  label : PropTypes.string,
   lesson: PropTypes.object,
   onClick: PropTypes.func
 }

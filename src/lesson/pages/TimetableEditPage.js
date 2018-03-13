@@ -20,9 +20,7 @@ const styles = () => ({
   getButton: {
     color: '#00BCD4',
     fontSize: '18px',
-    marginTop: '32px',
-    position: 'absolute',
-    buttom: '64px'
+    marginTop: '32px'
   },
   maintitle: {
     position: 'absolute',
@@ -40,7 +38,6 @@ const styles = () => ({
   },
   registerContent: {
     width: '100%',
-    height: '100%',
     marginLeft: '70px',
     marginTop: '60px'
   },
@@ -61,7 +58,7 @@ const styles = () => ({
 })
 
 
-class RegisterPage extends Component {
+class TimetableEditPage extends Component {
   state = {
     lessonIds: [],
     word: ''
@@ -84,7 +81,7 @@ class RegisterPage extends Component {
   }
 
   handleRegister = () => {
-    this.props.requestPostTimetables(this.state.lessonIds)
+    this.props.requestPutTimetables(this.state.lessonIds)
   }
 
   render() {
@@ -92,7 +89,8 @@ class RegisterPage extends Component {
       classes,
       lessons,
       requestAllLessons,
-      requestPostTimetables,
+      requestPutTimetables,
+      timetable,
       ...other
     } = this.props
 
@@ -101,14 +99,14 @@ class RegisterPage extends Component {
         <Container>
           <div className={classes.registerContent}>
             <div className={classes.title}>
-              MY時間割の新規登録
+              MY時間割の編集
             </div>
             <SearchButton
               className={classes.searchButton}
               onChangeValue={this.handleChange}
               onClick={this.handleSearch}
             />
-            <LessonList lessons={lessons} onChangeValue={this.handleChange2} />
+            <LessonList lessons={lessons} onChangeValue={this.handleChange2} registedLessons={timetable.lessons} />
             <div className={classes.button}>
               <Link to='/lesson'>
                 <Button
@@ -116,7 +114,7 @@ class RegisterPage extends Component {
                   className={classes.getButton}
                   onClick={this.handleRegister}
                 >
-                  All Register
+                   編集する
                   <Input className={classes.icon} />
                 </Button>
               </Link>
@@ -128,11 +126,12 @@ class RegisterPage extends Component {
   }
 }
 
-RegisterPage.propTypes = {
+TimetableEditPage.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
   requestAllLessons : PropTypes.func,
-  requestPostTimetables : PropTypes.func
+  requestPutTimetables : PropTypes.func,
+  timetable : PropTypes.object
 }
 
-export default withStyles(styles)(RegisterPage)
+export default withStyles(styles)(TimetableEditPage)

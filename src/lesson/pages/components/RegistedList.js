@@ -30,29 +30,32 @@ const styles = () => ({
   }
 })
 
-const RegistedList = ({ classes, lessons, ...other }) => (
+const RegistedList = ({
+  classes, lessons, onClick, ...other
+}) => (
   <div className={classes.root} {...other}>
-    {lessons.length === 0 ? lessons.map(lesson => (
+    {lessons.length === 0 ? <div /> : lessons.map(lesson => (
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.registed}>
-                登録済み
+            登録済み
           </Typography>
           <Typography className={classes.title}>
             {lesson.name}
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <LessonListContent lesson={lesson} />
+          <LessonListContent label='Delete' lesson={lesson} onClick={onClick(lesson.id)} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
-    )) : <div />}
+    ))}
   </div>
 )
 
 RegistedList.propTypes = {
   classes : PropTypes.object.isRequired,
-  lessons : PropTypes.array
+  lessons : PropTypes.array,
+  onClick : PropTypes.func
 }
 
 export default withStyles(styles)(RegistedList)

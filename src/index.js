@@ -16,6 +16,7 @@ import ConnectedSearch from 'app/user/containers/ConnectedSearch'
 import ConnectedProfile from 'app/user/containers/ConnectedProfile'
 import ConnectedMyPage from 'app/user/containers/ConnectedMyPage'
 import ConnectedEditPage from 'app/user/containers/ConnectedEditPage'
+import ConnectedTimetableEdit from 'app/lesson/containers/ConnectedTimetableEdit'
 
 const history = createHistory()
 
@@ -29,12 +30,13 @@ if (rootElement) {
           <Route component={Home} path='/home' />
           <Route component={ConnectedLessons} path='/lesson' />
           <Route component={ConnectedRegister} path='/register' />
-          <Route component={SignUp} path='/user/register' />
-          <Route component={ConnectedLogin} path='/user/login' />
+          <Route component={SignUp} path='/signup' />
+          <Route component={ConnectedLogin} path='/login' />
           <Route component={ConnectedSearch} path='/users/search' />
           <Route component={ConnectedProfile} path='/users/profile/:id' />
           <Route component={ConnectedMyPage} path='/users/me' />
           <Route component={ConnectedEditPage} path='/users/edit' />
+          <Route component={ConnectedTimetableEdit} path='/timetables/edit' />
         </Switch>
       </Router>
     </Provider>,

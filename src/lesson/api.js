@@ -36,9 +36,16 @@ export const postTimetables = timetable => {
   })
 }
 
-export const putTimetables = action => {
-  const uri = `api/timetables/${action.id}`
-  return axios.put(uri, action.timetable)
+export const putTimetables = timetable => {
+  const uri = 'api/timetables'
+  const token = sessionStorage.getItem('_lesson_manager_token')
+  return axios.put(uri, {
+    lessons: timetable
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
 }
 
 export const deleteTimetables = id => {
