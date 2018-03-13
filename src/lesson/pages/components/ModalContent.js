@@ -77,7 +77,7 @@ const ModalContent = ({ classes, lesson, ...other }) => (
     <List>
       <ListItem className={classes.listPadding}>
         <Typography className={classes.font}>
-              授業詳細
+          授業詳細
         </Typography>
       </ListItem>
       <ListItem className={classes.listLessonName}>
@@ -138,16 +138,8 @@ const ModalContent = ({ classes, lesson, ...other }) => (
             primary: classes.primary,
             secondary: classes.secondary
           }}
-          primary='曜日'
-          secondary={lesson.daily}
-        />
-        <ListItemText
-          classes={{
-            primary: classes.primary,
-            secondary: classes.secondary
-          }}
-          primary='時限'
-          secondary={lesson.time}
+          primary='曜日・時限'
+          secondary={lesson.time_period}
         />
       </ListItem>
       <ListItem className={classes.listLessonName}>

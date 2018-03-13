@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
-import { requestLogin } from './../../auth/actions'
+import { requestLogin } from 'app/auth/actions'
 
-import Login from './../Login'
+import Login from 'app/login/Login'
 
 const mapStateToProps = state => ({
   tokenType : state.authReducer.tokenType,

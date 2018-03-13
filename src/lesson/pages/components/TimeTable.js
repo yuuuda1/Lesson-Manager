@@ -99,10 +99,14 @@ const numbers = [
 
 class TimeTable extends Component {
   state = {
+    contentNumber: 0,
     open: false
   }
 
-  handleOpen = () => {
+  handleOpen = index => () => {
+    this.setState({
+      contentNumber : index
+    })
     this.setState({ open: true })
   }
 
@@ -137,13 +141,13 @@ class TimeTable extends Component {
           }
           return (
             <ListItem button divider className={classes.listItemStyle} label={daily[0]}>
-              {timetable.lessons.map(lesson => (
+              <ModalWindow onClose={this.handleClose} open={this.state.open}>
+                <ModalContent lesson={timetable.lessons[this.state.contentNumber]} />
+              </ModalWindow>
+              {timetable.lessons.map((lesson, index) => (
                 (lesson.time_period.indexOf(daily[1]) !== -1 && lesson.time_period.indexOf(number[1]) !== -1) ?
                   <div>
-                    <ListItemText classes={{ primary: classes.primary }} onClick={this.handleOpen} primary={lesson.name} />
-                    <ModalWindow onClose={this.handleClose} open={this.state.open}>
-                      <ModalContent lesson={lesson} />
-                    </ModalWindow>
+                    <ListItemText classes={{ primary: classes.primary }} onClick={this.handleOpen(index)} primary={lesson.name} />
                   </div>
                 : <ListItemText classes={{ primary: classes.primary }} />
               ))}

@@ -6,8 +6,6 @@ import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
 import Container from 'app/Container'
 import LessonList from './components/LessonList'
-import SearchButton from './components/searchButton'
-
 
 const styles = () => ({
   root: {
@@ -33,11 +31,6 @@ const styles = () => ({
     opacity: '0.87',
     fontFamily: 'Roboto'
   },
-  searchButton: {
-    marginLeft: '420px',
-    marginBottom: '64px',
-    marginTop: '20px'
-  },
   registerContent: {
     width: '100%',
     height: '100%',
@@ -45,7 +38,6 @@ const styles = () => ({
     marginTop: '60px'
   },
   title: {
-    position: 'relative',
     left: '180px',
     textAlign: 'center',
     fontSize: '24px',
@@ -103,12 +95,7 @@ class RegisterPage extends Component {
             <div className={classes.title}>
               MY時間割の新規登録
             </div>
-            <SearchButton
-              className={classes.searchButton}
-              onChangeValue={this.handleChange}
-              onClick={this.handleSearch}
-            />
-            <LessonList lessons={lessons} onChangeValue={this.handleChange2} />
+            <LessonList lessons={lessons} onChangeValue={this.handleChange2} onChangeWord={this.handleChange} onSearch={this.handleSearch} />
             <div className={classes.button}>
               <Link to='/lesson'>
                 <Button

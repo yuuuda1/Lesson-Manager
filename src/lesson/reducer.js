@@ -1,4 +1,4 @@
-import createReducer from './../utils/createReducer'
+import createReducer from 'app/utils/createReducer'
 import LessonsActionTypes from './constants'
 
 const initialState = {

@@ -36,7 +36,7 @@ if (rootElement) {
           <Route component={ConnectedProfile} path='/users/profile/:id' />
           <Route component={ConnectedMyPage} path='/users/me' />
           <Route component={ConnectedEditPage} path='/users/edit' />
-          <Route component={ConnectedTimetableEdit} path='/timetables/edit' />
+          <Route component={ConnectedTimetableEdit} path='/users/timetables/edit' />
         </Switch>
       </Router>
     </Provider>,

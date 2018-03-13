@@ -1,4 +1,3 @@
-/* eslint no-undef: off */
 export const allLessons = word => {
   const uri = `api/lessons/search?search_word=${word}`
   return axios.get(uri)

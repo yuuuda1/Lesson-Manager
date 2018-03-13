@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects'
 
-import lessonsSagas from './lesson/sagas'
-import authSagas from './auth/sagas'
-import userSagas from './user/sagas'
+import lessonsSagas from 'app/lesson/sagas'
+import authSagas from 'app/auth/sagas'
+import userSagas from 'app/user/sagas'
 
 export default function* sagas() {
   yield all([

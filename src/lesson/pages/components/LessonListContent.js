@@ -51,7 +51,7 @@ const styles = () => ({
   term: {
     width: '330px'
   },
-  days: {
+  timePeriod: {
     width: '330px'
   },
   department: {
@@ -93,20 +93,12 @@ const LessonListContent = ({
             {lesson.term}
           </Typography>
         </div>
-        <div className={classes.days}>
+        <div className={classes.timePeriod}>
           <Typography className={classes.lineMain}>
-            曜日
+            曜日・時限
           </Typography>
           <Typography className={classes.lineSub}>
-            火曜日
-          </Typography>
-        </div>
-        <div className={classes.time}>
-          <Typography className={classes.lineMain}>
-            時限
-          </Typography>
-          <Typography className={classes.lineSub}>
-            2限
+            {lesson.time_period}
           </Typography>
         </div>
       </ListItem>

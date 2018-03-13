@@ -62,7 +62,7 @@ class LessonPage extends Component {
             <Typography variant='title'>
               MY時間割
             </Typography>
-            <Link to='/timetables/edit'>
+            <Link to='/users/timetables/edit'>
               <Typography>
                 編集する
               </Typography>

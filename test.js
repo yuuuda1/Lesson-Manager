@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const uri = 'http://lesson-manager.dev/oauth/token'
+const uri = 'http://lesson-manager.example/oauth/token'
 
 axios.post(uri, {
 

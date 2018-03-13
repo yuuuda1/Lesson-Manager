@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import PropTypes from 'prop-types'
 import Typography from 'material-ui/Typography'
-// import Paper from 'material-ui/Paper'
+import Paper from 'material-ui/Paper'
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails
@@ -10,7 +10,7 @@ import ExpansionPanel, {
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import LessonListContent from './LessonListContent'
 import RegistedList from './RegistedList'
-
+import SearchButton from './searchButton'
 
 const styles = () => ({
   root: {
@@ -33,6 +33,11 @@ const styles = () => ({
     position: 'absolute',
     buttom: '64px'
   },
+  searchButton: {
+    marginLeft: '20px',
+    marginBottom: '64px',
+    marginTop: '20px'
+  },
   colorInherit: {
     color: '#00BCD4'
   },
@@ -49,11 +54,34 @@ class LessonList extends Component {
     const ids = this.props.registedLessons.map(registedLesson => (
       registedLesson.id
     ))
+    const opens = Array.from({ length: 100 }, () => false)
     this.state = {
       lessonIds: ids,
+      open: opens,
       registedLessons: this.props.registedLessons
     }
     this.props.onChangeValue(ids)
+  }
+
+  handleWordChange = data => {
+    this.props.onChangeWord(data)
+  }
+
+  setOpenState = opens => {
+    this.setState({
+      open: opens
+    })
+  }
+
+  handleSearch = () => {
+    this.props.onSearch()
+    const opens = this.state.open.map(open => {
+      if (open) {
+        return false
+      }
+      return open
+    })
+    this.setOpenState(opens)
   }
 
   handleChange = lesson => () => {
@@ -90,11 +118,17 @@ class LessonList extends Component {
     })
   }
 
-  // handleOpenChange = () => {
-  //   this.setState({
-  //     open: !this.state.open
-  //   })
-  // }
+  handleOpenChange = openNum => () => {
+    console.log(openNum)
+    console.log(this.state.open[1])
+    const opens = this.state.open.map((op, index) => {
+      if (index === openNum) {
+        return !this.state.open[index]
+      }
+      return this.state.open[index]
+    })
+    this.setOpenState(opens)
+  }
 
   render() {
     const {
@@ -105,13 +139,14 @@ class LessonList extends Component {
       ...other
     } = this.props
 
-    const lessonListComponent = lessons.length === 0 ? <div /> : lessons.map(lesson => (
-      <ExpansionPanel>
+    const lessonListComponent = lessons.length === 0 ? <div /> : lessons.map((lesson, index) => (
+      <ExpansionPanel expanded={this.state.open[index]}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.title}>
-            {lesson.name}
-          </Typography>
-          {/* <Paper onClick={this.handleOpenChange} /> */}
+          <Paper onClick={this.handleOpenChange(index)}>
+            <Typography className={classes.title}>
+              {lesson.name}
+            </Typography>
+          </Paper>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <LessonListContent label='Register' lesson={lesson} onClick={this.handleChange(lesson)} />
@@ -121,6 +156,11 @@ class LessonList extends Component {
 
     return (
       <div className={classes.root} {...other}>
+        <SearchButton
+          className={classes.searchButton}
+          onChangeValue={this.handleWordChange}
+          onClick={this.handleSearch}
+        />
         {lessonListComponent}
         <div className={classes.registed}>
           <RegistedList lessons={this.state.registedLessons} onClick={this.handleDelete} />
@@ -134,6 +174,8 @@ LessonList.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
   onChangeValue : PropTypes.func,
+  onChangeWord : PropTypes.func,
+  onSearch : PropTypes.func,
   registedLessons : PropTypes.array
 }
 
