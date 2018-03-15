@@ -63,14 +63,14 @@ class LessonList extends Component {
     this.props.onChangeValue(ids)
   }
 
-  handleWordChange = data => {
-    this.props.onChangeWord(data)
-  }
-
   setOpenState = opens => {
     this.setState({
       open: opens
     })
+  }
+
+  handleWordChange = data => {
+    this.props.onChangeWord(data)
   }
 
   handleSearch = () => {
@@ -119,8 +119,8 @@ class LessonList extends Component {
   }
 
   handleOpenChange = openNum => () => {
-    console.log(openNum)
-    console.log(this.state.open[1])
+    // console.log(openNum)
+    // console.log(this.state.open[1])
     const opens = this.state.open.map((op, index) => {
       if (index === openNum) {
         return !this.state.open[index]

@@ -5,9 +5,7 @@ import { requestLogin } from 'app/auth/actions'
 import Login from 'app/login/Login'
 
 const mapStateToProps = state => ({
-  tokenType : state.authReducer.tokenType,
-  accessToken : state.authReducer.accessToken,
-  refreshToken: state.authReducer.refreshToken
+  errorMessage : state.authReducer.errorMessage
 })
 const mapDispatchToProps = dispatch => ({
   requestLogin : (username, password) => dispatch(requestLogin(username, password))

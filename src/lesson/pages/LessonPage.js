@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import Container from 'app/Container'
 import { Link } from 'react-router-dom'
@@ -34,10 +33,6 @@ const styles = () => ({
 
 class LessonPage extends Component {
   componentDidMount() {
-    // this.props.requestMyTimetable()
-  }
-
-  handleShow = () => {
     this.props.requestMyTimetable()
   }
 
@@ -70,9 +65,6 @@ class LessonPage extends Component {
           </div>
           <div>
             {myTimetable}
-            <Button onClick={this.handleShow}>
-              show
-            </Button>
           </div>
           <div className={classes.title}>
             <Typography className={classes.universal} variant='title'>

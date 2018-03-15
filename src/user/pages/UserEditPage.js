@@ -6,7 +6,6 @@ import Card, { CardActions } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Header from 'app/Header'
 import TextField from 'material-ui/TextField'
-import { Link } from 'react-router-dom'
 
 const styles = () => ({
   root: {
@@ -138,11 +137,9 @@ class UserEditPage extends Component {
                 onChange={this.handleChange('password')}
                 type='password'
               />
-              <Link to='/users/me'>
-                <Button className={classes.button} onClick={this.handleUpdateUser} variant='flat'>
-                  編集する
-                </Button>
-              </Link>
+              <Button className={classes.button} onClick={this.handleUpdateUser} variant='flat'>
+                編集する
+              </Button>
             </CardActions>
           </Card>
         </div>

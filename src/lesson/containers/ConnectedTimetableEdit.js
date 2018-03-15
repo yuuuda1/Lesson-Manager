@@ -9,6 +9,7 @@ import TimetableEditPage from 'app/lesson/pages/TimetableEditPage'
 
 const mapStateToProps = state => ({
   lessons : state.lessonsReducer.lessons,
+  message : state.lessonsReducer.message,
   timetable : state.lessonsReducer.myTimetable
 })
 const mapDispatchToProps = dispatch => ({

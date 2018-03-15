@@ -25,11 +25,14 @@ const getMe = (state, action) => Object.assign({}, state, {
   user : state.user
 })
 
-const putMe = (state, action) => Object.assign({}, state, {
-  me : action.user.data,
-  users : state.users,
-  user : state.user
-})
+const putMe = (state, action) => {
+  window.location.href = '/users/me'
+  return Object.assign({}, state, {
+    me : action.user.data,
+    users : state.users,
+    user : state.user
+  })
+}
 
 export default createReducer(initialState, {
   [UsersActionTypes.SUCCESS_ALL_USERS] : getUsers,

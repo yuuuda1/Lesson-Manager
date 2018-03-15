@@ -6,7 +6,6 @@ import Card, { CardActions } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Header from 'app/Header'
 import TextField from 'material-ui/TextField'
-import { Link } from 'react-router-dom'
 
 const styles = () => ({
   root: {
@@ -21,42 +20,41 @@ const styles = () => ({
     marginTop: '250px'
   },
   card: {
-    position: 'relative',
     margin: 'auto',
-    width: '400px',
-    height: '400px'
+    width: '30%',
+    height: '30%'
   },
   cardTitle: {
     fontSize: '24px',
     textAlign: 'center',
     lineHeight: '64px',
-    color: '#FFF'
+    color: '#FFF',
+    width: '100%'
   },
   cardContent: {
-    height: '336px',
-    width: '400px'
+    display: 'inline-block',
+    textAlign: 'center',
+    width: '100%'
   },
   cardTop: {
-    width: '400px',
+    width: '100%',
     height: '64px',
     backgroundColor: '#00BCD4'
   },
+  error: {
+    margin: '8px',
+    width: '100%'
+  },
   email: {
-    position: 'absolute',
-    top: '92px',
-    left: '80px',
-    width: '240px'
+    marginTop: '20px',
+    width: '100%'
   },
   password: {
-    position: 'absolute',
-    top: '184px',
-    left: '80px',
-    width: '240px'
+    marginTop: '60px',
+    width: '100%'
   },
   button: {
-    position: 'absolute',
-    top: '280px',
-    left: '80px',
+    marginTop: '20px',
     color: '#FFF',
     backgroundColor: '#00BCD4',
     width: '240px',
@@ -90,6 +88,7 @@ class LoginPage extends Component {
   render() {
     const {
       classes,
+      errorMessage,
       requestLogin,
       ...other
     } = this.props
@@ -106,26 +105,31 @@ class LoginPage extends Component {
                 </Typography>
               </div>
               <CardActions className={classes.cardContent}>
-                <TextField
-                  className={classes.email}
-                  id='email'
-                  label='Email'
-                  onChange={this.handleChange('email')}
-                  type='input'
-                />
-                <TextField
-                  autoComplete='current-password'
-                  className={classes.password}
-                  id='password'
-                  label='Password'
-                  onChange={this.handleChange('password')}
-                  type='password'
-                />
-                <Link to='/lesson'>
-                  <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
-                    LOGIN
-                  </Button>
-                </Link>
+                <div className={classes.error}>
+                  <Typography>
+                    {errorMessage}
+                  </Typography>
+                </div>
+                <div className={classes.email}>
+                  <TextField
+                    id='email'
+                    label='Email'
+                    onChange={this.handleChange('email')}
+                    type='input'
+                  />
+                </div>
+                <div className={classes.password}>
+                  <TextField
+                    autoComplete='current-password'
+                    id='password'
+                    label='Password'
+                    onChange={this.handleChange('password')}
+                    type='password'
+                  />
+                </div>
+                <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
+                  LOGIN
+                </Button>
               </CardActions>
             </Card>
           </div>
@@ -137,6 +141,7 @@ class LoginPage extends Component {
 
 LoginPage.propTypes = {
   classes : PropTypes.object.isRequired,
+  errorMessage : PropTypes.string,
   requestLogin : PropTypes.func
 }
 

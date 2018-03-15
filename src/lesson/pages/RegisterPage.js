@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import { Link } from 'react-router-dom'
 import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
 import Container from 'app/Container'
 import LessonList from './components/LessonList'
 
@@ -83,6 +83,7 @@ class RegisterPage extends Component {
     const {
       classes,
       lessons,
+      message,
       requestAllLessons,
       requestPostTimetables,
       ...other
@@ -95,18 +96,19 @@ class RegisterPage extends Component {
             <div className={classes.title}>
               MY時間割の新規登録
             </div>
+            <Typography>
+              {message}
+            </Typography>
             <LessonList lessons={lessons} onChangeValue={this.handleChange2} onChangeWord={this.handleChange} onSearch={this.handleSearch} />
             <div className={classes.button}>
-              <Link to='/lesson'>
-                <Button
-                  classes={{ colorInherit:classes.colorInherit }}
-                  className={classes.getButton}
-                  onClick={this.handleRegister}
-                >
-                  All Register
-                  <Input className={classes.icon} />
-                </Button>
-              </Link>
+              <Button
+                classes={{ colorInherit:classes.colorInherit }}
+                className={classes.getButton}
+                onClick={this.handleRegister}
+              >
+                All Register
+                <Input className={classes.icon} />
+              </Button>
             </div>
           </div>
         </Container>
@@ -118,6 +120,7 @@ class RegisterPage extends Component {
 RegisterPage.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
+  message : PropTypes.string,
   requestAllLessons : PropTypes.func,
   requestPostTimetables : PropTypes.func
 }

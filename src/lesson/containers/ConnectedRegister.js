@@ -11,10 +11,8 @@ import {
 import RegisterPage from 'app/lesson/pages/RegisterPage'
 
 const mapStateToProps = state => ({
-  tokenType : state.authReducer.tokenType,
-  accessToken : state.authReducer.accessToken,
-  refreshToken: state.authReducer.refreshToken,
   lessons : state.lessonsReducer.lessons,
+  message : state.lessonsReducer.message,
   timetables : state.lessonsReducer.timetables
 })
 const mapDispatchToProps = dispatch => ({

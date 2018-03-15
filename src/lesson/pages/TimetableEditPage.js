@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import { Link } from 'react-router-dom'
 import Input from 'material-ui-icons/Input'
 import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
 import Container from 'app/Container'
 import LessonList from './components/LessonList'
-import SearchButton from './components/searchButton'
-
 
 const styles = () => ({
   root: {
@@ -88,6 +86,7 @@ class TimetableEditPage extends Component {
     const {
       classes,
       lessons,
+      message,
       requestAllLessons,
       requestPutTimetables,
       timetable,
@@ -101,23 +100,25 @@ class TimetableEditPage extends Component {
             <div className={classes.title}>
               MY時間割の編集
             </div>
-            <SearchButton
-              className={classes.searchButton}
-              onChangeValue={this.handleChange}
-              onClick={this.handleSearch}
+            <Typography>
+              {message}
+            </Typography>
+            <LessonList
+              lessons={lessons}
+              onChangeValue={this.handleChange2}
+              onChangeWord={this.handleChange}
+              onSearch={this.handleSearch}
+              registedLessons={timetable.lessons}
             />
-            <LessonList lessons={lessons} onChangeValue={this.handleChange2} registedLessons={timetable.lessons} />
             <div className={classes.button}>
-              <Link to='/lesson'>
-                <Button
-                  classes={{ colorInherit:classes.colorInherit }}
-                  className={classes.getButton}
-                  onClick={this.handleRegister}
-                >
-                   編集する
-                  <Input className={classes.icon} />
-                </Button>
-              </Link>
+              <Button
+                classes={{ colorInherit:classes.colorInherit }}
+                className={classes.getButton}
+                onClick={this.handleRegister}
+              >
+                  編集する
+                <Input className={classes.icon} />
+              </Button>
             </div>
           </div>
         </Container>
@@ -129,6 +130,7 @@ class TimetableEditPage extends Component {
 TimetableEditPage.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
+  message : PropTypes.string,
   requestAllLessons : PropTypes.func,
   requestPutTimetables : PropTypes.func,
   timetable : PropTypes.object
