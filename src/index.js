@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { Router, Route } from 'react-router'
 import ConnectedLessons from 'app/lesson/containers/ConnectedLessons'
 import store from 'app/store'
-import createHistory from 'history/createBrowserHistory'
+import history from 'app/history'
 import Switch from 'react-router/Switch'
 import ConnectedRegister from 'app/lesson/containers/ConnectedRegister'
 import SignUp from 'app/signup/SignUp'
@@ -17,8 +17,7 @@ import ConnectedProfile from 'app/user/containers/ConnectedProfile'
 import ConnectedMyPage from 'app/user/containers/ConnectedMyPage'
 import ConnectedEditPage from 'app/user/containers/ConnectedEditPage'
 import ConnectedTimetableEdit from 'app/lesson/containers/ConnectedTimetableEdit'
-
-const history = createHistory()
+import ConnectedRedirect from './lesson/containers/ConnectedRedirect'
 
 const rootElement = document.querySelector('#root')
 
@@ -37,6 +36,7 @@ if (rootElement) {
           <Route component={ConnectedMyPage} path='/users/me' />
           <Route component={ConnectedEditPage} path='/users/edit' />
           <Route component={ConnectedTimetableEdit} path='/users/timetables/edit' />
+          <Route component={ConnectedRedirect} path='/redirect' />
         </Switch>
       </Router>
     </Provider>,

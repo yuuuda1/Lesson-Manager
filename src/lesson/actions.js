@@ -9,6 +9,7 @@ export const successAllLessons = lessons => ({
   type : LessonsActionTypes.SUCCESS_ALL_LESSONS,
   lessons: lessons
 })
+
 export const failuerAllLessons = error => ({
   type : LessonsActionTypes.FAILUER_ALL_LESSONS,
   error: error
@@ -22,6 +23,7 @@ export const successMyTimetable = timetable => ({
   type : LessonsActionTypes.SUCCESS_MY_TIMETABLES,
   timetable: timetable
 })
+
 export const failuerMyTimetable = error => ({
   type : LessonsActionTypes.FAILUER_MY_TIMETABLES,
   error: error
@@ -36,6 +38,7 @@ export const successGetTimetable = timetable => ({
   type : LessonsActionTypes.SUCCESS_GET_TIMETABLES,
   timetable: timetable
 })
+
 export const failuerGetTimetable = error => ({
   type : LessonsActionTypes.FAILUER_GET_TIMETABLES,
   error: error
@@ -50,6 +53,7 @@ export const successPostTimetables = timetable => ({
   type : LessonsActionTypes.SUCCESS_POST_TIMETABLES,
   timetable: timetable
 })
+
 export const failuerPostTimetables = error => ({
   type : LessonsActionTypes.FAILUER_POST_TIMETABLES,
   error: error
@@ -63,6 +67,7 @@ export const requestPutTimetables = timetable => ({
 export const successPutTimetables = () => ({
   type : LessonsActionTypes.SUCCESS_PUT_TIMETABLES
 })
+
 export const failuerPutTimetables = error => ({
   type : LessonsActionTypes.FAILUER_PUT_TIMETABLES,
   error: error
@@ -76,6 +81,7 @@ export const requestDeleteTimetables = id => ({
 export const successDeleteTimetables = () => ({
   type : LessonsActionTypes.SUCCESS_DELETE_TIMETABLES
 })
+
 export const failuerDeleteTimetables = error => ({
   type : LessonsActionTypes.FAILUER_DELETE_TIMETABLES,
   error: error

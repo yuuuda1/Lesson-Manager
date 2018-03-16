@@ -32,7 +32,7 @@ const styles = () => ({
 })
 
 class LessonPage extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestMyTimetable()
   }
 

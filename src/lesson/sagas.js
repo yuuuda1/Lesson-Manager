@@ -4,6 +4,7 @@ import {
   fork,
   takeLatest
 } from 'redux-saga/effects'
+import history from 'app/history'
 
 import * as api from './api'
 import LessonsActionTypes from './constants'
@@ -69,11 +70,13 @@ function* requestPostTimetables(action) {
   } catch (error) {
     yield put(failuerPostTimetables(error))
   }
+  yield call(history.push, '/redirect')
 }
 
 export function* watchRequestPostTimetables() {
   yield takeLatest(LessonsActionTypes.REQUEST_POST_TIMETABLES, requestPostTimetables)
 }
+
 function* requestPutTimetables(action) {
   try {
     const response = yield call(api.putTimetables, action.timetable)
@@ -81,11 +84,13 @@ function* requestPutTimetables(action) {
   } catch (error) {
     yield put(failuerPutTimetables(error))
   }
+  yield call(history.push, '/redirect')
 }
 
 export function* watchRequestPutTimetables() {
   yield takeLatest(LessonsActionTypes.REQUEST_PUT_TIMETABLES, requestPutTimetables)
 }
+
 function* requestDeleteTimetables(action) {
   try {
     const response = yield call(api.deleteTimetables, action.id)

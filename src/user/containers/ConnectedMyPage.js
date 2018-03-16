@@ -8,6 +8,7 @@ import MyPage from 'app/user/pages/MyPage'
 
 const mapStateToProps = state => ({
   me : state.userReducer.me,
+  message : state.userReducer.message,
   timetable : state.lessonsReducer.myTimetable
 })
 const mapDispatchToProps = dispatch => ({

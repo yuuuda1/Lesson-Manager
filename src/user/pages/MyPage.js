@@ -41,6 +41,7 @@ class MyPage extends Component {
     const {
       classes,
       me,
+      message,
       timetable,
       requestMe,
       requestMyTimetable,
@@ -71,6 +72,9 @@ class MyPage extends Component {
       <div className={classes.root} {...other}>
         <Container>
           <div className={classes.title}>
+            <Typography>
+              {message}
+            </Typography>
             <Typography variant='title'>
               マイページ
             </Typography>
@@ -99,6 +103,7 @@ MyPage.propTypes = {
   classes : PropTypes.object.isRequired,
   match : PropTypes.object,
   me : PropTypes.object,
+  message : PropTypes.string,
   requestMe : PropTypes.func,
   requestMyTimetable : PropTypes.func,
   timetable : PropTypes.object

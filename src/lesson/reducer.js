@@ -29,9 +29,12 @@ const getTimetable = (state, action) => Object.assign({}, state, {
   message : state.message
 })
 
-const postTimetables = () => {
-  window.location.href = '/lesson'
-}
+const postTimetables = state => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : '時間割を登録しました。'
+})
 
 const failPostTimetables = state => Object.assign({}, state, {
   myTimetable : state.myTimetable,
@@ -40,9 +43,12 @@ const failPostTimetables = state => Object.assign({}, state, {
   message : '時間割の登録に失敗しました。'
 })
 
-const putTimetables = () => {
-  window.location.href = '/lesson'
-}
+const putTimetables = state => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : '編集に成功しました。'
+})
 
 const failPutTimetables = state => Object.assign({}, state, {
   myTimetable : state.myTimetable,

@@ -5,6 +5,8 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
+import history from 'app/history'
+
 import * as api from './api'
 import UsersActionTypes from './constants'
 
@@ -65,6 +67,7 @@ function* requestPutMe(action) {
   } catch (error) {
     yield put(failuerPutMe(error))
   }
+  yield call(history.push, '/users/me')
 }
 
 export function* watchRequestPutMe() {
