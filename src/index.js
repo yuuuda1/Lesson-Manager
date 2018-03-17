@@ -3,7 +3,8 @@ import 'app/bootstrap'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router, Route } from 'react-router'
+import { Router } from 'react-router'
+import Route from 'app/Route'
 import ConnectedLessons from 'app/lesson/containers/ConnectedLessons'
 import store from 'app/store'
 import history from 'app/history'
@@ -30,7 +31,7 @@ if (rootElement) {
           <Route component={ConnectedLessons} path='/lesson' />
           <Route component={ConnectedRegister} path='/register' />
           <Route component={SignUp} path='/signup' />
-          <Route component={ConnectedLogin} path='/login' />
+          <Route notAuth component={ConnectedLogin} path='/login' />
           <Route component={ConnectedSearch} path='/users/search' />
           <Route component={ConnectedProfile} path='/users/profile/:id' />
           <Route component={ConnectedMyPage} path='/users/me' />

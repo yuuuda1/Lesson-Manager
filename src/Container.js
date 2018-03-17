@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
-import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import List, { ListItem, ListItemText } from 'material-ui/List'
@@ -13,10 +12,10 @@ import HomeIcon from 'material-ui-icons/Home'
 import DateRangeIcon from 'material-ui-icons/DateRange'
 import InputIcon from 'material-ui-icons/Input'
 import StarIcon from 'material-ui-icons/Star'
-import StoreIcon from 'material-ui-icons/Store'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ChevronRightIcon from 'material-ui-icons/ChevronRight'
 import { Link } from 'react-router-dom'
+import ConnectedHeader from 'app/containers/ConnectedHeader'
 
 const drawerWidth = 240
 
@@ -27,9 +26,6 @@ const styles = theme => ({
   appFrame: {
     zIndex: 1,
     overflow: 'hidden',
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
     display: 'flex',
     width: '100vw'
   },
@@ -103,7 +99,10 @@ const styles = theme => ({
     position: 'absolute',
     right:'32px',
     color: '#FFF'
-
+  },
+  title: {
+    color: '#FFF',
+    fontSize: '24px'
   }
 })
 
@@ -132,14 +131,10 @@ class PersistentDrawer extends Component {
     return (
       <div className={classes.root} {...other}>
         <div className={classes.appFrame}>
-          <AppBar
-            classes={{
-              colorPrimary: classes.appBarColorDefault
-            }}
-            className={classNames(
-              classes.appBar,
-              this.state.open && classes.appBarShift,
-            )}
+          <ConnectedHeader className={classNames(
+            classes.appBar,
+            this.state.open && classes.appBarShift,
+          )}
           >
             <Toolbar disableGutters={!this.state.open}>
               <IconButton
@@ -154,15 +149,12 @@ class PersistentDrawer extends Component {
                 <MenuIcon />
               </IconButton>
               <Link to='/lesson'>
-                <Typography noWrap color='inherit' variant='title'>
+                <Typography noWrap className={classes.title} variant='title'>
                   Lesson-Manager
                 </Typography>
               </Link>
-              <IconButton className={classes.icon}>
-                <StoreIcon />
-              </IconButton>
             </Toolbar>
-          </AppBar>
+          </ConnectedHeader>
           <Drawer
             classes={{
               paper: classes.drawerPaper

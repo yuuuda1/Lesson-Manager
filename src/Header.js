@@ -4,12 +4,20 @@ import { withStyles } from 'material-ui/styles'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
+import StoreIcon from 'material-ui-icons/Store'
+import Button from 'material-ui/Button'
+import IconButton from 'material-ui/IconButton'
 
 const styles = () => ({
   root: {
     fontFamily: 'Roboto',
     width: '100vh',
     height: '64px'
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row'
   },
   appbar: {
     width: '100%',
@@ -20,34 +28,45 @@ const styles = () => ({
   },
   title: {
     color: '#FFF',
-    fontSize: '24px'
+    fontSize: '18px'
   },
   appBarColorDefault: {
     backgroundColor: '#00BCD4'
+  },
+  icon: {
+    color: '#FFF'
   }
 
 })
 
-const Header = ({ classes, ...other }) => (
-  <div className={classes.root} {...other}>
-    <div className={classes.appbar}>
-      <AppBar
-        classes={{
-          colorPrimary: classes.appBarColorDefault
-        }}
-      >
-        <Toolbar>
-          <Typography className={classes.title} variant='title'>
-            Lesson-Manager
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  </div>
+const Header = ({
+  classes, children, logout, ...other
+}) => (
+  <AppBar
+    classes={{
+      root: classes.header,
+      colorPrimary: classes.appBarColorDefault
+    }}
+    {...other}
+  >
+    {children}
+    <Toolbar style={{ marginLeft: 'auto' }}>
+      <Button onClick={logout}>
+        <Typography className={classes.title}>
+          ログアウト
+        </Typography>
+      </Button>
+      <IconButton className={classes.icon}>
+        <StoreIcon />
+      </IconButton>
+    </Toolbar>
+  </AppBar>
 )
 
 Header.propTypes = {
-  classes : PropTypes.object.isRequired
+  children : PropTypes.node,
+  classes : PropTypes.object.isRequired,
+  logout : PropTypes.func
 }
 
 export default withStyles(styles)(Header)

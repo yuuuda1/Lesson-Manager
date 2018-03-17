@@ -2,15 +2,19 @@ import {
   put,
   call,
   fork,
+  takeEvery,
   takeLatest
 } from 'redux-saga/effects'
+
+import history from 'app/history'
 
 import login from './api'
 import AuthActionTypes from './constants'
 
 import {
   successLogin,
-  failuerLogin
+  failuerLogin,
+  successLogout
 } from './actions'
 
 function* requestLogin(action) {
@@ -27,6 +31,30 @@ export function* watchRequestLogin() {
   yield takeLatest(AuthActionTypes.REQUEST_LOGIN, requestLogin)
 }
 
+function* loginSuccess() {
+  yield call(history.push, '/lesson')
+}
+
+export function* watchSuccessLogin() {
+  yield takeEvery(AuthActionTypes.SUCCESS_LOGIN, loginSuccess)
+}
+
+function* logout() {
+  sessionStorage.removeItem('_samsy_token')
+
+  yield put(successLogout())
+
+  window.location.href = '/login'
+
+  // yield call(history.push, '/login')
+}
+
+export function* watchLogout() {
+  yield takeLatest(AuthActionTypes.REQUEST_LOGOUT, logout)
+}
+
 export default [
-  fork(watchRequestLogin)
+  fork(watchRequestLogin),
+  fork(watchSuccessLogin),
+  fork(watchLogout)
 ]
