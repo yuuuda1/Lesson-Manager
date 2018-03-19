@@ -50,9 +50,9 @@ class SearchPage extends Component {
     word: ''
   }
 
-  handleChange = data => {
+  handleChange = event => {
     this.setState({
-      word: data
+      word: event.target.value
     })
   }
 

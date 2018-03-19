@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 import Card, { CardActions } from 'material-ui/Card'
 import Button from 'material-ui/Button'
-import Header from 'app/Header'
+import Container from 'app/Container'
 import TextField from 'material-ui/TextField'
 
 const styles = () => ({
@@ -104,45 +104,46 @@ class UserEditPage extends Component {
     } = this.props
     return (
       <div className={classes.root} {...other}>
-        <Header />
-        <div className={classes.pageAll}>
-          <Card className={classes.card}>
-            <div className={classes.cardTop}>
-              <Typography className={classes.cardTitle}>
-                My Account
-              </Typography>
-            </div>
-            <CardActions className={classes.cardContent}>
-              <TextField
-                className={classes.name}
-                defaultValue={me.name}
-                id='name'
-                label='Name'
-                onChange={this.handleChange('name')}
-                type='input'
-              />
-              <TextField
-                className={classes.email}
-                defaultValue={me.email}
-                id='email'
-                label='Email'
-                onChange={this.handleChange('email')}
-                type='input'
-              />
-              <TextField
-                autoComplete='current-password'
-                className={classes.password}
-                id='password'
-                label='Password'
-                onChange={this.handleChange('password')}
-                type='password'
-              />
-              <Button className={classes.button} onClick={this.handleUpdateUser} variant='flat'>
-                編集する
-              </Button>
-            </CardActions>
-          </Card>
-        </div>
+        <Container>
+          <div className={classes.pageAll}>
+            <Card className={classes.card}>
+              <div className={classes.cardTop}>
+                <Typography className={classes.cardTitle}>
+                  My Account
+                </Typography>
+              </div>
+              <CardActions className={classes.cardContent}>
+                <TextField
+                  className={classes.name}
+                  defaultValue={me.name}
+                  id='name'
+                  label='Name'
+                  onChange={this.handleChange('name')}
+                  type='input'
+                />
+                <TextField
+                  className={classes.email}
+                  defaultValue={me.email}
+                  id='email'
+                  label='Email'
+                  onChange={this.handleChange('email')}
+                  type='input'
+                />
+                <TextField
+                  autoComplete='current-password'
+                  className={classes.password}
+                  id='password'
+                  label='Password'
+                  onChange={this.handleChange('password')}
+                  type='password'
+                />
+                <Button className={classes.button} onClick={this.handleUpdateUser} variant='flat'>
+                  編集する
+                </Button>
+              </CardActions>
+            </Card>
+          </div>
+        </Container>
       </div>
     )
   }
