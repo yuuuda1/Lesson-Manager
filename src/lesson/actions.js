@@ -1,8 +1,8 @@
 import LessonsActionTypes from './constants'
 
-export const requestAllLessons = word => ({
+export const requestAllLessons = items => ({
   type : LessonsActionTypes.REQUEST_ALL_LESSONS,
-  word: word
+  items: items
 })
 
 export const successAllLessons = lessons => ({

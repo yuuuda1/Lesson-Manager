@@ -59,12 +59,15 @@ const styles = () => ({
 class TimetableEditPage extends Component {
   state = {
     lessonIds: [],
-    word: ''
+    searchItems: {
+      department: '',
+      word: ''
+    }
   }
 
   handleChange = data => {
     this.setState({
-      word: data
+      searchItems: data
     })
   }
 
@@ -75,7 +78,7 @@ class TimetableEditPage extends Component {
   }
 
   handleSearch = () => {
-    this.props.requestAllLessons(this.state.word)
+    this.props.requestAllLessons(this.state.searchItems)
   }
 
   handleRegister = () => {
@@ -105,8 +108,8 @@ class TimetableEditPage extends Component {
             </Typography>
             <LessonList
               lessons={lessons}
+              onChangeData={this.handleChange}
               onChangeValue={this.handleChange2}
-              onChangeWord={this.handleChange}
               onSearch={this.handleSearch}
               registedLessons={timetable.lessons}
             />

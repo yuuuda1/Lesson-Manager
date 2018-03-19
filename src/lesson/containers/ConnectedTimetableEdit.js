@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
   timetable : state.lessonsReducer.myTimetable
 })
 const mapDispatchToProps = dispatch => ({
-  requestAllLessons : word => dispatch(requestAllLessons(word)),
+  requestAllLessons : items => dispatch(requestAllLessons(items)),
   requestPutTimetables : timetable => dispatch(requestPutTimetables(timetable))
 })
 

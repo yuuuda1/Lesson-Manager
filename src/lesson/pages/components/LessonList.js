@@ -8,6 +8,8 @@ import ExpansionPanel, {
   ExpansionPanelDetails
 } from 'material-ui/ExpansionPanel'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
+import Select from 'material-ui/Select'
+import { MenuItem } from 'material-ui/Menu'
 import LessonListContent from './LessonListContent'
 import RegistedList from './RegistedList'
 import SearchButton from './searchButton'
@@ -58,7 +60,11 @@ class LessonList extends Component {
     this.state = {
       lessonIds: ids,
       open: opens,
-      registedLessons: this.props.registedLessons
+      registedLessons: this.props.registedLessons,
+      searchItems : {
+        word: '',
+        department: ''
+      }
     }
     this.props.onChangeValue(ids)
   }
@@ -69,8 +75,14 @@ class LessonList extends Component {
     })
   }
 
-  handleWordChange = data => {
-    this.props.onChangeWord(data)
+  handleChange = name => event => {
+    const data = Object.assign({}, this.state.searchItems, {
+      [name] : event.target.value
+    })
+    this.setState({
+      searchItems: data
+    })
+    this.props.onChangeData(data)
   }
 
   handleSearch = () => {
@@ -84,7 +96,7 @@ class LessonList extends Component {
     this.setOpenState(opens)
   }
 
-  handleChange = lesson => () => {
+  handleLessonChange = lesson => () => {
     const ids = this.state.lessonIds
     ids.push(lesson.id)
     const array = this.state.registedLessons.map(registedLesson => (
@@ -149,16 +161,55 @@ class LessonList extends Component {
           </Paper>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <LessonListContent label='Register' lesson={lesson} onClick={this.handleChange(lesson)} />
+          <LessonListContent label='Register' lesson={lesson} onClick={this.handleLessonChange(lesson)} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     ))
 
     return (
       <div className={classes.root} {...other}>
+        <Select
+          label='対象学部'
+          margin='none'
+          onChange={this.handleChange('department')}
+          value={this.state.searchItems.department}
+        >
+          <MenuItem value=''>
+            <em>
+              None
+            </em>
+          </MenuItem>
+          <MenuItem value='経済学部' >
+            経済学部
+          </MenuItem>
+          <MenuItem value='経営学部' >
+            経営学部
+          </MenuItem>
+          <MenuItem value='法学部' >
+            法学部
+          </MenuItem>
+          <MenuItem value='外国語学部' >
+            外国語学部
+          </MenuItem>
+          <MenuItem value='文化学部' >
+            文化学部
+          </MenuItem>
+          <MenuItem value='理学部' >
+            理学部
+          </MenuItem>
+          <MenuItem value='コンピュータ理工学部' >
+            コンピュータ理工学部
+          </MenuItem>
+          <MenuItem value='総合生命科学部' >
+            総合生命科学部
+          </MenuItem>
+          <MenuItem value='現代社会学部' >
+            現代社会学部
+          </MenuItem>
+        </Select>
         <SearchButton
           className={classes.searchButton}
-          onChangeValue={this.handleWordChange}
+          onChangeValue={this.handleChange('word')}
           onClick={this.handleSearch}
         />
         {lessonListComponent}
@@ -173,8 +224,8 @@ class LessonList extends Component {
 LessonList.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
+  onChangeData : PropTypes.func,
   onChangeValue : PropTypes.func,
-  onChangeWord : PropTypes.func,
   onSearch : PropTypes.func,
   registedLessons : PropTypes.array
 }

@@ -56,12 +56,15 @@ const styles = () => ({
 class RegisterPage extends Component {
   state = {
     lessonIds: [],
-    word: ''
+    searchItems: {
+      department: '',
+      word: ''
+    }
   }
 
   handleChange = data => {
     this.setState({
-      word: data
+      searchItems: data
     })
   }
 
@@ -72,7 +75,7 @@ class RegisterPage extends Component {
   }
 
   handleSearch = () => {
-    this.props.requestAllLessons(this.state.word)
+    this.props.requestAllLessons(this.state.searchItems)
   }
 
   handleRegister = () => {
@@ -99,7 +102,7 @@ class RegisterPage extends Component {
             <Typography>
               {message}
             </Typography>
-            <LessonList lessons={lessons} onChangeValue={this.handleChange2} onChangeWord={this.handleChange} onSearch={this.handleSearch} />
+            <LessonList lessons={lessons} onChangeData={this.handleChange} onChangeValue={this.handleChange2} onSearch={this.handleSearch} />
             <div className={classes.button}>
               <Button
                 classes={{ colorInherit:classes.colorInherit }}

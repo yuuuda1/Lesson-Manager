@@ -1,6 +1,8 @@
-export const allLessons = word => {
-  const uri = `api/lessons/search?search_word=${word}`
-  return axios.get(uri)
+export const allLessons = items => {
+  const uri = 'api/lessons/search'
+  return axios.get(uri, {
+    params : items
+  })
 }
 
 export const myTimetable = () => {

@@ -30,9 +30,6 @@ const styles = () => ({
 })
 
 class SearchButton extends Component {
-  handleChange = () => event => {
-    this.props.onChangeValue(event.target.value)
-  }
 
   render() {
     const {
@@ -57,7 +54,7 @@ class SearchButton extends Component {
                 className={classes.searchButton}
                 id='search'
                 label='Search'
-                onChange={this.handleChange()}
+                onChange={onChangeValue}
                 type='input'
 
               />

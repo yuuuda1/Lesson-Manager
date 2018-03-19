@@ -26,7 +26,7 @@ import {
 
 function* requestAllLessons(action) {
   try {
-    const response = yield call(api.allLessons, action.word)
+    const response = yield call(api.allLessons, action.items)
     yield put(successAllLessons(response.data))
   } catch (error) {
     yield put(failuerAllLessons(error))

@@ -40,7 +40,7 @@ export function* watchSuccessLogin() {
 }
 
 function* logout() {
-  sessionStorage.removeItem('_samsy_token')
+  sessionStorage.removeItem('_lesson_manager_token')
 
   yield put(successLogout())
 
