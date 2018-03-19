@@ -3,12 +3,12 @@ import 'app/bootstrap'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router'
+import { ConnectedRouter } from 'react-router-redux'
 import Route from 'app/Route'
 import ConnectedLessons from 'app/lesson/containers/ConnectedLessons'
 import store from 'app/store'
 import history from 'app/history'
-import Switch from 'react-router/Switch'
+import { Switch } from 'react-router-dom'
 import ConnectedRegister from 'app/lesson/containers/ConnectedRegister'
 import SignUp from 'app/signup/SignUp'
 import Home from 'app/home/home'
@@ -25,7 +25,7 @@ const rootElement = document.querySelector('#root')
 if (rootElement) {
   render(
     <Provider store={store}>
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <Switch>
           <Route component={Home} path='/home' />
           <Route component={ConnectedLessons} path='/lesson' />
@@ -39,7 +39,7 @@ if (rootElement) {
           <Route component={ConnectedTimetableEdit} path='/users/timetables/edit' />
           <Route component={ConnectedRedirect} path='/redirect' />
         </Switch>
-      </Router>
+      </ConnectedRouter>
     </Provider>,
     rootElement
     // document.getElementById('root')

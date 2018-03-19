@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import PropTypes from 'prop-types'
 import TextField from 'material-ui/TextField'
@@ -29,45 +29,36 @@ const styles = () => ({
 
 })
 
-class SearchButton extends Component {
+const SearchButton = ({
+  classes, onChangeValue, onClick, ...other
+}) => (
+  <div className={classes.root} {...other}>
+    <div className={classes.button}>
+      <Card className={classes.card}>
+        <CardActions
+          classes={{
+            paddingTop: classes.cardContentPadding
+          }}
+          className={classes.Content}
+        >
+          <TextField
+            fullWidth
+            SelectProps
+            className={classes.searchButton}
+            id='search'
+            label='Search'
+            onChange={onChangeValue}
+            type='input'
 
-  render() {
-    const {
-      classes,
-      onChangeValue,
-      onClick,
-      ...other
-    } = this.props
-    return (
-      <div className={classes.root} {...other}>
-        <div className={classes.button}>
-          <Card className={classes.card}>
-            <CardActions
-              classes={{
-                paddingTop: classes.cardContentPadding
-              }}
-              className={classes.Content}
-            >
-              <TextField
-                fullWidth
-                SelectProps
-                className={classes.searchButton}
-                id='search'
-                label='Search'
-                onChange={onChangeValue}
-                type='input'
-
-              />
-              <IconButton className={classes.search} onClick={onClick}>
-                <SearchIcon />
-              </IconButton>
-            </CardActions>
-          </Card>
-        </div>
-      </div>
-    )
-  }
-}
+          />
+          <IconButton className={classes.search} onClick={onClick}>
+            <SearchIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
+    </div>
+  </div>
+)
 
 SearchButton.propTypes = {
   classes : PropTypes.object.isRequired,
