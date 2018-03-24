@@ -1,7 +1,9 @@
-import React, {Component} from 'react'
-import {withStyles} from 'material-ui/styles'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
+import { Link } from 'react-router-dom'
 
 const styles = () => ({
   root: {
@@ -21,13 +23,14 @@ const styles = () => ({
   subTitleBox: {
     width: '100%',
     height: '240px',
-    paddingTop: '80px'
+    paddingTop: '80px',
+    backgroundColor: '#FAFAFA'
   },
   projectName: {
     textAlign: 'center',
     fontSize: '56px',
     fontWeight: 'bold',
-    color: '#FFF',
+    color: '#FFF'
   },
   projectContent: {
     textAlign: 'center',
@@ -41,7 +44,7 @@ const styles = () => ({
     textAlign: 'center',
     fontSize: '45px',
     color: '#000000',
-    opacity: '0.54',
+    opacity: '0.54'
   },
   buttons: {
     width: '360px',
@@ -67,27 +70,37 @@ const styles = () => ({
   }
 })
 
-class Home extends Component {
-  render() {
-    const {
-      classes,
-      ...other
-    } = this.props
-    return(
-      <div className={classes.root} {...other}>
-        <div className={classes.titleBox}>
-          <Typography className={classes.projectName}>Lesson-Manager</Typography>
-          <Typography className={classes.projectContent}>This application can manage your timetable</Typography>
-        </div>
-        <div className={classes.subTitleBox}>
-         <Typography className={classes.guessTitle}>Let&rsquo;s start manage!!</Typography>
-          <div className={classes.buttons}>
-            <Button className={classes.registerButton}>REGISTER</Button>
-            <Button className={classes.loginButton}>LOIGN</Button>
-          </div>
-        </div>
-     </div>
-    )
-  }
+const Home = ({ classes, ...other }) => (
+  <div className={classes.root} {...other}>
+    <div className={classes.titleBox}>
+      <Typography className={classes.projectName}>
+          Lesson-Manager
+      </Typography>
+      <Typography className={classes.projectContent}>
+          This application can manage your timetable
+      </Typography>
+    </div>
+    <div className={classes.subTitleBox}>
+      <Typography className={classes.guessTitle}>
+          Let&rsquo;s start manage!!
+      </Typography>
+      <div className={classes.buttons}>
+        <Link to='/signup'>
+          <Button className={classes.registerButton}>
+              SIGN UP
+          </Button>
+        </Link>
+        <Link to='/login'>
+          <Button className={classes.loginButton}>
+              LOGIN
+          </Button>
+        </Link>
+      </div>
+    </div>
+  </div>
+)
+
+Home.propTypes = {
+  classes: PropTypes.object.isRequired
 }
 export default withStyles(styles)(Home)

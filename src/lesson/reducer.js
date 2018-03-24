@@ -1,49 +1,71 @@
-import createReducer from './../utils/createReducer'
+import createReducer from 'app/utils/createReducer'
 import LessonsActionTypes from './constants'
 
 const initialState = {
-  timetables: [],
-  lessons : []
+  myTimetable: {},
+  timetable: {},
+  lessons : [],
+  message : ''
 }
 
-const getLessons = (state, action) => {
-  return Object.assign({}, state, { 
-    timetables : state.timetables,
-    lessons : action.lessons 
-  })
-}
+const getLessons = (state, action) => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : action.lessons.data,
+  message : state.message
+})
 
-const getTimetables = (state, action) => {
-  return Object.assign({}, state, {
-    timetables : action.timetables,
-    lessons : state.lessons
-  })
-}
+const getMyTimetable = (state, action) => Object.assign({}, state, {
+  myTimetable : action.timetable.data,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : state.message
+})
 
-const getTimetable = (state, action) => {
-  return Object.assign({}, state, {
-    timetables : action.timetable,
-    lessons : state.lessons
-  })
-}
+const getTimetable = (state, action) => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : action.timetable.data,
+  lessons : state.lessons,
+  message : state.message
+})
 
-const postTimetables = (state, action) => {
-  return state
-}
+const postTimetables = state => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : '時間割を登録しました。'
+})
 
-const putTimetables = (state, action) => {
-  return state
-}
+const failPostTimetables = state => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : '時間割の登録に失敗しました。'
+})
 
-const deleteTimetables = (state, action) => {
-  return state
-}
+const putTimetables = state => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : '編集に成功しました。'
+})
+
+const failPutTimetables = state => Object.assign({}, state, {
+  myTimetable : state.myTimetable,
+  timetable : state.timetable,
+  lessons : state.lessons,
+  message : '編集に失敗しました。'
+})
+
+const deleteTimetables = state => state
 
 export default createReducer(initialState, {
   [LessonsActionTypes.SUCCESS_ALL_LESSONS] : getLessons,
-  [LessonsActionTypes.SUCCESS_ALL_TIMETABLES] : getTimetables,
+  [LessonsActionTypes.SUCCESS_MY_TIMETABLES] : getMyTimetable,
   [LessonsActionTypes.SUCCESS_GET_TIMETABLES] : getTimetable,
   [LessonsActionTypes.SUCCESS_POST_TIMETABLES] : postTimetables,
+  [LessonsActionTypes.FAILURE_POST_TIMETABLES] : failPostTimetables,
   [LessonsActionTypes.SUCCESS_PUT_TIMETABLES] : putTimetables,
+  [LessonsActionTypes.FAILURE_PUT_TIMETABLES] : failPutTimetables,
   [LessonsActionTypes.SUCCESS_DELETE_TIMETABLES] : deleteTimetables
 })
