@@ -79,7 +79,8 @@ class RegisterPage extends Component {
   }
 
   handleRegister = () => {
-    this.props.requestPostTimetables(this.state.lessonIds)
+    // ここで時間割を登録します
+    // this.props.requestPostTimetables(this.state.lessonIds)
   }
 
   render() {

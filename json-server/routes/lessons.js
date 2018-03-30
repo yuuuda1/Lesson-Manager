@@ -4,4 +4,4 @@ module.exports = router
 
 const lessons = require('./../lessons/lessons')
 
-router.get('/lessons', lessons)
+router.get('/api/lessons/search', lessons)

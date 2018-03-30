@@ -1,5 +1,5 @@
-const baseURL = 'http://lesson-manager.example'
-// let baseURL = 'http://localhost:8088'
+// const baseURL = 'http://lesson-manager.example'
+const baseURL = 'http://localhost:8089'
 // let baseURL = process.env.DEV_HOST
 
 window.axios = require('axios')

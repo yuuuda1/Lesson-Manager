@@ -82,7 +82,8 @@ class TimetableEditPage extends Component {
   }
 
   handleRegister = () => {
-    this.props.requestPutTimetables(this.state.lessonIds)
+    // ここで時間割を更新します
+    // this.props.requestPutTimetables(this.state.lessonIds)
   }
 
   render() {
