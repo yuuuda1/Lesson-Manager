@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
+import classNames from 'classnames'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
@@ -10,7 +11,6 @@ import IconButton from 'material-ui/IconButton'
 
 const styles = () => ({
   root: {
-    fontFamily: 'Roboto',
     width: '100vh',
     height: '64px'
   },
@@ -21,10 +21,10 @@ const styles = () => ({
   },
   appbar: {
     width: '100%',
-    zIndex: 1,
-    position: 'absolute',
-    top: '0px',
-    left: '0px'
+  },
+  headerTitle: {
+    flex: 1,
+    fontSize: '24px'
   },
   title: {
     color: '#FFF',
@@ -36,32 +36,49 @@ const styles = () => ({
   icon: {
     color: '#FFF'
   }
-
 })
 
-const Header = ({
-  classes, children, logout, ...other
-}) => (
-  <AppBar
-    classes={{
-      root: classes.header,
-      colorPrimary: classes.appBarColorDefault
-    }}
-    {...other}
-  >
-    {children}
-    <Toolbar style={{ marginLeft: 'auto' }}>
-      <Button onClick={logout}>
-        <Typography className={classes.title}>
-          ログアウト
-        </Typography>
-      </Button>
-      <IconButton className={classes.icon}>
-        <StoreIcon />
-      </IconButton>
-    </Toolbar>
-  </AppBar>
-)
+class Header extends Component {
+  render() {
+    const {
+      classes,
+      children,
+      logout,
+      className: classNameProp,
+      ...other
+    } = this.props
+
+    const className = classNames(classes.root,classNameProp)
+
+    return(
+      <div className={className} {...other} >
+        <AppBar
+          classes={{
+            root: classes.header,
+            colorPrimary: classes.appBarColorDefault
+          }}
+        >
+          <Toolbar style={{marginRight: 'auto'}}>
+            <Typography variant="title" color="inherit" className={classes.headerTitle}>
+              Lesson Manager
+            </Typography>
+          </Toolbar>
+          <Toolbar style={{ marginLeft: 'auto' }}>
+            <Button onClick={logout}>
+              <Typography className={classes.title}>
+                ログアウト
+              </Typography>
+            </Button>
+            <IconButton className={classes.icon}>
+              <StoreIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        {children}
+      </div>
+    )
+  }
+}
 
 Header.propTypes = {
   children : PropTypes.node,
