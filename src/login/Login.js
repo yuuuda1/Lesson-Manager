@@ -1,70 +1,80 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
+import PropTypes from 'prop-types'
 import Typography from 'material-ui/Typography'
 import Card, { CardActions } from 'material-ui/Card'
 import Button from 'material-ui/Button'
-import Header from 'app/Header'
 import TextField from 'material-ui/TextField'
+import Header from 'app/Header'
 
 const styles = () => ({
   root: {
-    fontSize: 'Roboto',
     backgroundColor: '#FAFAFA',
-    position: 'absolute',
-    zIndex: 1,
-    height: '100%',
-    width: '100%'
+    height: '100vh',
+    width: '100%',
   },
-  mainContent: {
-    marginTop: '250px'
+  header: {
+    marginBottom: '160px'
   },
   card: {
     margin: 'auto',
-    width: '30%',
-    height: '30%'
+    width: '320px',
+    height: '360px'
+  },
+  cardHeader: {
+    width: '100%',
+    height: '56px',
+    backgroundColor: '#00BCD4',
+    marginBottom: '8px'
   },
   cardTitle: {
-    fontSize: '24px',
+    fontSize: '20px',
     textAlign: 'center',
-    lineHeight: '64px',
+    lineHeight: '56px',
     color: '#FFF',
     width: '100%'
   },
   cardContent: {
     display: 'inline-block',
     textAlign: 'center',
-    width: '100%'
-  },
-  cardTop: {
     width: '100%',
-    height: '64px',
-    backgroundColor: '#00BCD4'
+    padding: '0px'
   },
   error: {
-    margin: '8px',
-    width: '100%'
+    margin: 'auto',
+    width: '240px',
+    height: '34px',
+    textAlign: 'left',
+  },
+  errorFont: {
+    fontSize: '12px'
   },
   email: {
-    marginTop: '20px',
+    marginTop: '0px',
+    marginLeft: '0px',
     width: '100%'
   },
   password: {
-    marginTop: '60px',
+    marginTop: '20px',
+    marginLeft: '0px',
+    marginBottom: '40px',
     width: '100%'
   },
   button: {
-    marginTop: '20px',
+    margin: 'auto',
     color: '#FFF',
     backgroundColor: '#00BCD4',
-    width: '240px',
-    height: '45px',
-    fontSize: '18px'
+    width: '218px',
+    height: '40px',
+    fontSize: '16px'
   },
-  pageAll: {
-    backgroundColor: '#FAFAFA',
-    width: '100%',
-    height: '100%'
+  announce: {
+    width: '218px',
+    marginTop: '4px',
+    marginLeft: '47px',
+    fontSize: '12px',
+    color: '#000',
+    opacity: '0.38',
   }
 })
 
@@ -94,46 +104,44 @@ class LoginPage extends Component {
     } = this.props
     return (
       <div className={classes.root} {...other}>
-        <Header />
-        <div className={classes.pageAll}>
-          <div className={classes.mainContent}>
-            <Card className={classes.card}>
-              <div className={classes.cardTop}>
-
-                <Typography className={classes.cardTitle}>
-                    SIGN IN
-                </Typography>
-              </div>
-              <CardActions className={classes.cardContent}>
-                <div className={classes.error}>
-                  <Typography>
-                    {errorMessage}
-                  </Typography>
-                </div>
-                <div className={classes.email}>
-                  <TextField
-                    id='email'
-                    label='Email'
-                    onChange={this.handleChange('email')}
-                    type='input'
-                  />
-                </div>
-                <div className={classes.password}>
-                  <TextField
-                    autoComplete='current-password'
-                    id='password'
-                    label='Password'
-                    onChange={this.handleChange('password')}
-                    type='password'
-                  />
-                </div>
-                <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
-                  LOGIN
-                </Button>
-              </CardActions>
-            </Card>
+        <Header className={classes.header}/>
+        <Card className={classes.card}>
+          <div className={classes.cardHeader}>
+            <Typography className={classes.cardTitle}>
+              SIGN IN
+            </Typography>
           </div>
-        </div>
+          <CardActions className={classes.cardContent}>
+            <div className={classes.error}>
+              <Typography color='error' className={classes.errorFont}>
+                {errorMessage}
+              </Typography>
+            </div>
+            <div className={classes.email}>
+              <TextField
+                id='email'
+                label='Email'
+                onChange={this.handleChange('email')}
+                type='input'
+              />
+            </div>
+            <div className={classes.password}>
+              <TextField
+            autoComplete='current-password'
+                id='password'
+                label='Password'
+                onChange={this.handleChange('password')}
+                type='password'
+              />
+            </div>
+            <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
+              LOGIN
+            </Button>
+            <Typography align='left' className={classes.announce}>
+            　Do&rsquo;nt have account? Sign up now!!
+            </Typography>
+          </CardActions>
+        </Card>
       </div>
     )
   }
