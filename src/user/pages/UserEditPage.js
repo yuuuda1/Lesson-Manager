@@ -92,7 +92,8 @@ class UserEditPage extends Component {
   }
 
   handleUpdateUser = () => {
-    this.props.requestPutMe(this.state.name, this.state.email, this.state.password)
+    // ここでユーザー情報を更新します
+    // this.props.requestPutMe(this.state.name, this.state.email, this.state.password)
   }
 
   render() {

@@ -1,10 +1,9 @@
 const lessonFactory = require('./../factories/lessonFactory')
 
-let lessonData = lessonFactory.create(10)
+const lessonData = lessonFactory.create(10)
 
 const lessons = (request, response) => {
-  response.jsonp(lessonData)
-
+  response.jsonp({ data: lessonData })
 }
 
 module.exports = lessons

@@ -7,22 +7,24 @@ export const allLessons = items => {
 
 export const myTimetable = () => {
   const uri = 'api/timetables'
-  const token = sessionStorage.getItem('_lesson_manager_token')
-  return axios.get(uri, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
+  // const token = sessionStorage.getItem('_lesson_manager_token')
+  return axios.get(uri)
+  // return axios.get(uri, {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`
+  //   }
+  // })
 }
 
 export const getTimetable = id => {
   const uri = `api/timetables/${id}`
-  const token = sessionStorage.getItem('_lesson_manager_token')
-  return axios.get(uri, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
+  // const token = sessionStorage.getItem('_lesson_manager_token')
+  return axios.get(uri)
+  // return axios.get(uri, {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`
+  //   }
+  // })
 }
 
 export const postTimetables = timetable => {
