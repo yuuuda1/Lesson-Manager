@@ -31,6 +31,7 @@ const styles = theme => ({
     overflow: 'auto'
   },
   appFrame: {
+    backgroundColor: '#FAFAFA',
     width: '100%'
   },
   appBar: {

@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 
 const styles = () => ({
   root: {
-    backgroundColor: '#FAFAFA',
     width: '100%',
     height: '100%'
   },
