@@ -12,6 +12,7 @@ import HomeIcon from 'material-ui-icons/Home'
 import DateRangeIcon from 'material-ui-icons/DateRange'
 import InputIcon from 'material-ui-icons/Input'
 import StarIcon from 'material-ui-icons/Star'
+import SearchIcon from 'material-ui-icons/Search'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ChevronRightIcon from 'material-ui-icons/ChevronRight'
 import { Link } from 'react-router-dom'
@@ -80,7 +81,7 @@ const styles = theme => ({
     height: '100%',
     position: 'absolute',
     left: '0px',
-    top: '64px',
+    top: '0px',
     backgroundColor: '#00BCD4'
   },
   sideBarShift: {
@@ -92,17 +93,15 @@ const styles = theme => ({
   childrenStyle: {
     marginLeft: 56 - drawerWidth,
     marginTop: '64px',
-    width: '100%' - 56,
-    height: '100%' - 64
-  },
-  icon: {
-    position: 'absolute',
-    right:'32px',
-    color: '#FFF'
+    width: 'calc(100% - 56px)',
+    height: 'calc(100% - 64px)'
   },
   title: {
     color: '#FFF',
     fontSize: '24px'
+  },
+  listItemText: {
+    marginLeft: '16px'
   }
 })
 
@@ -149,8 +148,8 @@ class PersistentDrawer extends Component {
                 <MenuIcon />
               </IconButton>
               <Link to='/lesson'>
-                <Typography noWrap className={classes.title} variant='title'>
-                  Lesson-Manager
+                <Typography className={classes.title} variant='title'>
+                  Lesson Manager
                 </Typography>
               </Link>
             </Toolbar>
@@ -170,31 +169,31 @@ class PersistentDrawer extends Component {
             <div className={classes.listStyles}>
               <List>
                 <ListItem button className={classes.listItem}>
-                  <HomeIcon />
-                  <Link to='/users/me'>
+                  <HomeIcon/>
+                  <Link to='/users/me' className={classes.listItemText}>
                     <ListItemText primary='マイページ' />
                   </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
-                  <DateRangeIcon />
-                  <Link to='/lesson'>
+                  <DateRangeIcon/>
+                  <Link to='/lesson' className={classes.listItemText}>
                     <ListItemText primary='MY時間割' />
                   </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
-                  <InputIcon />
-                  <Link to='/register'>
+                  <InputIcon/>
+                  <Link to='/register' className={classes.listItemText}>
                     <ListItemText primary='時間割登録' />
                   </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
-                  <InputIcon />
-                  <Link to='/users/search'>
+                  <SearchIcon/>
+                  <Link to='/users/search' className={classes.listItemText}>
                     <ListItemText primary='ユーザ検索' />
                   </Link>
                 </ListItem>
                 <ListItem button className={classes.listItem}>
-                  <StarIcon />
+                  <StarIcon/>
                   <ListItemText primary='おすすめ' />
                 </ListItem>
               </List>
