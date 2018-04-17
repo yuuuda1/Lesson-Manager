@@ -1,64 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import TextField from 'material-ui/TextField'
-import Card, { CardActions } from 'material-ui/Card'
+import Paper from 'material-ui/Paper'
 import SearchIcon from 'material-ui-icons/Search'
 import IconButton from 'material-ui/IconButton'
 
 const styles = () => ({
-  card: {
+  root: {
     width: '400px',
-    height: '32px'
-  },
-  Content:{
-    width: '400px',
-    height: '32px'
-  },
-  searchButton: {
-    width: '400px',
+    height: '32px',
     position: 'relative',
-    top: '-8px',
-    maxWidth: 'true'
+    top: '19px'
   },
-  search: {
-    marginLeft: '-24px',
+  paper: {
+    width: '400px',
+    height: '32px',
+  },
+  textField: {
+    marginLeft: '1%',
+    width: '89%',
     position: 'relative',
-    left: '16px'
+    top: '-16px',
+  },
+  iconButton: {
+    width: '10%',
+    position: 'relative',
+    top: '-20px'
   }
-
 })
 
-const SearchButton = ({
-  classes, onChangeValue, onClick, ...other
-}) => (
-  <div className={classes.root} {...other}>
-    <div className={classes.button}>
-      <Card className={classes.card}>
-        <CardActions
-          classes={{
-            paddingTop: classes.cardContentPadding
-          }}
-          className={classes.Content}
-        >
+class SearchButton extends Component {
+  render() {
+    const {
+      classes,
+      onChangeValue,
+      onClick,
+      className: classNameProp,
+      ...other
+    } = this.props
+
+    const className = classNames(classes.root,classNameProp)
+
+    return(
+      <div className={className} {...other}>
+        <Paper className={classes.paper}>
           <TextField
             fullWidth
             SelectProps
-            className={classes.searchButton}
+            className={classes.textField}
             id='search'
             label='Search'
             onChange={onChangeValue}
             type='input'
-
           />
-          <IconButton className={classes.search} onClick={onClick}>
-            <SearchIcon />
+          <IconButton className={classes.iconButton} onClick={onClick}>
+            <SearchIcon/>
           </IconButton>
-        </CardActions>
-      </Card>
-    </div>
-  </div>
-)
+        </Paper>
+      </div>
+    )
+  }
+}
 
 SearchButton.propTypes = {
   classes : PropTypes.object.isRequired,
