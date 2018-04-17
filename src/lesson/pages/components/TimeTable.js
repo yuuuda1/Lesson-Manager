@@ -9,19 +9,19 @@ import ModalContent from './ModalContent'
 const styles = () => ({
   root: {
     zIndex: 100,
-    marginTop: '32px',
-    marginLeft: '32px'
+    padding: '16px'
   },
   listHeader: {
-    width: '1120px',
     height: '18px',
+    display: 'flex',
     backgroundColor: '#FAFAFA',
     borderBottom: '4px solid #FFAB40',
     paddingBottom: '4px',
     paddingLeft: '30px'
   },
   listElememt: {
-    width: '1150x',
+    width: '100%',
+    display: 'flex',
     height: '600px'
   },
   listSideBar: {
@@ -31,7 +31,6 @@ const styles = () => ({
     paddingTop: '48px'
   },
   listItemStyle: {
-    width: '160px',
     height: '120px',
     backgroundColor: '#FAFAFA',
     display: 'inline-block',
@@ -40,11 +39,14 @@ const styles = () => ({
   },
   listBlock: {
     display: 'inline-block',
-    width: '1120px',
+    width: 'calc(100% - 30px)',
     height: '600px',
     fontSize: '16px',
     position: 'relative',
     top: 0
+  },
+  listRow: {
+    display: 'flex'
   },
   listStyles: {
     paddingTop: '0px',
@@ -53,14 +55,13 @@ const styles = () => ({
     opacity: '0.87'
   },
   weekText: {
-    width: '32px',
+    width: 'calc(100% / 7)',
     height: '21px',
     display: 'inline-block',
     fontSize: '14px',
     fontFamily: 'Roboto',
     fontWeight: '700',
-    textAlign: 'center',
-    marginRight: '127px'
+    textAlign: 'center'
   },
   numberText: {
     height: '30px',
@@ -134,7 +135,7 @@ class TimeTable extends Component {
     ))
 
     const lists = numbers.map(number => (
-      <List disablePadding classes={{ padding: classes.listStyles }} label={number[0]}>
+      <List disablePadding className={classes.listRow} classes={{ padding: classes.listStyles }} label={number[0]}>
         {dailys.map(daily => {
           if (Object.keys(timetable).length === 0) {
             return <ListItem button divider className={classes.listItemStyle} label={daily[0]} onClick={this.handleOpen} />

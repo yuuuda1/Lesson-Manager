@@ -22,25 +22,31 @@ const drawerWidth = 240
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    width: '100vw',
+    height: '100%',
+    minWidth: '960px',
+    minHeight: '100vh',
+    display: 'flex',
+    position: 'relative',
+    overflow: 'auto'
   },
   appFrame: {
-    zIndex: 1,
-    overflow: 'hidden',
-    display: 'flex',
-    width: '100vw'
+    width: '100%'
   },
   appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
+    display: 'flex',
+    flexDirection: 'row',
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
   },
   appBarShift: {
+    marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
   },
@@ -59,7 +65,20 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth
+    height: '100%',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
+  drawerPaperClose: {
+    width: 60,
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   drawerHeader: {
     display: 'flex',
@@ -86,16 +105,18 @@ const styles = theme => ({
     backgroundColor: '#00BCD4'
   },
   sideBarShift: {
-    display: 'none'
+    width: '0px'
   },
   appBarColorDefault: {
     backgroundColor: '#00BCD4'
   },
   childrenStyle: {
-    marginLeft: 56 - drawerWidth,
     marginTop: '64px',
-    width: 'calc(100% - 56px)',
-    height: 'calc(100% - 64px)'
+    width: 'calc(100% - 20px)',
+    height: 'calc(100% - 84px)',
+    padding: '10px 20px',
+    position: 'relative',
+    overflow: 'auto'
   },
   title: {
     color: '#FFF',
@@ -130,6 +151,54 @@ class PersistentDrawer extends Component {
 
     return (
       <div className={classes.root} {...other}>
+        <Drawer
+          classes={{
+            paper: classNames(
+              classes.drawerPaper,
+              !this.state.open && classes.drawerPaperClose
+            )
+          }}
+          open={this.state.open}
+          variant='persistent'
+        >
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={this.handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </div>
+          <div className={classes.listStyles}>
+            <List>
+              <ListItem button className={classes.listItem}>
+                <HomeIcon/>
+                <Link to='/users/me' className={classes.listItemText}>
+                  <ListItemText primary='マイページ' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <DateRangeIcon/>
+                <Link to='/lesson' className={classes.listItemText}>
+                  <ListItemText primary='MY時間割' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <InputIcon/>
+                <Link to='/register' className={classes.listItemText}>
+                  <ListItemText primary='時間割登録' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <SearchIcon/>
+                <Link to='/users/search' className={classes.listItemText}>
+                  <ListItemText primary='ユーザ検索' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <StarIcon/>
+                <ListItemText primary='おすすめ' />
+              </ListItem>
+            </List>
+          </div>
+        </Drawer>
         <div className={classes.appFrame}>
           <ConnectedHeader className={classNames(
             classes.appBar,
@@ -155,51 +224,6 @@ class PersistentDrawer extends Component {
               </Link>
             </Toolbar>
           </ConnectedHeader>
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            open={this.state.open}
-            variant='persistent'
-          >
-            <div className={classes.drawerHeader}>
-              <IconButton onClick={this.handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </div>
-            <div className={classes.listStyles}>
-              <List>
-                <ListItem button className={classes.listItem}>
-                  <HomeIcon/>
-                  <Link to='/users/me' className={classes.listItemText}>
-                    <ListItemText primary='マイページ' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <DateRangeIcon/>
-                  <Link to='/lesson' className={classes.listItemText}>
-                    <ListItemText primary='MY時間割' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <InputIcon/>
-                  <Link to='/register' className={classes.listItemText}>
-                    <ListItemText primary='時間割登録' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <SearchIcon/>
-                  <Link to='/users/search' className={classes.listItemText}>
-                    <ListItemText primary='ユーザ検索' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <StarIcon/>
-                  <ListItemText primary='おすすめ' />
-                </ListItem>
-              </List>
-            </div>
-          </Drawer>
           <div
             className={classNames(
               classes.sideBar,

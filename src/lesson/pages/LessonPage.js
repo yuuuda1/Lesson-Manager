@@ -14,8 +14,6 @@ const styles = () => ({
     height: '100%'
   },
   title: {
-    maxWidth: '1150px',
-    marginLeft: '32px',
     marginTop: '32px',
     paddingBottom: '8px',
     borderBottom: '1px solid #000000',
@@ -25,6 +23,7 @@ const styles = () => ({
   },
   titleStyle: {
     height: '32px',
+    marginLeft: '32px',
     display: 'inline-block',
     fontSize: '20px',
     paddingTop: '8px'
@@ -57,8 +56,8 @@ class LessonPage extends Component {
       </Typography>
     ) : <TimeTable timetable={timetable} />
     return (
-      <div className={classes.root} {...other}>
-        <Container>
+      <Container>
+        <div className={classes.root} {...other}>
           <div className={classes.title}>
             <Typography variant='title' className={classes.titleStyle}>
               MY時間割
@@ -72,8 +71,8 @@ class LessonPage extends Component {
           <div>
           </div>
           {myTimetable}
-        </Container>
-      </div>
+        </div>
+      </Container>
     )
   }
 }
