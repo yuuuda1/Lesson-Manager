@@ -11,64 +11,57 @@ const styles = () => ({
   root: {
     fontSize: 'Roboto',
     backgroundColor: '#FAFAFA',
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
     height: '100%',
     width: '100%'
   },
-  mainContent: {
-    marginTop: 'marginTop'
-  },
   card: {
-    position: 'relative',
     margin: 'auto',
-    top: '120px',
-    width: '400px',
-    height: '480px'
+    width: '320px',
+    height: '360px',
+    marginTop: '160px'
+  },
+  cardHeader: {
+    width: '100%',
+    height: '56px',
+    backgroundColor: '#00BCD4',
+    marginBottom: '8px'
   },
   cardTitle: {
-    fontSize: '24px',
+    width: '100%',
+    fontSize: '20px',
     textAlign: 'center',
-    lineHeight: '64px',
+    lineHeight: '56px',
     color: '#FFF'
   },
   cardContent: {
-    height: '336px',
-    width: '400px'
-  },
-  cardTop: {
-    width: '400px',
-    height: '64px',
-    backgroundColor: '#00BCD4'
+    display: 'inline-block',
+    textAlign: 'center',
+    width: '100%',
+    padding: '0px'
   },
   name: {
-    position: 'absolute',
-    top: '92px',
-    left: '80px',
-    width: '240px'
+    marginTop: '0px',
+    marginLeft: '0px',
+    width: '68%'
   },
   email: {
-    position: 'absolute',
-    top: '172px',
-    left: '80px',
-    width: '240px'
+    marginTop: '20px',
+    marginLeft: '0px',
+    width: '68%'
   },
   password: {
-    position: 'absolute',
-    top: '252px',
-    left: '80px',
-    width: '240px'
+    marginTop: '20px',
+    marginLeft: '0px',
+    marginBottom: '40px',
+    width: '68%'
   },
   button: {
-    position: 'absolute',
-    top: '360px',
-    left: '80px',
+    margin: 'auto',
     color: '#FFF',
     backgroundColor: '#00BCD4',
-    width: '240px',
-    height: '45px',
-    fontSize: '18px'
+    width: '218px',
+    height: '40px',
+    fontSize: '16px'
   }
 })
 
@@ -106,44 +99,42 @@ class UserEditPage extends Component {
     return (
       <div className={classes.root} {...other}>
         <Container>
-          <div className={classes.pageAll}>
-            <Card className={classes.card}>
-              <div className={classes.cardTop}>
-                <Typography className={classes.cardTitle}>
-                  My Account
-                </Typography>
-              </div>
-              <CardActions className={classes.cardContent}>
-                <TextField
-                  className={classes.name}
-                  defaultValue={me.name}
-                  id='name'
-                  label='Name'
-                  onChange={this.handleChange('name')}
-                  type='input'
-                />
-                <TextField
-                  className={classes.email}
-                  defaultValue={me.email}
-                  id='email'
-                  label='Email'
-                  onChange={this.handleChange('email')}
-                  type='input'
-                />
-                <TextField
-                  autoComplete='current-password'
-                  className={classes.password}
-                  id='password'
-                  label='Password'
-                  onChange={this.handleChange('password')}
-                  type='password'
-                />
-                <Button className={classes.button} onClick={this.handleUpdateUser} variant='flat'>
-                  編集する
-                </Button>
-              </CardActions>
-            </Card>
-          </div>
+          <Card className={classes.card}>
+            <div className={classes.cardHeader}>
+              <Typography className={classes.cardTitle}>
+                My Account
+              </Typography>
+            </div>
+            <CardActions className={classes.cardContent}>
+              <TextField
+                className={classes.name}
+                defaultValue={me.name}
+                id='name'
+                label='Name'
+                onChange={this.handleChange('name')}
+                type='input'
+              />
+              <TextField
+                className={classes.email}
+                defaultValue={me.email}
+                id='email'
+                label='Email'
+                onChange={this.handleChange('email')}
+                type='input'
+              />
+              <TextField
+                autoComplete='current-password'
+                className={classes.password}
+                id='password'
+                label='Password'
+                onChange={this.handleChange('password')}
+                type='password'
+              />
+              <Button className={classes.button} onClick={this.handleUpdateUser} variant='flat'>
+                編集
+              </Button>
+            </CardActions>
+          </Card>
         </Container>
       </div>
     )
