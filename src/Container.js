@@ -67,7 +67,8 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
-    borderBottom: '1px solid #000'
+    borderBottom: '2px solid #000',
+    opacity: '0.54'
   },
   listStyles: {
   },
