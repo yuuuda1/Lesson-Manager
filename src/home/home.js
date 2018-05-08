@@ -9,13 +9,13 @@ const styles = () => ({
   root: {
     fontFamily: 'Roboto',
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   titleBox: {
     width: '100%',
     height: 'calc(55vh - 240px)',
     backgroundColor: '#00BCD4',
-    paddingTop: '240px',
+    paddingTop: '240px'
   },
   subTitleBox: {
     width: '100%',

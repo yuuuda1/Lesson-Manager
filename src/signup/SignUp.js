@@ -5,7 +5,6 @@ import Typography from 'material-ui/Typography'
 import Card, { CardActions } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
-import { Link } from 'react-router-dom'
 import Header from 'app/Header'
 
 const styles = () => ({
@@ -91,7 +90,7 @@ class SignUp extends Component {
     } = this.props
     return (
       <div className={classes.root} {...other}>
-        <Header className={classes.header}/>
+        <Header className={classes.header} />
         <Card className={classes.card}>
           <div className={classes.cardHeader}>
             <Typography className={classes.cardTitle}>

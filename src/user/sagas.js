@@ -67,7 +67,6 @@ function* requestPutMe(action) {
   } catch (error) {
     yield put(failuerPutMe(error))
   }
-  yield call(history.push, '/users/me')
 }
 
 export function* watchRequestPutMe() {

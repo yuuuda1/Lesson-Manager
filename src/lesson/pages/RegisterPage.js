@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import Input from 'material-ui-icons/Input'
 import Typography from 'material-ui/Typography'
 import Container from 'app/Container'
 import LessonList from './components/LessonList'
@@ -28,7 +27,7 @@ const styles = () => ({
     fontSize: '24px',
     color: '#000',
     opacity: '0.87'
-  },
+  }
 })
 
 class RegisterPage extends Component {
@@ -57,8 +56,7 @@ class RegisterPage extends Component {
   }
 
   handleRegister = () => {
-    // ここで時間割を登録します
-    // this.props.requestPostTimetables(this.state.lessonIds)
+    this.props.requestPostTimetables(this.state.lessonIds)
   }
 
   render() {
@@ -75,7 +73,7 @@ class RegisterPage extends Component {
       <div className={classes.root} {...other}>
         <Container>
           <div className={classes.registerContent}>
-            <Typography variant='title' className={classes.title}>
+            <Typography className={classes.title} variant='title'>
               MY時間割の新規登録
             </Typography>
             <Typography variant='title'>
@@ -85,6 +83,7 @@ class RegisterPage extends Component {
               lessons={lessons}
               onChangeData={this.handleChange}
               onChangeValue={this.handleChange2}
+              onRegister={this.handleRegister}
               onSearch={this.handleSearch}
             />
           </div>

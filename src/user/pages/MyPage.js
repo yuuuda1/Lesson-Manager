@@ -89,10 +89,7 @@ class MyPage extends Component {
       <div className={classes.root} {...other}>
         <Container>
           <div className={classes.title}>
-            <Typography>
-              {message}
-            </Typography>
-            <Typography variant='title' className={classes.titleStyle}>
+            <Typography className={classes.titleStyle} variant='title'>
               マイページ
             </Typography>
             <Link to='/users/edit'>

@@ -105,7 +105,7 @@ class LoginPage extends Component {
     } = this.props
     return (
       <div className={classes.root} {...other}>
-        <Header className={classes.header}/>
+        <Header className={classes.header} />
         <Card className={classes.card}>
           <div className={classes.cardHeader}>
             <Typography className={classes.cardTitle}>
@@ -114,7 +114,7 @@ class LoginPage extends Component {
           </div>
           <CardActions className={classes.cardContent}>
             <div className={classes.error}>
-              <Typography color='error' className={classes.errorFont}>
+              <Typography className={classes.errorFont} color='error'>
                 {errorMessage}
               </Typography>
             </div>
@@ -128,7 +128,7 @@ class LoginPage extends Component {
             </div>
             <div className={classes.password}>
               <TextField
-            autoComplete='current-password'
+                autoComplete='current-password'
                 id='password'
                 label='Password'
                 onChange={this.handleChange('password')}
@@ -138,9 +138,9 @@ class LoginPage extends Component {
             <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
               LOGIN
             </Button>
-            <Link  to='/signup'>
+            <Link to='/signup'>
               <Typography align='left' className={classes.announce}>
-            　  Do&rsquo;nt have account? Sign up now!!
+                Do&rsquo;nt have account? Sign up now!!
               </Typography>
             </Link>
           </CardActions>

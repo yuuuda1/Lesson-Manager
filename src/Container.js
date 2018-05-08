@@ -170,31 +170,31 @@ class PersistentDrawer extends Component {
           <div className={classes.listStyles}>
             <List>
               <ListItem button className={classes.listItem}>
-                <HomeIcon/>
-                <Link to='/users/me' className={classes.listItemText}>
+                <HomeIcon />
+                <Link className={classes.listItemText} to='/users/me'>
                   <ListItemText primary='マイページ' />
                 </Link>
               </ListItem>
               <ListItem button className={classes.listItem}>
-                <DateRangeIcon/>
-                <Link to='/lesson' className={classes.listItemText}>
+                <DateRangeIcon />
+                <Link className={classes.listItemText} to='/lesson'>
                   <ListItemText primary='MY時間割' />
                 </Link>
               </ListItem>
               <ListItem button className={classes.listItem}>
-                <InputIcon/>
-                <Link to='/register' className={classes.listItemText}>
+                <InputIcon />
+                <Link className={classes.listItemText} to='/register'>
                   <ListItemText primary='時間割登録' />
                 </Link>
               </ListItem>
               <ListItem button className={classes.listItem}>
-                <SearchIcon/>
-                <Link to='/users/search' className={classes.listItemText}>
+                <SearchIcon />
+                <Link className={classes.listItemText} to='/users/search'>
                   <ListItemText primary='ユーザ検索' />
                 </Link>
               </ListItem>
               <ListItem button className={classes.listItem}>
-                <StarIcon/>
+                <StarIcon />
                 <ListItemText primary='おすすめ' />
               </ListItem>
             </List>

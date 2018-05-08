@@ -8,7 +8,7 @@ import LessonList from './components/LessonList'
 const styles = () => ({
   root: {
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   registerContent: {
     width: '100%',
@@ -52,8 +52,7 @@ class TimetableEditPage extends Component {
   }
 
   handleRegister = () => {
-    // ここで時間割を更新します
-    // this.props.requestPutTimetables(this.state.lessonIds)
+    this.props.requestPutTimetables(this.state.lessonIds)
   }
 
   render() {
@@ -81,6 +80,7 @@ class TimetableEditPage extends Component {
               lessons={lessons}
               onChangeData={this.handleChange}
               onChangeValue={this.handleChange2}
+              onRegister={this.handleRegister}
               onSearch={this.handleSearch}
               registedLessons={timetable.lessons}
             />

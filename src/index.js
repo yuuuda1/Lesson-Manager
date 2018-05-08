@@ -30,7 +30,7 @@ if (rootElement) {
           <Route component={Home} path='/home' />
           <Route component={ConnectedLessons} path='/lesson' />
           <Route component={ConnectedRegister} path='/register' />
-          <Route component={SignUp} path='/signup' />
+          <Route notAuth component={SignUp} path='/signup' />
           <Route notAuth component={ConnectedLogin} path='/login' />
           <Route component={ConnectedSearch} path='/users/search' />
           <Route component={ConnectedProfile} path='/users/profile/:id' />

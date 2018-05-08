@@ -10,7 +10,7 @@ const styles = () => ({
     position: 'absoluto',
     zIndex: 1,
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   registerContent: {
     width: '100%',
@@ -32,7 +32,7 @@ const styles = () => ({
   },
   userLinks: {
     margin: 'auto',
-    maxWidth: '800px',
+    maxWidth: '800px'
   }
 })
 

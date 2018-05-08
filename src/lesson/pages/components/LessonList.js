@@ -2,16 +2,15 @@ import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import PropTypes from 'prop-types'
 import Typography from 'material-ui/Typography'
-import Paper from 'material-ui/Paper'
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails
 } from 'material-ui/ExpansionPanel'
 import classNames from 'classnames'
-import ExpandMore from 'material-ui-icons/ExpandMore'
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import Select from 'material-ui/Select'
 import { FormControl } from 'material-ui/Form'
-import Input, { InputLabel } from 'material-ui/Input'
+import { InputLabel } from 'material-ui/Input'
 import Button from 'material-ui/Button'
 import { MenuItem } from 'material-ui/Menu'
 import LessonListContent from './LessonListContent'
@@ -76,7 +75,9 @@ class LessonList extends Component {
       registedLessons: this.props.registedLessons,
       searchItems : {
         word: '',
-        department: ''
+        department: '',
+        term: '',
+        grade: ''
       }
     }
     this.props.onChangeValue(ids)
@@ -162,19 +163,18 @@ class LessonList extends Component {
       lessons,
       onChangeValue,
       registedLessons,
+      onRegister,
       ...other
     } = this.props
 
     const className = classNames(classes.root, classNameProp)
 
-    const lessonListComponent = lessons.length === 0 ? <div /> : lessons.map((lesson, index) => (
-      <ExpansionPanel expanded={this.state.open[index]}>
+    const lessonListComponent = lessons.length === 0 ? <div /> : lessons.map(lesson => (
+      <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Paper onClick={this.handleOpenChange(index)}>
-            <Typography className={classes.title}>
-              {lesson.name}
-            </Typography>
-          </Paper>
+          <Typography className={classes.title}>
+            {lesson.name}
+          </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <LessonListContent label='Register' lesson={lesson} onClick={this.handleLessonChange(lesson)} />
@@ -185,8 +185,10 @@ class LessonList extends Component {
     return (
       <div className={className} {...other}>
         <div className={classes.form}>
-          <FormControl className={classes.formControl} className={classes.departmentList}>
-            <InputLabel htmlFor='department'>開講学部</InputLabel>
+          <FormControl className={classes.departmentList}>
+            <InputLabel htmlFor='department'>
+              開講学部
+            </InputLabel>
             <Select
               label='対象学部'
               margin='none'
@@ -194,53 +196,107 @@ class LessonList extends Component {
               value={this.state.searchItems.department}
             >
               <MenuItem value=''>
-                <em>None</em>
+                <em>
+                  None
+                </em>
               </MenuItem>
-              <MenuItem value='経済学部'>経済学部</MenuItem>
-              <MenuItem value='経営学部'>経営学部</MenuItem>
-              <MenuItem value='法学部'>法学部</MenuItem>
-              <MenuItem value='外国語学部'>外国語学部</MenuItem>
-              <MenuItem value='文化学部'>文化学部</MenuItem>
-              <MenuItem value='理学部'>理学部</MenuItem>
-              <MenuItem value='コンピュータ理工学部'>コンピュータ理工学部</MenuItem>
-              <MenuItem value='総合生命科学部'>総合生命科学部</MenuItem>
-              <MenuItem value='現代社会学部'>現代社会学部</MenuItem>
+              <MenuItem value='共通教育科目'>
+                共通教育科目
+              </MenuItem>
+              <MenuItem value='経済学部'>
+                経済学部
+              </MenuItem>
+              <MenuItem value='経営学部'>
+                経営学部
+              </MenuItem>
+              <MenuItem value='法学部'>
+                法学部
+              </MenuItem>
+              <MenuItem value='外国語学部'>
+                外国語学部
+              </MenuItem>
+              <MenuItem value='文化学部'>
+                文化学部
+              </MenuItem>
+              <MenuItem value='理学部'>
+                理学部
+              </MenuItem>
+              <MenuItem value='コンピュータ理工学部'>
+                コンピュータ理工学部
+              </MenuItem>
+              <MenuItem value='総合生命科学部'>
+                総合生命科学部
+              </MenuItem>
+              <MenuItem value='現代社会学部'>
+                現代社会学部
+              </MenuItem>
+              <MenuItem value='情報理工学部'>
+                情報理工学部
+              </MenuItem>
             </Select>
           </FormControl>
-          <FormControl className={classes.formControl} className={classes.semesterList}>
-            <InputLabel htmlFor='semester'>開講学期</InputLabel>
+          <FormControl className={classes.semesterList}>
+            <InputLabel htmlFor='semester'>
+              開講学期
+            </InputLabel>
             <Select
               label='開講学期'
               margin='none'
-              onChange=''
-              value=''
+              onChange={this.handleChange('term')}
+              value={this.state.searchItems.term}
             >
               <MenuItem value=''>
-                <em>None</em>
+                <em>
+                  None
+                </em>
               </MenuItem>
-              <MenuItem value='春学期'>春学期</MenuItem>
-              <MenuItem value='秋学期'>秋学期</MenuItem>
-              <MenuItem value='通年'>通年</MenuItem>
-              <MenuItem value='春学期集中'>春学期集中</MenuItem>
-              <MenuItem value='秋学期集中'>秋学期集中</MenuItem>
-              <MenuItem value='集中'>集中</MenuItem>
+              <MenuItem value='春学期'>
+                春学期
+              </MenuItem>
+              <MenuItem value='秋学期'>
+                秋学期
+              </MenuItem>
+              <MenuItem value='通年'>
+                通年
+              </MenuItem>
+              <MenuItem value='春学期集中'>
+                春学期集中
+              </MenuItem>
+              <MenuItem value='秋学期集中'>
+                秋学期集中
+              </MenuItem>
+              <MenuItem value='集中'>
+                集中
+              </MenuItem>
             </Select>
           </FormControl>
-          <FormControl className={classes.formControl} className={classes.gradeList}>
-            <InputLabel htmlFor='grade'>配当年次</InputLabel>
+          <FormControl className={classes.gradeList}>
+            <InputLabel htmlFor='grade'>
+              配当年次
+            </InputLabel>
             <Select
               label='配当年次'
               margin='none'
-              onChange=''
-              value=''
+              onChange={this.handleChange('grade')}
+              value={this.state.searchItems.grade}
             >
               <MenuItem value=''>
-                <em>None</em>
+                <em>
+                  None
+                </em>
               </MenuItem>
-              <MenuItem value='１年次'>１年次</MenuItem>
-              <MenuItem value='２年次'>２年次</MenuItem>
-              <MenuItem value='３年次'>３年次</MenuItem>
-              <MenuItem value='４年次'>４年次</MenuItem>
+              <MenuItem value='1'>
+                １年次
+              </MenuItem>
+              <MenuItem value='2'>
+                ２年次
+              </MenuItem>
+              <MenuItem value='3'>
+                ３年次
+              </MenuItem>
+              <MenuItem value='4'>
+                ４年次
+              </MenuItem>
             </Select>
           </FormControl>
           <SearchButton
@@ -251,9 +307,9 @@ class LessonList extends Component {
           <Button
             classes={{ colorInherit:classes.colorInherit }}
             className={classes.getButton}
-            variant='raised'
             color='primary'
-            onClick={this.handleRegister}
+            onClick={this.props.onRegister}
+            variant='raised'
           >
             登録
           </Button>
@@ -269,11 +325,14 @@ class LessonList extends Component {
 
 LessonList.propTypes = {
   classes : PropTypes.object.isRequired,
+  className : PropTypes.string,
   lessons : PropTypes.array,
   onChangeData : PropTypes.func,
   onChangeValue : PropTypes.func,
+  onRegister : PropTypes.func,
   onSearch : PropTypes.func,
   registedLessons : PropTypes.array
+
 }
 
 LessonList.defaultProps = {

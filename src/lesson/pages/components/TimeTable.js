@@ -135,7 +135,7 @@ class TimeTable extends Component {
     ))
 
     const lists = numbers.map(number => (
-      <List disablePadding className={classes.listRow} classes={{ padding: classes.listStyles }} label={number[0]}>
+      <List disablePadding classes={{ padding: classes.listStyles }} className={classes.listRow} label={number[0]}>
         {dailys.map(daily => {
           if (Object.keys(timetable).length === 0) {
             return <ListItem button divider className={classes.listItemStyle} label={daily[0]} onClick={this.handleOpen} />
