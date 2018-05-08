@@ -11,6 +11,7 @@
   ],
   "globals": {
     "axios": true,
+    "express": true,
     "process": true,
     "require": true,
     "global": true,

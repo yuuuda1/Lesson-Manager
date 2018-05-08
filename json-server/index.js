@@ -4,14 +4,14 @@ const fs = require('fs')
 const server = jsonServer.create()
 const middlewares = jsonServer.defaults()
 
-//Set default middlewares (logger, static, cors and no-cache)
+// Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
 server.use((request, response, next) => {
   response.header('Access-Control-Allow-Origin', '*')
   next()
 })
 
-//Register routing
+// Register routing
 const routesDirPath = `${__dirname}/routes`
 const files = fs.readdirSync(routesDirPath, 'utf-8')
 files.map(file => {
@@ -19,7 +19,7 @@ files.map(file => {
   server.use(router)
 })
 
-//Start listen
-server.listen(8088, () => {
+// Start listen
+server.listen(8188, () => {
   console.log('JSON Server is running')
 })

@@ -5,7 +5,8 @@ import { requestPutMe } from 'app/user/actions'
 import UserEditPage from 'app/user/pages/UserEditPage'
 
 const mapStateToProps = state => ({
-  me : state.userReducer.me
+  me : state.userReducer.me,
+  message : state.userReducer.message
 })
 const mapDispatchToProps = dispatch => ({
   requestPutMe : (name, email, password) => dispatch(requestPutMe(name, email, password))

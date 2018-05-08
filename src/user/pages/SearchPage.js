@@ -10,38 +10,30 @@ const styles = () => ({
     position: 'absoluto',
     zIndex: 1,
     width: '100%',
-    height: '100%',
-    backgroundColor: '#FAFAFA'
-  },
-  maintitle: {
-    position: 'absolute',
-    left: '500px',
-    textAlign: 'center',
-    fontSize: '34px',
-    color: '#000000',
-    opacity: '0.87',
-    fontFamily: 'Roboto'
-  },
-  searchButton: {
-    marginLeft: '420px',
-    marginBottom: '64px',
-    marginTop: '20px'
+    height: '100%'
   },
   registerContent: {
     width: '100%',
     height: '100%',
-    marginLeft: '70px',
-    marginTop: '60px'
+    marginTop: '48px'
   },
   title: {
-    position: 'relative',
-    left: '180px',
-    textAlign: 'center',
+    fontFamily: 'Roboto',
+    maxWidth: '180px',
+    margin: 'auto',
     fontSize: '24px',
     fontColor: '#000000',
     opacity: '0.87'
+  },
+  searchButton: {
+    marginLeft: '34%',
+    marginBottom: '32px',
+    marginTop: '8px'
+  },
+  userLinks: {
+    margin: 'auto',
+    maxWidth: '800px'
   }
-
 })
 
 
@@ -87,7 +79,9 @@ class SearchPage extends Component {
               onChangeValue={this.handleChange}
               onClick={this.handleSearch}
             />
-            {userLinks}
+            <div className={classes.userLinks}>
+              {userLinks}
+            </div>
           </div>
         </Container>
       </div>

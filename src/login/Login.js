@@ -5,13 +5,14 @@ import Typography from 'material-ui/Typography'
 import Card, { CardActions } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
+import { Link } from 'react-router-dom'
 import Header from 'app/Header'
 
 const styles = () => ({
   root: {
     backgroundColor: '#FAFAFA',
     height: '100vh',
-    width: '100%',
+    width: '100%'
   },
   header: {
     marginBottom: '160px'
@@ -44,7 +45,7 @@ const styles = () => ({
     margin: 'auto',
     width: '240px',
     height: '34px',
-    textAlign: 'left',
+    textAlign: 'left'
   },
   errorFont: {
     fontSize: '12px'
@@ -74,7 +75,7 @@ const styles = () => ({
     marginLeft: '47px',
     fontSize: '12px',
     color: '#000',
-    opacity: '0.38',
+    opacity: '0.38'
   }
 })
 
@@ -104,7 +105,7 @@ class LoginPage extends Component {
     } = this.props
     return (
       <div className={classes.root} {...other}>
-        <Header className={classes.header}/>
+        <Header className={classes.header} />
         <Card className={classes.card}>
           <div className={classes.cardHeader}>
             <Typography className={classes.cardTitle}>
@@ -113,7 +114,7 @@ class LoginPage extends Component {
           </div>
           <CardActions className={classes.cardContent}>
             <div className={classes.error}>
-              <Typography color='error' className={classes.errorFont}>
+              <Typography className={classes.errorFont} color='error'>
                 {errorMessage}
               </Typography>
             </div>
@@ -127,7 +128,7 @@ class LoginPage extends Component {
             </div>
             <div className={classes.password}>
               <TextField
-            autoComplete='current-password'
+                autoComplete='current-password'
                 id='password'
                 label='Password'
                 onChange={this.handleChange('password')}
@@ -137,9 +138,11 @@ class LoginPage extends Component {
             <Button className={classes.button} onClick={this.handleLogin} variant='flat'>
               LOGIN
             </Button>
-            <Typography align='left' className={classes.announce}>
-            　Do&rsquo;nt have account? Sign up now!!
-            </Typography>
+            <Link to='/signup'>
+              <Typography align='left' className={classes.announce}>
+                Do&rsquo;nt have account? Sign up now!!
+              </Typography>
+            </Link>
           </CardActions>
         </Card>
       </div>

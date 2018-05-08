@@ -5,6 +5,7 @@ export const allUsers = word => {
 
 export const getUser = id => {
   const uri = `api/users/${id}`
+  // const uri = `api/users/profile/${id}`
   const token = sessionStorage.getItem('_lesson_manager_token')
   return axios.get(uri, {
     headers: {
@@ -14,7 +15,7 @@ export const getUser = id => {
 }
 
 export const getMe = () => {
-  const uri = 'api/users/me'
+  const uri = 'api/users'
   const token = sessionStorage.getItem('_lesson_manager_token')
   return axios.get(uri, {
     headers: {

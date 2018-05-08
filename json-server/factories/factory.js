@@ -1,9 +1,8 @@
 const faker = require('./../lib/faker-extends/ja')
 
 class Factory {
-
-  constructor(faker) {
-    this.faker = faker
+  constructor(faker2) {
+    this.faker = faker2
     this.definition = () => {}
   }
 

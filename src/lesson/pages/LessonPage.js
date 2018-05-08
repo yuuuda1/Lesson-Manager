@@ -2,32 +2,36 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
+import Button from 'material-ui/Button'
 import Container from 'app/Container'
+import TimeTable from 'app/lesson/pages/components/TimeTable'
 import { Link } from 'react-router-dom'
-import TimeTable from './components/TimeTable'
 
 const styles = () => ({
   root: {
-    backgroundColor: '#FAFAFA',
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
     width: '100%',
-    height: '100vh'
+    height: '100%'
   },
   title: {
-    marginLeft: '32px',
     marginTop: '32px',
     paddingBottom: '8px',
     borderBottom: '1px solid #000000',
     borderStyle: '0.54',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#000000',
+    fontWeight: 'Regular',
     opacity: '0.54'
   },
-  universal: {
-    marginBottom: '8px'
+  titleStyle: {
+    height: '32px',
+    marginLeft: '32px',
+    display: 'inline-block',
+    fontSize: '20px',
+    paddingTop: '8px'
+  },
+  buttonStyle: {
+    height: '36px',
+    fontSize: '16px',
+    display: 'inline-block',
+    float: 'right'
   }
 })
 
@@ -50,34 +54,34 @@ class LessonPage extends Component {
         まだ時間割が登録されていません
       </Typography>
     ) : <TimeTable timetable={timetable} />
+
+    const editButton = Object.keys(timetable).length === 0 ? (
+      <Link to='/register'>
+        <Button className={classes.buttonStyle} color='defalut'>
+          登録する
+        </Button>
+      </Link>
+    ) : (
+      <Link to='/users/timetables/edit'>
+        <Button className={classes.buttonStyle} color='defalut'>
+          編集
+        </Button>
+      </Link>
+    )
+
     return (
-      <div className={classes.root} {...other}>
-        <Container>
+      <Container>
+        <div className={classes.root} {...other}>
           <div className={classes.title}>
-            <Typography variant='title'>
+            <Typography className={classes.titleStyle} variant='title'>
               MY時間割
             </Typography>
-            <Link to='/users/timetables/edit'>
-              <Typography>
-                編集する
-              </Typography>
-            </Link>
+            {editButton}
           </div>
-          <div>
-            {myTimetable}
-          </div>
-          <div className={classes.title}>
-            <Typography className={classes.universal} variant='title'>
-              京都産業大学 コンピュータ理工学部 インテリジェントシステム学科
-            </Typography>
-            <Typography variant='title'>
-              平成28年度 秋学期 時間割
-              {' '}
-            </Typography>
-          </div>
+          <div />
           {myTimetable}
-        </Container>
-      </div>
+        </div>
+      </Container>
     )
   }
 }

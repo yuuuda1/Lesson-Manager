@@ -12,6 +12,7 @@ import HomeIcon from 'material-ui-icons/Home'
 import DateRangeIcon from 'material-ui-icons/DateRange'
 import InputIcon from 'material-ui-icons/Input'
 import StarIcon from 'material-ui-icons/Star'
+import SearchIcon from 'material-ui-icons/Search'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ChevronRightIcon from 'material-ui-icons/ChevronRight'
 import { Link } from 'react-router-dom'
@@ -21,25 +22,32 @@ const drawerWidth = 240
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    width: '100vw',
+    height: '100%',
+    minWidth: '960px',
+    minHeight: '100vh',
+    display: 'flex',
+    position: 'relative',
+    overflow: 'auto'
   },
   appFrame: {
-    zIndex: 1,
-    overflow: 'hidden',
-    display: 'flex',
-    width: '100vw'
+    backgroundColor: '#FAFAFA',
+    width: '100%'
   },
   appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
+    display: 'flex',
+    flexDirection: 'row',
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     })
   },
   appBarShift: {
+    marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
   },
@@ -58,7 +66,20 @@ const styles = theme => ({
   },
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth
+    height: '100%',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
+  drawerPaperClose: {
+    width: 60,
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   drawerHeader: {
     display: 'flex',
@@ -66,7 +87,8 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
-    borderBottom: '1px solid #000'
+    borderBottom: '2px solid #000',
+    opacity: '0.54'
   },
   listStyles: {
   },
@@ -80,29 +102,29 @@ const styles = theme => ({
     height: '100%',
     position: 'absolute',
     left: '0px',
-    top: '64px',
+    top: '0px',
     backgroundColor: '#00BCD4'
   },
   sideBarShift: {
-    display: 'none'
+    width: '0px'
   },
   appBarColorDefault: {
     backgroundColor: '#00BCD4'
   },
   childrenStyle: {
-    marginLeft: 56 - drawerWidth,
     marginTop: '64px',
-    width: '100%' - 56,
-    height: '100%' - 64
-  },
-  icon: {
-    position: 'absolute',
-    right:'32px',
-    color: '#FFF'
+    width: 'calc(100% - 20px)',
+    height: 'calc(100% - 84px)',
+    padding: '10px 20px',
+    position: 'relative',
+    overflow: 'auto'
   },
   title: {
     color: '#FFF',
     fontSize: '24px'
+  },
+  listItemText: {
+    marginLeft: '16px'
   }
 })
 
@@ -130,6 +152,54 @@ class PersistentDrawer extends Component {
 
     return (
       <div className={classes.root} {...other}>
+        <Drawer
+          classes={{
+            paper: classNames(
+              classes.drawerPaper,
+              !this.state.open && classes.drawerPaperClose
+            )
+          }}
+          open={this.state.open}
+          variant='persistent'
+        >
+          <div className={classes.drawerHeader}>
+            <IconButton onClick={this.handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </div>
+          <div className={classes.listStyles}>
+            <List>
+              <ListItem button className={classes.listItem}>
+                <HomeIcon />
+                <Link className={classes.listItemText} to='/users/me'>
+                  <ListItemText primary='マイページ' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <DateRangeIcon />
+                <Link className={classes.listItemText} to='/lesson'>
+                  <ListItemText primary='MY時間割' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <InputIcon />
+                <Link className={classes.listItemText} to='/register'>
+                  <ListItemText primary='時間割登録' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <SearchIcon />
+                <Link className={classes.listItemText} to='/users/search'>
+                  <ListItemText primary='ユーザ検索' />
+                </Link>
+              </ListItem>
+              <ListItem button className={classes.listItem}>
+                <StarIcon />
+                <ListItemText primary='おすすめ' />
+              </ListItem>
+            </List>
+          </div>
+        </Drawer>
         <div className={classes.appFrame}>
           <ConnectedHeader className={classNames(
             classes.appBar,
@@ -149,57 +219,12 @@ class PersistentDrawer extends Component {
                 <MenuIcon />
               </IconButton>
               <Link to='/lesson'>
-                <Typography noWrap className={classes.title} variant='title'>
-                  Lesson-Manager
+                <Typography className={classes.title} variant='title'>
+                  Lesson Manager
                 </Typography>
               </Link>
             </Toolbar>
           </ConnectedHeader>
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            open={this.state.open}
-            variant='persistent'
-          >
-            <div className={classes.drawerHeader}>
-              <IconButton onClick={this.handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </div>
-            <div className={classes.listStyles}>
-              <List>
-                <ListItem button className={classes.listItem}>
-                  <HomeIcon />
-                  <Link to='/users/me'>
-                    <ListItemText primary='マイページ' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <DateRangeIcon />
-                  <Link to='/lesson'>
-                    <ListItemText primary='MY時間割' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <InputIcon />
-                  <Link to='/register'>
-                    <ListItemText primary='時間割登録' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <InputIcon />
-                  <Link to='/users/search'>
-                    <ListItemText primary='ユーザ検索' />
-                  </Link>
-                </ListItem>
-                <ListItem button className={classes.listItem}>
-                  <StarIcon />
-                  <ListItemText primary='おすすめ' />
-                </ListItem>
-              </List>
-            </div>
-          </Drawer>
           <div
             className={classNames(
               classes.sideBar,
