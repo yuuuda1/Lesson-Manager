@@ -7,7 +7,7 @@ import { routerMiddleware } from 'react-router-redux'
 
 import reducer from 'app/reducer'
 import sagas from 'app/sagas'
-import authMiddleware from 'app/auth/middleware'
+import authMiddleware from 'app/foundation/auth/middleware'
 
 const sagaMiddleware = createSagaMiddleware()
 const middleware = applyMiddleware(
