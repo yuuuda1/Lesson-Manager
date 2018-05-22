@@ -2,7 +2,7 @@ const login = (username, password) => {
   const uri = 'oauth/token'
   return axios.post(uri, {
     client_id: 2,
-    client_secret: 'LNIIYa89kNCSUmwQty0mst26irw2MdWX0TMbmTnl',
+    client_secret: 'VcNoWKZB5LTJp38oVvo5JKi11z36gNAtUFO6j6g0',
     username: username,
     password: password,
     grant_type: 'password',

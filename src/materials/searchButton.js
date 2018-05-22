@@ -4,30 +4,20 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import TextField from 'material-ui/TextField'
 import Paper from 'material-ui/Paper'
-import SearchIcon from 'material-ui-icons/Search'
-import IconButton from 'material-ui/IconButton'
 
 const styles = () => ({
   root: {
-    width: '400px',
     height: '32px',
-    position: 'relative',
-    top: '19px'
+    paddingTop: '19px'
   },
   paper: {
-    width: '400px',
     height: '32px'
   },
   textField: {
     marginLeft: '1%',
-    width: '89%',
+    width: '99%',
     position: 'relative',
     top: '-16px'
-  },
-  iconButton: {
-    width: '10%',
-    position: 'relative',
-    top: '-20px'
   }
 })
 
@@ -54,9 +44,6 @@ const SearchButton = props => {
           onChange={onChangeValue}
           type='input'
         />
-        <IconButton className={classes.iconButton} onClick={onClick}>
-          <SearchIcon />
-        </IconButton>
       </Paper>
     </div>
   )

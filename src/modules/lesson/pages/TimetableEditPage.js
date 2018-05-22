@@ -1,49 +1,93 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
 import Container from 'app/foundation/components/Container'
-import LessonList from 'app/modules/lesson/pages/components/LessonList'
+import Route from 'app/Route'
+import { Switch, Redirect } from 'react-router-dom'
+import RegisterMain from 'app/modules/lesson/pages/components/RegisterMain'
+import SearchResult from 'app/modules/lesson/pages/components/SearchResult'
 
 const styles = () => ({
   root: {
+    zIndex: 1,
     width: '100%',
-    height: '100%'
+    height: '100%',
+    backgroundColor: '#FAFAFA',
+    fontFamily: 'Roboto'
   },
   registerContent: {
-    width: '100%',
+    width: 'calc(100% - 56spx)',
+    height: '100%',
+    marginLeft: '48px',
     marginTop: '48px'
   },
   title: {
-    maxWidth: '200px',
-    margin: 'auto',
+    minWidth: '320px',
+    width: '20%',
+    marginLeft: '34%',
+    textAlign: 'center',
     fontSize: '24px',
-    fontFamily: 'Roboto',
-    fontWeight: 'Regular',
-    fontColor: '#000000',
+    color: '#000',
     opacity: '0.87'
+  },
+  contents: {
   }
 })
 
-
 class TimetableEditPage extends Component {
-  state = {
-    lessonIds: [],
-    searchItems: {
-      department: '',
-      word: ''
+  constructor(props) {
+    super(props)
+    const ids = this.props.timetable.lessons.map(lesson => lesson.id)
+    this.state = {
+      lessonIds: ids,
+      registedLessons: this.props.timetable.lessons,
+      searchItems: {
+        word: '',
+        department: '',
+        term: '',
+        grade: ''
+      }
     }
   }
 
-  handleChange = data => {
+  handleChange = (name, value) => {
+    const data = Object.assign({}, this.state.searchItems, {
+      [name] : value
+    })
     this.setState({
       searchItems: data
     })
   }
 
-  handleChange2 = ids => {
+  handleRegistLesson = lesson => {
+    const ids = this.state.lessonIds
+    ids.push(lesson.id)
+    const array = this.state.registedLessons.map(registedLesson => (
+      registedLesson
+    ))
+    array.push(lesson)
     this.setState({
-      lessonIds: ids
+      registedLessons: array
+    })
+  }
+
+  handleDeleteLesson = lesson => () => {
+    const lessonsIds = this.state.lessonIds
+    const registLessons = this.state.registedLessons
+    lessonsIds.map((lessonsId, index) => {
+      if (lessonsId === lesson.id) {
+        lessonsIds.splice(index, 1)
+      }
+      return ''
+    })
+    registLessons.map((registLesson, index) => {
+      if (registLesson.id === lesson.id) {
+        registLessons.splice(index, 1)
+      }
+      return ''
+    })
+    this.setState({
+      registedLessons : registLessons
     })
   }
 
@@ -62,28 +106,46 @@ class TimetableEditPage extends Component {
       message,
       requestAllLessons,
       requestPutTimetables,
-      timetable,
       ...other
     } = this.props
 
     return (
-      <div className={classes.root} {...other}>
+      <div className={classes.root}>
         <Container>
-          <div className={classes.registerContent}>
-            <div className={classes.title}>
-              MY時間割の編集
-            </div>
-            <Typography>
-              {message}
-            </Typography>
-            <LessonList
-              lessons={lessons}
-              onChangeData={this.handleChange}
-              onChangeValue={this.handleChange2}
-              onRegister={this.handleRegister}
-              onSearch={this.handleSearch}
-              registedLessons={timetable.lessons}
-            />
+          <div {...other}>
+            <Switch>
+              <Route
+                exact
+                path='/users/timetables/edit/home'
+                render={() => (
+                  <RegisterMain
+                    label='編集'
+                    lessons={this.state.registedLessons}
+                    onChange={this.handleChange}
+                    onDeleteLesson={this.handleDeleteLesson}
+                    onRegister={this.handleRegister}
+                    onSearch={this.handleSearch}
+                    searchItems={this.state.searchItems}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path='/users/timetables/edit/search'
+                render={() => (
+                  <SearchResult
+                    lessons={lessons}
+                    onRegistLesson={this.handleRegistLesson}
+                    searchItems={this.state.searchItems}
+                  />
+                )}
+              />
+              <Redirect
+                exact
+                from='/users/timetables/edit'
+                to='/users/timetables/edit/home'
+              />
+            </Switch>
           </div>
         </Container>
       </div>

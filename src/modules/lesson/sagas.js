@@ -2,6 +2,7 @@ import {
   put,
   call,
   fork,
+  takeEvery,
   takeLatest
 } from 'redux-saga/effects'
 import history from 'app/history'
@@ -35,6 +36,14 @@ function* requestAllLessons(action) {
 
 export function* watchRequestAllLessons() {
   yield takeLatest(LessonsActionTypes.REQUEST_ALL_LESSONS, requestAllLessons)
+}
+
+function* successLessons() {
+  yield call(history.push, 'search')
+}
+
+export function* watchSuccessAllLessons() {
+  yield takeEvery(LessonsActionTypes.SUCCESS_ALL_LESSONS, successLessons)
 }
 
 function* requestMyTimetable() {
@@ -106,6 +115,7 @@ export function* watchRequestDeleteTimetables() {
 
 export default [
   fork(watchRequestAllLessons),
+  fork(watchSuccessAllLessons),
   fork(watchRequestMyTimetable),
   fork(watchRequestGetTimetable),
   fork(watchRequestPostTimetables),

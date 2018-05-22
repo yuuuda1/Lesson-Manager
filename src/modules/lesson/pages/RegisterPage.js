@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
 import Container from 'app/foundation/components/Container'
-import LessonList from 'app/modules/lesson/pages/components/LessonList'
+import Route from 'app/Route'
+import { Switch, Redirect } from 'react-router-dom'
+import RegisterMain from 'app/modules/lesson/pages/components/RegisterMain'
+import SearchResult from 'app/modules/lesson/pages/components/SearchResult'
 
 const styles = () => ({
   root: {
@@ -27,27 +29,61 @@ const styles = () => ({
     fontSize: '24px',
     color: '#000',
     opacity: '0.87'
+  },
+  contents: {
   }
 })
 
 class RegisterPage extends Component {
   state = {
     lessonIds: [],
+    registedLessons: [],
     searchItems: {
+      word: '',
       department: '',
-      word: ''
+      term: '',
+      grade: ''
     }
   }
 
-  handleChange = data => {
+  handleChange = (name, value) => {
+    const data = Object.assign({}, this.state.searchItems, {
+      [name] : value
+    })
     this.setState({
       searchItems: data
     })
   }
 
-  handleChange2 = ids => {
+  handleRegistLesson = lesson => {
+    const ids = this.state.lessonIds
+    ids.push(lesson.id)
+    const array = this.state.registedLessons.map(registedLesson => (
+      registedLesson
+    ))
+    array.push(lesson)
     this.setState({
-      lessonIds: ids
+      registedLessons: array
+    })
+  }
+
+  handleDeleteLesson = lesson => () => {
+    const lessonsIds = this.state.lessonIds
+    const registLessons = this.state.registedLessons
+    lessonsIds.map((lessonsId, index) => {
+      if (lessonsId === lesson.id) {
+        lessonsIds.splice(index, 1)
+      }
+      return ''
+    })
+    registLessons.map((registLesson, index) => {
+      if (registLesson.id === lesson.id) {
+        registLessons.splice(index, 1)
+      }
+      return ''
+    })
+    this.setState({
+      registedLessons : registLessons
     })
   }
 
@@ -70,22 +106,42 @@ class RegisterPage extends Component {
     } = this.props
 
     return (
-      <div className={classes.root} {...other}>
+      <div className={classes.root}>
         <Container>
-          <div className={classes.registerContent}>
-            <Typography className={classes.title} variant='title'>
-              MY時間割の新規登録
-            </Typography>
-            <Typography variant='title'>
-              {message}
-            </Typography>
-            <LessonList
-              lessons={lessons}
-              onChangeData={this.handleChange}
-              onChangeValue={this.handleChange2}
-              onRegister={this.handleRegister}
-              onSearch={this.handleSearch}
-            />
+          <div {...other}>
+            <Switch>
+              <Route
+                exact
+                path='/register/home'
+                render={() => (
+                  <RegisterMain
+                    label='新規登録'
+                    lessons={this.state.registedLessons}
+                    onChange={this.handleChange}
+                    onDeleteLesson={this.handleDeleteLesson}
+                    onRegister={this.handleRegister}
+                    onSearch={this.handleSearch}
+                    searchItems={this.state.searchItems}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path='/register/search'
+                render={() => (
+                  <SearchResult
+                    lessons={lessons}
+                    onRegistLesson={this.handleRegistLesson}
+                    searchItems={this.state.searchItems}
+                  />
+                )}
+              />
+              <Redirect
+                exact
+                from='/register'
+                to='/register/home'
+              />
+            </Switch>
           </div>
         </Container>
       </div>
