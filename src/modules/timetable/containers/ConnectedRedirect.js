@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import RedirectPage from 'app/modules/lesson/pages/RedirectPage'
+import RedirectPage from 'app/modules/timetable/pages/RedirectPage'
 
 const mapStateToProps = state => ({
   message : state.lessonsReducer.message

@@ -44,7 +44,7 @@ const RedirectPage = ({ classes, message, ...other }) => (
         </Typography>
       </div>
       <div>
-        <Link to='/lesson'>
+        <Link to='/timetable/home'>
           <Button className={classes.getButton}>
             トップページへ
           </Button>

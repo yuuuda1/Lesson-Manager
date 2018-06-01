@@ -8,7 +8,7 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel'
 import classNames from 'classnames'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import LessonListContent from 'app/modules/lesson/pages/components/LessonListContent'
+import LessonListContent from 'app/modules/timetable/pages/components/LessonListContent'
 
 const styles = () => ({
   root: {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Container from 'app/foundation/components/Container'
-import SearchButton from 'app/materials/searchButton'
+import SearchTextField from 'app/materials/SearchTextField'
 import { Link } from 'react-router-dom'
 
 const styles = () => ({
@@ -25,7 +25,7 @@ const styles = () => ({
     fontColor: '#000000',
     opacity: '0.87'
   },
-  searchButton: {
+  SearchTextField: {
     marginLeft: '34%',
     marginBottom: '32px',
     marginTop: '8px'
@@ -62,7 +62,7 @@ class SearchPage extends Component {
     } = this.props
 
     const userLinks = users.length === 0 ? <div /> : users.map(user => (
-      <Link to={`profile/${user.id}`}>
+      <Link to={`users/${user.id}`}>
         {user.name}
       </Link>
     ))
@@ -74,8 +74,8 @@ class SearchPage extends Component {
             <div className={classes.title}>
               ユーザ検索
             </div>
-            <SearchButton
-              className={classes.searchButton}
+            <SearchTextField
+              className={classes.SearchTextField}
               onChangeValue={this.handleChange}
               onClick={this.handleSearch}
             />

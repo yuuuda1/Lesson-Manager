@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import Container from 'app/foundation/components/Container'
-import TimeTable from 'app/modules/lesson/pages/components/TimeTable'
+import TimeTable from 'app/modules/timetable/pages/components/TimeTable'
 import { Link } from 'react-router-dom'
 
 const styles = () => ({

@@ -31,7 +31,7 @@ const styles = () => ({
     fontSize: '18px'
   },
   appBarColorDefault: {
-    backgroundColor: '#00BCD4'
+    backgroundColor: '#6A1B9A'
   },
   icon: {
     color: '#FFF'

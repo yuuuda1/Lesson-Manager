@@ -21,7 +21,7 @@ const styles = () => ({
   }
 })
 
-const SearchButton = props => {
+const SearchTextField = props => {
   const {
     classes,
     onChangeValue,
@@ -49,11 +49,11 @@ const SearchButton = props => {
   )
 }
 
-SearchButton.propTypes = {
+SearchTextField.propTypes = {
   classes : PropTypes.object.isRequired,
   className : PropTypes.string,
   onChangeValue : PropTypes.func,
   onClick : PropTypes.func
 }
 
-export default withStyles(styles)(SearchButton)
+export default withStyles(styles)(SearchTextField)

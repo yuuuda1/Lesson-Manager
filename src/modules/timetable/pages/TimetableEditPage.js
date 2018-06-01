@@ -4,8 +4,8 @@ import { withStyles } from 'material-ui/styles'
 import Container from 'app/foundation/components/Container'
 import Route from 'app/Route'
 import { Switch, Redirect } from 'react-router-dom'
-import RegisterMain from 'app/modules/lesson/pages/components/RegisterMain'
-import SearchResult from 'app/modules/lesson/pages/components/SearchResult'
+import RegisterMain from 'app/modules/timetable/pages/components/RegisterMain'
+import SearchResult from 'app/modules/timetable/pages/components/SearchResult'
 
 const styles = () => ({
   root: {
@@ -34,15 +34,19 @@ const styles = () => ({
   }
 })
 
-class RegisterPage extends Component {
-  state = {
-    lessonIds: [],
-    registedLessons: [],
-    searchItems: {
-      word: '',
-      department: '',
-      term: '',
-      grade: ''
+class TimetableEditPage extends Component {
+  constructor(props) {
+    super(props)
+    const ids = this.props.timetable.lessons.map(lesson => lesson.id)
+    this.state = {
+      lessonIds: ids,
+      registedLessons: this.props.timetable.lessons,
+      searchItems: {
+        word: '',
+        department: '',
+        term: '',
+        grade: ''
+      }
     }
   }
 
@@ -92,7 +96,7 @@ class RegisterPage extends Component {
   }
 
   handleRegister = () => {
-    this.props.requestPostTimetables(this.state.lessonIds)
+    this.props.requestPutTimetables(this.state.lessonIds)
   }
 
   render() {
@@ -101,7 +105,7 @@ class RegisterPage extends Component {
       lessons,
       message,
       requestAllLessons,
-      requestPostTimetables,
+      requestPutTimetables,
       ...other
     } = this.props
 
@@ -112,10 +116,10 @@ class RegisterPage extends Component {
             <Switch>
               <Route
                 exact
-                path='/register/home'
+                path='/timetable/edit/home'
                 render={() => (
                   <RegisterMain
-                    label='新規登録'
+                    label='編集'
                     lessons={this.state.registedLessons}
                     onChange={this.handleChange}
                     onDeleteLesson={this.handleDeleteLesson}
@@ -127,7 +131,7 @@ class RegisterPage extends Component {
               />
               <Route
                 exact
-                path='/register/search'
+                path='/timetable/edit/search'
                 render={() => (
                   <SearchResult
                     lessons={lessons}
@@ -138,8 +142,8 @@ class RegisterPage extends Component {
               />
               <Redirect
                 exact
-                from='/register'
-                to='/register/home'
+                from='/timetable/edit'
+                to='/timetable/edit/home'
               />
             </Switch>
           </div>
@@ -149,12 +153,13 @@ class RegisterPage extends Component {
   }
 }
 
-RegisterPage.propTypes = {
+TimetableEditPage.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
   message : PropTypes.string,
   requestAllLessons : PropTypes.func,
-  requestPostTimetables : PropTypes.func
+  requestPutTimetables : PropTypes.func,
+  timetable : PropTypes.object
 }
 
-export default withStyles(styles)(RegisterPage)
+export default withStyles(styles)(TimetableEditPage)

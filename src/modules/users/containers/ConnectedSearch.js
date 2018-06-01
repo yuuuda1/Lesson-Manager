@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
-import { requestAllUsers } from 'app/modules/user/actions'
+import { requestAllUsers } from 'app/modules/users/actions'
 
-import SearchPage from 'app/modules/user/pages/SearchPage'
+import SearchPage from 'app/modules/users/pages/SearchPage'
 
 const mapStateToProps = state => ({
   users : state.userReducer.users

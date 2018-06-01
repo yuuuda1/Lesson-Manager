@@ -79,7 +79,7 @@ function* requestPostTimetables(action) {
   } catch (error) {
     yield put(failuerPostTimetables(error))
   }
-  yield call(history.push, '/redirect')
+  yield call(history.push, '/timetable/redirect')
 }
 
 export function* watchRequestPostTimetables() {
@@ -93,7 +93,7 @@ function* requestPutTimetables(action) {
   } catch (error) {
     yield put(failuerPutTimetables(error))
   }
-  yield call(history.push, '/redirect')
+  yield call(history.push, '/timetable/redirect')
 }
 
 export function* watchRequestPutTimetables() {

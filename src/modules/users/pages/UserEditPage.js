@@ -124,7 +124,7 @@ class UserEditPage extends Component {
             <Card className={classes.card}>
               <div className={classes.cardHeader}>
                 <Typography className={classes.cardTitle}>
-                    My Account
+                  My Account
                 </Typography>
               </div>
               <CardActions className={classes.cardContent}>

@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import {
   requestAllLessons,
   requestPutTimetables
-} from 'app/modules/lesson/actions'
+} from 'app/modules/timetable/actions'
 
-import TimetableEditPage from 'app/modules/lesson/pages/TimetableEditPage'
+import TimetableEditPage from 'app/modules/timetable/pages/TimetableEditPage'
 
 const mapStateToProps = state => ({
   lessons : state.lessonsReducer.lessons,

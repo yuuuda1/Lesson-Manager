@@ -32,7 +32,7 @@ export function* watchRequestLogin() {
 }
 
 function* loginSuccess() {
-  yield call(history.push, '/lesson')
+  yield call(history.push, '/timetable/home')
 }
 
 export function* watchSuccessLogin() {

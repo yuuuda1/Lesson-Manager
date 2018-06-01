@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import Container from 'app/foundation/components/Container'
-import TimeTable from 'app/modules/lesson/pages/components/TimeTable'
+import TimeTable from 'app/modules/timetable/pages/components/TimeTable'
 import { Link } from 'react-router-dom'
 
 const styles = () => ({
@@ -56,13 +56,13 @@ class LessonPage extends Component {
     ) : <TimeTable timetable={timetable} />
 
     const editButton = Object.keys(timetable).length === 0 ? (
-      <Link to='/register'>
+      <Link to='/timetable/register'>
         <Button className={classes.buttonStyle} color='defalut'>
           登録する
         </Button>
       </Link>
     ) : (
-      <Link to='/users/timetables/edit'>
+      <Link to='/timetable/edit'>
         <Button className={classes.buttonStyle} color='defalut'>
           編集
         </Button>

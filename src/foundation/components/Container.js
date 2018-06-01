@@ -103,13 +103,13 @@ const styles = theme => ({
     position: 'absolute',
     left: '0px',
     top: '0px',
-    backgroundColor: '#00BCD4'
+    backgroundColor: '#6A1B9A'
   },
   sideBarShift: {
     width: '0px'
   },
   appBarColorDefault: {
-    backgroundColor: '#00BCD4'
+    backgroundColor: '#6A1B9A'
   },
   childrenStyle: {
     marginTop: '64px',
@@ -177,13 +177,13 @@ class PersistentDrawer extends Component {
               </ListItem>
               <ListItem button className={classes.listItem}>
                 <DateRangeIcon />
-                <Link className={classes.listItemText} to='/lesson'>
+                <Link className={classes.listItemText} to='/timetable/home'>
                   <ListItemText primary='MY時間割' />
                 </Link>
               </ListItem>
               <ListItem button className={classes.listItem}>
                 <InputIcon />
-                <Link className={classes.listItemText} to='/register'>
+                <Link className={classes.listItemText} to='/timetable/register'>
                   <ListItemText primary='時間割登録' />
                 </Link>
               </ListItem>
@@ -218,7 +218,7 @@ class PersistentDrawer extends Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Link to='/lesson'>
+              <Link to='/timetable/home'>
                 <Typography className={classes.title} variant='title'>
                   Lesson Manager
                 </Typography>

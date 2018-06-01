@@ -4,8 +4,8 @@ import { withStyles } from 'material-ui/styles'
 import Container from 'app/foundation/components/Container'
 import Route from 'app/Route'
 import { Switch, Redirect } from 'react-router-dom'
-import RegisterMain from 'app/modules/lesson/pages/components/RegisterMain'
-import SearchResult from 'app/modules/lesson/pages/components/SearchResult'
+import RegisterMain from 'app/modules/timetable/pages/components/RegisterMain'
+import SearchResult from 'app/modules/timetable/pages/components/SearchResult'
 
 const styles = () => ({
   root: {
@@ -34,19 +34,15 @@ const styles = () => ({
   }
 })
 
-class TimetableEditPage extends Component {
-  constructor(props) {
-    super(props)
-    const ids = this.props.timetable.lessons.map(lesson => lesson.id)
-    this.state = {
-      lessonIds: ids,
-      registedLessons: this.props.timetable.lessons,
-      searchItems: {
-        word: '',
-        department: '',
-        term: '',
-        grade: ''
-      }
+class RegisterPage extends Component {
+  state = {
+    lessonIds: [],
+    registedLessons: [],
+    searchItems: {
+      word: '',
+      department: '',
+      term: '',
+      grade: ''
     }
   }
 
@@ -96,7 +92,7 @@ class TimetableEditPage extends Component {
   }
 
   handleRegister = () => {
-    this.props.requestPutTimetables(this.state.lessonIds)
+    this.props.requestPostTimetables(this.state.lessonIds)
   }
 
   render() {
@@ -105,7 +101,7 @@ class TimetableEditPage extends Component {
       lessons,
       message,
       requestAllLessons,
-      requestPutTimetables,
+      requestPostTimetables,
       ...other
     } = this.props
 
@@ -116,10 +112,10 @@ class TimetableEditPage extends Component {
             <Switch>
               <Route
                 exact
-                path='/users/timetables/edit/home'
+                path='/timetable/register/home'
                 render={() => (
                   <RegisterMain
-                    label='編集'
+                    label='新規登録'
                     lessons={this.state.registedLessons}
                     onChange={this.handleChange}
                     onDeleteLesson={this.handleDeleteLesson}
@@ -131,7 +127,7 @@ class TimetableEditPage extends Component {
               />
               <Route
                 exact
-                path='/users/timetables/edit/search'
+                path='/timetable/register/search'
                 render={() => (
                   <SearchResult
                     lessons={lessons}
@@ -142,8 +138,8 @@ class TimetableEditPage extends Component {
               />
               <Redirect
                 exact
-                from='/users/timetables/edit'
-                to='/users/timetables/edit/home'
+                from='/timetable/register'
+                to='/timetable/register/home'
               />
             </Switch>
           </div>
@@ -153,13 +149,12 @@ class TimetableEditPage extends Component {
   }
 }
 
-TimetableEditPage.propTypes = {
+RegisterPage.propTypes = {
   classes : PropTypes.object.isRequired,
   lessons : PropTypes.array,
   message : PropTypes.string,
   requestAllLessons : PropTypes.func,
-  requestPutTimetables : PropTypes.func,
-  timetable : PropTypes.object
+  requestPostTimetables : PropTypes.func
 }
 
-export default withStyles(styles)(TimetableEditPage)
+export default withStyles(styles)(RegisterPage)

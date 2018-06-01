@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
-import { requestGetUser } from 'app/modules/user/actions'
+import { requestGetUser } from 'app/modules/users/actions'
 
-import { requestGetTimetable } from 'app/modules/lesson/actions'
+import { requestGetTimetable } from 'app/modules/timetable/actions'
 
-import ProfilePage from 'app/modules/user/pages/ProfilePage'
+import ProfilePage from 'app/modules/users/pages/ProfilePage'
 
 const mapStateToProps = state => ({
   user : state.userReducer.user,

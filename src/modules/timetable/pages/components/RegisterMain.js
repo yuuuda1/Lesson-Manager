@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
-import LessonList from 'app/modules/lesson/pages/components/LessonList'
+import LessonList from 'app/modules/timetable/pages/components/LessonList'
 import Button from 'app/materials/Button'
 import Select from 'material-ui/Select'
 import { FormControl } from 'material-ui/Form'
 import { InputLabel } from 'material-ui/Input'
 import { MenuItem } from 'material-ui/Menu'
-import SearchButton from 'app/materials/searchButton'
+import SearchTextField from 'app/materials/SearchTextField'
 
 const styles = () => ({
   root: {
@@ -45,7 +45,7 @@ const styles = () => ({
     minWidth: '112px',
     marginRight: '16px'
   },
-  searchButton: {
+  SearchTextField: {
     width: '50%'
   }
 })
@@ -187,8 +187,8 @@ class RegisterMain extends Component {
             </MenuItem>
           </Select>
         </FormControl>
-        <SearchButton
-          className={classes.searchButton}
+        <SearchTextField
+          className={classes.SearchTextField}
           onChangeValue={this.handleChange('word')}
           onClick={onSearch}
         />

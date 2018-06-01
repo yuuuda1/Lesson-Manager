@@ -7,9 +7,9 @@ import {
   requestPostTimetables,
   requestPutTimetables,
   requestDeleteTimetables
-} from 'app/modules/lesson/actions'
+} from 'app/modules/timetable/actions'
 
-import LessonPage from 'app/modules/lesson/pages/LessonPage'
+import LessonPage from 'app/modules/timetable/pages/LessonPage'
 
 const mapStateToProps = state => ({
   lessons : state.lessonsReducer.lessons,
